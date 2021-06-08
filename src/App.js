@@ -49,6 +49,7 @@ class App extends React.Component {
             )}
           />
           <Route exact path="/show" render={() => <ShowPage />} />
+
           <Route exact path="/forgotpw" render={() => <ForgotPw />} />
           <Route exact path="/signup" render={() => <Signup />} />
           <Route exact path="/mypage" render={() => <Mypage 
@@ -64,12 +65,12 @@ class App extends React.Component {
               return <Redirect to="/login" />;
             }}
           />
-          {/* <Route exact path="/show" render={() => {
+          <Route exact path="/show" render={() => {
               if (isLogin) {
                 return <Redirect to="/show" />;
               }
               return <Redirect to="/login" />;
-            }} /> */}
+            }} />
         </Switch>
       </div>
     );
