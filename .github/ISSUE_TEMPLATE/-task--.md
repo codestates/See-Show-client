@@ -2,7 +2,7 @@
 name: "[Task] "
 about: task 분배 & to-do list
 title: ''
-labels: To-Do, in-progress
+labels: in-progress
 assignees: ''
 
 ---

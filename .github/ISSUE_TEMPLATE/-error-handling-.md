@@ -1,6 +1,6 @@
 ---
 name: "[Error Handling]"
-about: Error handling card
+about: 에러 있을 시 공유
 title: ''
 labels: Error
 assignees: ''
