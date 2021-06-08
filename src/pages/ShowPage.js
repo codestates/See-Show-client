@@ -15,6 +15,7 @@ function ShowPage(props) {
 
       {/* 브랜든 님의 취향 저격 공연 전시 */}
       <tr></tr>
+      {/* 으아아악 */}
     </table>
   );
 }
