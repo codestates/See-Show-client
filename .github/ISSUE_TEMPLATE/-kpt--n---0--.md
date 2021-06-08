@@ -1,8 +1,8 @@
 ---
 name: "[KPT] N주차 0요일"
-about: 회고 일지
+about: 회고일지(1주 1회) 지민이에게 디코 '회고채널'에 보내주시면 지민이가 취합해서 업로드
 title: ''
-labels: ''
+labels: KPT
 assignees: ''
 
 ---
