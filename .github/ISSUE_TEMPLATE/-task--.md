@@ -18,10 +18,9 @@ assignees: ''
 * Job3.  
 
 ## Estimated time
-Pick one
-* ex> 1h, 2h ....
+
 
 ## Labels
 * Estimated time: E: 1h
 * Group : client, server
-* Urgency: High, Middle, Low
+* 진행 중 : in-progress     완료 후 : completed 로 변경
