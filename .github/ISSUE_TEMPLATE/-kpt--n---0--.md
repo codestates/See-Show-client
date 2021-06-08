@@ -2,7 +2,7 @@
 name: "[KPT] N주차 0요일"
 about: 회고 일지
 title: ''
-labels: ''
+labels: KPT
 assignees: ''
 
 ---
