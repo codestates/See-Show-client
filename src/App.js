@@ -1,12 +1,15 @@
 import React from "react";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 
+import Nav from "./pages/Nav"
+import Hello from "./pages/Hello";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Mypage from "./pages/Mypage";
 import ForgotPw from "./pages/ForgotPw";
 import ShowPage from "./pages/ShowPage";
 import axios from "axios";
+import "./App.css"
 
 class App extends React.Component {
   state = {
@@ -38,39 +41,33 @@ class App extends React.Component {
     const { isLogin, userinfo } = this.state;
 
     return (
-      <div>
+      <div className="root">
+        <Nav userinfo={this.state.userinfo} />
+        <video id="backgroundVideo" muted autoplay="" loop="loop" src="./resource/backgroundvideo.mp4" />
+        <div className="contents">
         <Switch>
-          <Route
-            path="/login"
-            render={() => (
-              <Login
-                handleResponseSuccess={this.handleResponseSuccess.bind(this)}
-              />
-            )}
-          />
+          <Route path="/Hello" render={() => ( <Hello userinfo={this.state.userinfo} /> )}  />
+          <Route path="/login" render={() => ( <Login handleResponseSuccess={this.handleResponseSuccess.bind(this)} /> )}  />
           <Route exact path="/show" render={() => <ShowPage />} />
+
           <Route exact path="/forgotpw" render={() => <ForgotPw />} />
           <Route exact path="/signup" render={() => <Signup />} />
-          <Route exact path="/mypage" render={() => <Mypage 
-                userinfo ={this.state.userinfo}
-                handleLogout = {this.handleLogout.bind(this)}
-                />} />
-          <Route
-            path="/"
-            render={() => {
+          <Route exact path="/mypage" render={() => <Mypage userinfo ={this.state.userinfo} handleLogout = {this.handleLogout.bind(this)}  />} />
+          <Route path="/" render={() => {
               if (isLogin) {
                 return <Redirect to="/mypage" />;
               }
-              return <Redirect to="/login" />;
+              return <Redirect to="/Hello" />;
             }}
           />
-          {/* <Route exact path="/show" render={() => {
+          <Route exact path="/show" render={() => {
               if (isLogin) {
                 return <Redirect to="/show" />;
               }
               return <Redirect to="/login" />;
-            }} /> */}
+            }} />
         </Switch>
+        </div>
       </div>
     );
   }
