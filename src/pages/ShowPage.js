@@ -10,16 +10,31 @@ class ShowPage extends React.Component {
   state = {
     apiData: [
       {
-        id: "1234",
-        title: "fakeData로 테스트 중...",
+        id: 1,
+        seq : 12402,
+        title: "title : fakeData로 테스트 중...1",
         thumbnail:
           "https://media.discordapp.net/attachments/850245968484892683/851451334245875772/See-Show.png",
+          startDate : 20100101,
+          endDate : 20100107,
+          place : "폴리미디어 씨어터",
+          area : "서울",
+          gpsX : 129.101,
+          gpsY : 35.142
+
       },
       {
-        id: "1235",
-        title: "fakeData로 테스트 중...",
+        id: 2,
+        seq : 12403,
+        title: "title :fakeData로 테스트 중...2",
         thumbnail:
           "https://media.discordapp.net/attachments/850245968484892683/851451334245875772/See-Show.png",
+          startDate : 20100101,
+          endDate : 20100107,
+          place : "폴리미디어 씨어터",
+          area : "서울",
+          gpsX : 129.101,
+          gpsY : 35.142
       },
     ],
     clickedData: null,

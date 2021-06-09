@@ -7,11 +7,13 @@ class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
+      userId: "",
       password: "",
       mobile: "",
       errorMessage: "",
-      passwordCheck : ""
+      passwordCheck : "",
+      genre : "",
+      area : ""
     };
     this.handleInputValue = this.handleInputValue.bind(this);
   }
@@ -21,8 +23,8 @@ class Signup extends React.Component {
   };
 
   handleSignup = () => {
-    const { email, password, mobile, passwordCheck } = this.state;
-    if (!email || !password || !mobile || !passwordCheck) {
+    const { userId, password, mobile, passwordCheck } = this.state;
+    if (!userId || !password || !mobile || !passwordCheck) {
       this.setState({ errorMessage: "모든 항목은 필수입니다" });
     }else if(password !== passwordCheck){
       this.setState({ errorMessage: "비밀번호가 일치하지 않습니다" });
@@ -49,10 +51,10 @@ class Signup extends React.Component {
                <div className="alert-box">{this.state.errorMessage}</div>
             }
             <div>
-              <span>email</span>
+              <span>userId</span>
               <input
-                type="email"
-                onChange={this.handleInputValue("email")}
+                type="userId"
+                onChange={this.handleInputValue("userId")}
               ></input>
             </div>
             <div>
