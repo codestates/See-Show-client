@@ -57,8 +57,9 @@ class Login extends React.Component {
       </div>
       <div className='spacing'>or continue with <span className='highlight'>Github</span></div>
       <div><button className='choicebtn-login' onClick={this.handleLogin}>LOGIN</button></div>
-      <div><Link to='signup/'><button className='choicebtn'>SIGN UP</button></Link></div>
-      <div><Link to="/forgotpw"><button className='choicebtn'>Forgot Password</button></Link></div>
+
+      <div><Link to="/signup"><button className='choicebtn'>SIGN UP</button></Link></div>
+      <div><Link to="/forgotpw"><button className='choicebtn'>Forgot Password </button></Link></div>
     </div>
   </div>
 </div>
