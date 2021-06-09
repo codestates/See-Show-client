@@ -1,4 +1,4 @@
-.container {
+/* .container {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -17,7 +17,7 @@
     -webkit-box-pack: center;
     -webkit-justify-content: center;
     -ms-flex-pack: center;
-}
+} */
 
 
 
@@ -190,4 +190,8 @@ input {
   position: absolute;
   width: 360px;
   z-index: 1;
+}
+
+.full-width {
+  width: 100%;
 }
