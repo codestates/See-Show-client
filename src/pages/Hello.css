@@ -1,3 +1,4 @@
+
 .greeting {
     border: 10px solid white;
     background-color: #ffffffa4;
@@ -8,8 +9,6 @@
     justify-content: center;
     flex-direction: column;
 }
-
-
 
 #greeting-logo {
     width: 200px;
