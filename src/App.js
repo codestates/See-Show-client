@@ -3,11 +3,14 @@ import { Switch, Route, Redirect, withRouter,  } from "react-router-dom";
 
 import Nav from "./pages/Nav";
 import Hello from "./pages/Hello";
+import Ad from "./pages/ad"
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Moreinfo from "./pages/Moreinfo";
 import Mypage from "./pages/Mypage";
 import ForgotPw from "./pages/ForgotPw";
 import ShowPage from "./pages/ShowPage";
+import ResetPw from "./pages/ResetPw";
 import axios from "axios";
 import "./App.css";
 import AddShow from "./pages/AddShow";
@@ -50,56 +53,31 @@ class App extends React.Component {
           src="./resource/backgroundvideo.mp4"
         />
         <div className="contents">
-          <Switch>
-            <Route
-              path="/Hello"
-              render={() => <Hello userinfo={userinfo} />}
-            />
-            <Route
-              path="/login"
-              render={() => (
-                <Login
-                  handleResponseSuccess={this.handleResponseSuccess.bind(this)}
-                />
-              )}
-            />
-            <Route exact path="/show" render={() => <ShowPage />} />
-
-            <Route exact path="/addShow" render={() => <AddShow />} />
-            <Route exact path="/forgotpw" render={() => <ForgotPw />} />
-            <Route exact path="/signup" render={() => <Signup />} />
-            <Route
-              exact
-              path="/mypage"
-              render={() => (
-                <Mypage
-                  userinfo={this.state.userinfo}
-                  handleLogout={this.handleLogout.bind(this)}
-                />
-              )}
-            />
-            <Route
-              path="/mypage"
-              render={() => {
-                if (isLogin) {
-                  return <Redirect to="/mypage" />;
-                }
-                return <Redirect to="/Hello" />;
-              }}
-            />
-            {/* <Route
-              exact
-              path="/show"
-              render={() => {
-                if (isLogin) {
-                  return <Redirect to="/show" />;
-                }
-                return <Redirect to="/login" />;
-              }}  />
-              지민 : showPage는 로그인 없어도 가능하게 만들어야 해서 주석처리함.
-              */}
-              
-          </Switch>
+        <Switch>
+          <Route path="/Hello" render={() => ( <Hello userinfo={this.state.userinfo} /> )}  />
+          <Route path="/ad" render={() => <Ad />} />
+          <Route path="/login" render={() => ( <Login handleResponseSuccess={this.handleResponseSuccess.bind(this)} /> )}  />
+          <Route exact path="/show" render={() => <ShowPage />} />
+          <Route exact path="/addShow" render={() => <AddShow />} />
+          <Route exact path="/forgotpw" render={() => <ForgotPw />} />
+          <Route exact path="/signup" render={() => <Signup />} />
+          <Route exact path="/moreinfo" render={() => <Moreinfo />} />
+          <Route exact path="/mypage" render={() => <Mypage userinfo ={this.state.userinfo} handleLogout = {this.handleLogout.bind(this)}  />} />
+          <Route exact path="/resetpw" render={() => <ResetPw /> } />
+          <Route path="/" render={() => {
+              if (isLogin) {
+                return <Redirect to="/mypage" />;
+              }
+              return <Redirect to="/Hello" />;
+            }}
+          />
+          <Route exact path="/show" render={() => {
+              if (isLogin) {
+                return <Redirect to="/show" />;
+              }
+              return <Redirect to="/login" />;
+            }} />
+        </Switch>
         </div>
       </div>
     );
