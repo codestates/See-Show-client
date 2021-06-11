@@ -22,7 +22,7 @@ class Login extends React.Component {
   handleLogin = () => {
     const { userId, password } = this.state;
     if (!userId || !password) {
-      this.setState({ errorMessage: "이메일과 비밀번호를 입력하세요" });
+      this.setState({ errorMessage: "아이디와 비밀번호를 입력하세요" });
     } else {
       axios
         .post(
@@ -55,7 +55,7 @@ class Login extends React.Component {
                <div className='alert-box'>{this.state.errorMessage}</div>
               </form>
       </div>
-      <div className='spacing'>or continue with <span className='highlight'>Github</span></div>
+      <div className='spacing'>or continue with <a className='highlight' href="https://github.com/login/oauth/authorize?client_id=a904f09f2c93d6013422">Github</a></div>
       <div><button className='choicebtn-login' onClick={this.handleLogin}>LOGIN</button></div>
       <div><Link to='signup/'><button className='choicebtn'>SIGN UP</button></Link></div>
       <div><Link to="/forgotpw"><button className='choicebtn'>Forgot Password</button></Link></div>
