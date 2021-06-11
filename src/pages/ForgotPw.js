@@ -1,5 +1,4 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 import './ForgotPw.css'
 
@@ -9,6 +8,7 @@ class ForgotPw extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            userId:"",
             email:"",
             isRequest: "",
             errorMessage: "",
@@ -21,16 +21,16 @@ class ForgotPw extends React.Component {
     };
 
     handleRequest = () => {
-        const { email, isRequest } = this.state;
+        const { userId, isRequest, email } = this.state;
 
         if(isRequest) {
-            this.setState({errorMessage: "비밀번호 재설정 메일을 발송하였습니다"})
+            this.setState({errorMessage: "이미 메일을 발송하였습니다"})
         }
 
-        if(!email) {
+        if(!email || !userId) {
             this.setState({errorMessage: "계정 정보를 입력하세요"})
         } else {
-            this.setState({isRequest: true});
+            this.setState({isRequest: true, errorMessage: "비밀번호 재설정 메일을 발송하였습니다"});
 
             axios.post("https://localhost:4000/forgotpw", this.state, {
                 headers: {
@@ -54,6 +54,7 @@ class ForgotPw extends React.Component {
                         <div className='input-fields'>
                             <form onSubmit={(e)=> e.preventDefault()}>
                                 <input className='input-line full-width' type='userId' placeholder='ID' onChange={this.handleInputValue('userId')}></input>
+                                <input className='input-line full-width' type='email' placeholder='MAIL' onChange={this.handleInputValue('email')}></input>
                                 <div className='alert-box'>{this.state.errorMessage}</div>
                             </form>
                         </div>

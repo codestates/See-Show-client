@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter} from "react-router-dom";
 import axios from "axios";
 import './Signup.css'
 
@@ -8,11 +8,14 @@ class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      userId: "",
       email: "",
       password: "",
-      mobile: "",
+      username: "",
       errorMessage: "",
-      passwordCheck : ""
+      passwordCheck : "",
+      genre : "",
+      area : ""
     };
     this.handleInputValue = this.handleInputValue.bind(this);
   }
@@ -22,8 +25,8 @@ class Signup extends React.Component {
   };
 
   handleSignup = () => {
-    const { email, password, mobile, passwordCheck } = this.state;
-    if (!email || !password || !mobile || !passwordCheck) {
+    const { userId, email, password, username, passwordCheck } = this.state;
+    if (!userId || !email || !password || !username || !passwordCheck) {
       this.setState({ errorMessage: "모든 항목은 필수입니다" });
     }else if(password !== passwordCheck){
       this.setState({ errorMessage: "비밀번호가 일치하지 않습니다" });
@@ -52,9 +55,11 @@ class Signup extends React.Component {
                 <div className='input-fields'>
                   <form onSubmit={(e)=> e.preventDefault()}>
                     <input className='input-line full-width' type='userId' placeholder='ID' onChange={this.handleInputValue('userId')}></input>
+                    <input className='input-line full-width' type='email' placeholder='MAIL' onChange={this.handleInputValue('email')}></input>
+                    <input className='input-line full-width' type='username' placeholder='NICKNAME' onChange={this.handleInputValue('username')}></input>
                     <input className='input-line full-width' type='password' placeholder='PASSWORD' onChange={this.handleInputValue('password')}></input>
                     <input className='input-line full-width' type='password' placeholder='CONFIRM PASSWORD' onChange={this.handleInputValue('passwordCheck')}></input>
-                    <input className='input-line full-width' type='mobile' placeholder='MOBILE PHONE' onChange={this.handleInputValue('mobile')}></input>
+                    
                     <div className='alert-box'>{this.state.errorMessage}</div>
                   </form>
                 </div>
