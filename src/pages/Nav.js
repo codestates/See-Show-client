@@ -15,9 +15,10 @@ function Nav(props) {
           ></img>
         </Link>
 
-        <Link to="/login">
-          <button className="btn-default">LOGIN</button>
-        </Link>
+        <div className='buttonWrapper'>
+             <Link to="/ad"><button className="btn-default">See Show</button></Link>
+            <Link to="/login"><button className="btn-default">LOGIN</button></Link>
+        </div>
       </div>
     );
   } else {
