@@ -10,32 +10,34 @@ class ShowPage extends React.Component {
   state = {
     apiData: [
       {
-        id: 1,
-        seq : 12402,
-        title: "title : fakeData로 테스트 중...1",
-        thumbnail:
-          "https://media.discordapp.net/attachments/850245968484892683/851451334245875772/See-Show.png",
-          startDate : 20100101,
-          endDate : 20100107,
-          place : "폴리미디어 씨어터",
-          area : "서울",
-          gpsX : 129.101,
-          gpsY : 35.142
-
+        seq: { _text: '166695' },
+        title: { _text: '나의 친구, 그림책' },
+        startDate: { _text: '20210102' },
+        endDate: { _text: '20211231' },
+        place: { _text: 'ACC 어린이문화원' },
+        realmName: { _text: '미술' },
+        area: { _text: '광주' },
+        thumbnail: {
+          _text: 'http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif'
+        },
+        gpsX: { _text: '126.919994481568' },
+        gpsY: { _text: '35.1469155857794' }
       },
       {
-        id: 2,
-        seq : 12403,
-        title: "title :fakeData로 테스트 중...2",
-        thumbnail:
-          "https://media.discordapp.net/attachments/850245968484892683/851451334245875772/See-Show.png",
-          startDate : 20100101,
-          endDate : 20100107,
-          place : "폴리미디어 씨어터",
-          area : "서울",
-          gpsX : 129.101,
-          gpsY : 35.142
+        seq: { _text: '167843' },
+        title: { _text: 'PMF 영아티스트 콘서트_이지언 첼로 리사이틀' },
+        startDate: { _text: '20210710' },
+        endDate: { _text: '20210710' },
+        place: { _text: 'PMF자양스테이션' },
+        realmName: { _text: '음악' },
+        area: { _text: '서울' },
+        thumbnail: {
+          _text: 'http://www.culture.go.kr/upload/rdf/21/06/rdf_202106081662354418.jpg'
+        },
+        gpsX: { _text: '127.08302634367884' },
+        gpsY: { _text: '37.53463130540217' }
       },
+      
     ],
     clickedData: null,
   };

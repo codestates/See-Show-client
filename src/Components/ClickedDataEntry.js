@@ -1,26 +1,35 @@
 import React from "react";
+import '../pages/ShowPage.css'
 
-//ShowPage에서 공연을 클릭했을 때 나오는 '공연 상세 정보' 페이지 입니다.
-const ClickedDataEntry = ({ data }) => (
-  <div>
-    <div className="left_thumbnail 클래스이름 변경해도 됩니다.">
-      <img className="media-object" src={data.thumbnail} alt="data.title" />
+
+//ShowPage에서 공연 썸네일을 클릭했을 때 나오는 '해당 공연 상세 정보' 페이지 입니다.
+function ClickedDataEntry ({ data }) {
+
+return(
+  <div className = "clicked_showBox">
+
+    {/* 왼쪽 공연 썸네일 */}
+    <div className="left_thumbnail ">
+      <img className="thumbnail" src={data.thumbnail._text} alt="data.title" />
     </div>
+
+    {/* 오른쪽 공연 상세 정보 */}
     <div className="right_description">
-      <div className="title">{data.title}</div>
-      <div className="category">카테고리 </div>
-      <div className="runTime">상영시간  </div>
-      <div className="runPeriod">공연기간  </div>
-      <div className="schedule">공연시간  </div>
-      <div className="place">{`공연장소 ${data.place}`}</div>
-      <div className="description">공연정보  </div>
+      <div className="title">
+        {data.title._text}</div>
+      <div className="category">{data.realmName._text}  </div>
+      <div className="runPeriod">{`${data.startDate._text}~${data.endDate._text}`} </div>
+      <div className="area">{data.area._text}  </div>
+      <div className="place">{data.realmName._text}</div>
+      <div className="review">리뷰...</div>
     </div>
-    <div className="하단 버튼들">
+
+    <div className="buttonBox">
       <button>공연장 위치 보기</button>
       <button>공연장 홈페이지</button>
       <button>티켓 예매</button>
     </div>
-  </div>
-);
+  </div>)
+}
 
 export default ClickedDataEntry;
