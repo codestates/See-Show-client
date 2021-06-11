@@ -1,0 +1,19 @@
+.container {
+    background-color: rgb(66, 65, 65);
+}
+/* 
+this.state = {
+    apiData: {
+      id: "",
+      seq: "",
+      title: "",
+      thumbnail: "",
+      startDate: "",
+      endDate: "",
+      place: "",
+      realmName :"",
+      area: "",
+      gpsX: "",
+      gpsY: "",
+    },
+  }; */

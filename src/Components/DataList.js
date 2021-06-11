@@ -10,7 +10,7 @@ const DataList = ({ datas, handleClickedData }) => {
   return (
     <div className="">
       {datas.map(data =>
-        <DataListEntry data={data} key={data.id} handleClickedData={handleClickedData} />
+        <DataListEntry data={data} key={data.seq._text} handleClickedData={handleClickedData} />
       )}
     </div>
   )

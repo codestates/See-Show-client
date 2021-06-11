@@ -57,9 +57,8 @@ class Login extends React.Component {
       </div>
       <div className='spacing'>or continue with <a className='highlight' href="https://github.com/login/oauth/authorize?client_id=a904f09f2c93d6013422">Github</a></div>
       <div><button className='choicebtn-login' onClick={this.handleLogin}>LOGIN</button></div>
-
-      <div><Link to="/signup"><button className='choicebtn'>SIGN UP</button></Link></div>
-      <div><Link to="/forgotpw"><button className='choicebtn'>Forgot Password </button></Link></div>
+      <div><Link to='signup/'><button className='choicebtn'>SIGN UP</button></Link></div>
+      <div><Link to="/forgotpw"><button className='choicebtn'>Forgot Password</button></Link></div>
     </div>
   </div>
 </div>
@@ -71,31 +70,3 @@ class Login extends React.Component {
 
 export default withRouter(Login);
 
-
-{/* <div className='login-box'>
-<center>
-  <form onSubmit={(e) => e.preventDefault()}>
-    <div className='email'>
-      <span className='logintitle'>email</span>
-      <input className='form form-email' type="email" onChange={this.handleInputValue("email")}></input>
-    </div>
-    <div className='password'>
-      <span className='logintitle'>password</span>
-      <input className='form form-password' type="password" onChange={this.handleInputValue("password")} ></input>
-    </div>
-    <button className='btn btn-default'> SIGN UP
-      <Link to="/signup"></Link>
-    </button>
-    <button className="btn btn-default" type="submit" onClick={this.handleLogin}>LOGIN</button>
-    <button className='btn btn-default'> Forgot <br/> Password
-      <Link to="/forgotpw"></Link>
-    </button>
-
-    <div className='social'>
-      <span>social login</span>
-    </div>
-    
-    {<div className="alert-box">{this.state.errorMessage}</div>}
-  </form>
-</center>
-</div> */}

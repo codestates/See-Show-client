@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter} from "react-router-dom";
 import axios from "axios";
 import './Signup.css'
 
@@ -13,7 +13,9 @@ class Signup extends React.Component {
       password: "",
       username: "",
       errorMessage: "",
-      passwordCheck : ""
+      passwordCheck : "",
+      genre : "",
+      area : ""
     };
     this.handleInputValue = this.handleInputValue.bind(this);
   }
