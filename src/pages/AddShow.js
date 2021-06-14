@@ -52,9 +52,12 @@ class AddShow extends React.Component {
         this.setState({ errorMessage: "모든 항목은 필수입니다" });
       } else{
         axios.post("https://localhost:4000/addshow", this.state,
-        {headers : { "Content-type": "application/json",
-        Accept: "application/json",
-      },
+        {headers : { 
+          authorization: `Bearer ${this.props.accessToken}`,
+          "Content-type": "application/json",
+          Accept: "application/json",
+        },
+        withCredentials: true
     })
     .then(()=> this.props.history.push("/show"))//등록한 공연의 상세페이지로 연결해야함.
     .catch(err => console.log(err))

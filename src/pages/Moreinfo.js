@@ -8,7 +8,7 @@ class Moreinfo extends React.Component {
         super(props);
 
         this.state = {
-            location: '',
+            area: '',
             genre: '',
         }
         this.handleChangeGenre = this.handleChangeGenre.bind(this)
@@ -17,7 +17,7 @@ class Moreinfo extends React.Component {
 
     handleChangeLocation(e){
         this.setState({
-            location: e.target.value
+            area: e.target.value
         })
     }
 
@@ -29,12 +29,14 @@ class Moreinfo extends React.Component {
 
 
     handleSubmit = () => {
-        const { location, genre } = this.state;
-        axios.post("https://localhost:4000/moreinfo", this.state, {
+        const { area, genre } = this.state;
+        axios.post("https://localhost:4000/moreinfo", {area, genre}, {
             headers: {
+                authorization: `Bearer ${this.props.accessToken}`,
                 "content-type": "application/json",
                 Accept: "application/json"
             },
+            withCredentials: true
         })
         .then(() => this.props.history.push("/"))
         .catch(err=>console.log(err))
