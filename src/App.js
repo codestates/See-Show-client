@@ -34,8 +34,11 @@ class App extends React.Component {
     // 사용자 정보를 호출, login state 변경.
     const { accessToken, userType } = res.data;
     this.setState({ accessToken, userType, isLogin: true });
-    if(res.data.firstCheck) this.setState({firstCheck: res.data.firstCheck});
-    //만약  firstCheck가 1이라면 바로 실행하는 함수 만들어서 moreinfo페이지로 넘어가게 하기.
+    if(res.data.firstCheck) {
+      this.setState({firstCheck: res.data.firstCheck});
+      //만약  firstCheck가 1이라면 바로 실행하는 함수 만들어서 moreinfo페이지로 넘어가게 하기.
+    };
+    
     //moreinfo에서는 헤더에 토큰 넣어서 같이 보내고, 장르 로케이션값 바디에 실어 보내기
   }
 

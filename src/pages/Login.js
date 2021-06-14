@@ -24,10 +24,7 @@ class Login extends React.Component {
     if (!userId || !password) {
       this.setState({ errorMessage: "아이디와 비밀번호를 입력하세요" });
     } else {
-      axios
-        .post(
-          "https://localhost:4000/login",
-          { userId, password },
+      axios.post("https://localhost:4000/login",{ userId, password },
           {
             headers: {
               "Content-type": "application/json"
