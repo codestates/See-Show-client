@@ -4,8 +4,8 @@ import React from "react";
 // import DaumPostcode from "react-daum-postcode";
 import AddShowInput from "../Components/AddShowInput";
 import "./AddShow.css";
-import {Helmet} from "react-helmet";
-import KakaoMap from '../Components/AddShowMapContainer'
+// import {Helmet} from "react-helmet";
+// import KakaoMap from '../Components/AddShowMapContainer'
 import axios from "axios";
 
 class AddShow extends React.Component {
@@ -51,10 +51,13 @@ class AddShow extends React.Component {
       if( !title || !startDate || !endDate || !realmName || !place || !area || !thumbnail || !gpsX || !gpsY){
         this.setState({ errorMessage: "모든 항목은 필수입니다" });
       } else{
-        axios.post("https://localhost:4000/addshow", this.state,
-        {headers : { "Content-type": "application/json",
-        Accept: "application/json",
-      },
+        axios.post("https://localhost:4000/addshow", {title, startDate, endDate, realmName, place, area, thumbnail, gpsX, gpsY},
+        {headers : { 
+          authorization: `Bearer ${this.props.accessToken}`,
+          "Content-type": "application/json",
+          Accept: "application/json",
+        },
+        withCredentials: true
     })
     .then(()=> this.props.history.push("/show"))//등록한 공연의 상세페이지로 연결해야함.
     .catch(err => console.log(err))
@@ -73,9 +76,9 @@ class AddShow extends React.Component {
             ></AddShowInput>
         
             {/* <div id="map" > <KakaoMap></KakaoMap></div> */}
-            <Helmet>
+            {/* <Helmet>
               <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f7d0160ce4f9a416c4cc1077c1e52671" type="text/javascript" />
-            </Helmet>
+            </Helmet> */}
            
             <div className="alert-box">{this.state.errorMessage}</div>
 	

@@ -12,10 +12,8 @@ class Signup extends React.Component {
       email: "",
       password: "",
       username: "",
-      errorMessage: "",
       passwordCheck : "",
-      genre : "",
-      area : ""
+      errorMessage: ""
     };
     this.handleInputValue = this.handleInputValue.bind(this);
   }
@@ -32,12 +30,14 @@ class Signup extends React.Component {
       this.setState({ errorMessage: "비밀번호가 일치하지 않습니다" });
     }
     else{
+      const { userId, password, username, email } = this.state;
       axios
-      .post("https://localhost:4000/signup", this.state, {
+      .post("https://localhost:4000/signup", {userId, password, username, email}, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
         },
+        withCredentials: true
       })
       .then(() => this.props.history.push("/"))// to-do:  등록한 공연의 상세정보 페이지로 리다이렉트하기 
       .catch(err=>console.log(err))

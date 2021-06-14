@@ -32,11 +32,12 @@ class ForgotPw extends React.Component {
         } else {
             this.setState({isRequest: true, errorMessage: "비밀번호 재설정 메일을 발송하였습니다"});
 
-            axios.post("https://localhost:4000/forgotpw", this.state, {
+            axios.post("https://localhost:4000/forgotpw", {userId, email}, {
                 headers: {
                     "Content-type" : "application/json",
                     Accept: "application/json",
-                }
+                },
+                withCredentials: true
             })
             .then(()=> this.props.history.push("/"))
             .catch(err=>console.log(err))
