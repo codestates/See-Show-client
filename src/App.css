@@ -102,12 +102,12 @@ input, select {
     display: flexbox;
 } */
 
-.contents {
-    display: flex;
+.root-contents {
+    /* display: flex;
     justify-content: center;
     flex-direction: column;
-    align-items: center;
-    height: 90vh;
+    align-items: center; */
+    height: 80vh;
 }
 
 
@@ -125,4 +125,8 @@ video {
     transform: translateX(-50%) translateY(0);
     -webkit-transform: translateX(-50%) translateY(0);
     -ms-transform: translateX(-50%) translateY(0);
+}
+
+body {
+    overflow: hidden;
 }

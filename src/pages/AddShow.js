@@ -1,7 +1,7 @@
 import React from "react";
 // import DaumPostcode from "react-daum-postcode";
 import AddShowInput from "../Components/AddShowInput";
-import "./AddShow.css";
+import "./css/AddShow.css";
 
 class AddShow extends React.Component {
   constructor(props) {

@@ -2,7 +2,9 @@ import React from "react";
 import axios from "axios";
 import SearchBar from "../Components/SearchBar";
 import DataList from "../Components/DataList";
+import Nav from "../pages/Nav"
 import ClickedDataEntry from "../Components/ClickedDataEntry"
+// import './ShowPage.css'
 
 axios.defaults.withCredentials = true;
 
@@ -58,20 +60,21 @@ class ShowPage extends React.Component {
 
   render() {
     return (
-        <div>
-        <SearchBar></SearchBar>
-        {this.state.clickedData === null ? (
-          <div>
-            
-              <DataList
-                datas={this.state.apiData}
-                handleClickedData={this.setClickedData.bind(this)}
-              ></DataList>
-            
-          </div>
+      <div className="show-body">
+        <div className="bodyWrapper">
+          <div className="searchWrapper">
+            <SearchBar></SearchBar>
+            </div>
+        <div className="mainstream">
+            {this.state.clickedData === null ? (
+            <div className="apidata">
+              <DataList datas={this.state.apiData} handleClickedData={this.setClickedData.bind(this)}></DataList>
+           </div>
         ) : <ClickedDataEntry data={this.state.clickedData}></ClickedDataEntry>}
         {/* // 클릭한 공연 상세정보 출력 */}
         {/* 상세정보에서 뒤로가기 버튼 누르면 clickedData = null 로 변경하는 코드 구현 필요. */}
+        </div>
+        </div>
         </div>
     );
   }

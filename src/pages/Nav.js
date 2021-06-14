@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Nav.css";
+import "./css/Nav.css";
 
 function Nav(props) {
   const { userinfo, handleLogout } = props;
