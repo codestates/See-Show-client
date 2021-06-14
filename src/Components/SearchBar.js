@@ -16,6 +16,7 @@ function SearchBar(){
             <option value=""></option>
           </select>
         </td>
+
         <td>
           <label for=""></label>
           <select name="">
@@ -25,6 +26,7 @@ function SearchBar(){
             <option value=""></option>
           </select>
         </td>
+        
         <td>
           <label for=""></label>
           <select name="">
