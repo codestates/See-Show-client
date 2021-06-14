@@ -19,6 +19,9 @@ class App extends React.Component {
   state = {
     isLogin: false,
     userinfo: null,
+    accessToken: null,
+    firstCheck: null,
+    userType: null,
   };
   handleLogout() {
     axios.post("https://localhost:4000/signout").then((res) => {
@@ -26,17 +29,14 @@ class App extends React.Component {
       this.props.history.push("/show");
     });
   }
-
+  
   handleResponseSuccess(res) {
     // 사용자 정보를 호출, login state 변경.
-    console.log("handleResponseSuccess");
-    axios
-      .get("https://localhost:4000/user")
-      .then((res) => {
-        this.setState({ isLogin: true, userinfo: res.data });
-        this.props.history.push("/myPage");
-      })
-      .catch((err) => console.log(err));
+    const { accessToken, userType } = res.data;
+    this.setState({ accessToken, userType, isLogin: true });
+    if(res.data.firstCheck) this.setState({firstCheck: res.data.firstCheck});
+    //만약  firstCheck가 1이라면 바로 실행하는 함수 만들어서 moreinfo페이지로 넘어가게 하기.
+    //moreinfo에서는 헤더에 토큰 넣어서 같이 보내고, 장르 로케이션값 바디에 실어 보내기
   }
 
   render() {

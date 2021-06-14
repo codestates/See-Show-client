@@ -13,9 +13,7 @@ class Signup extends React.Component {
       password: "",
       username: "",
       errorMessage: "",
-      passwordCheck : "",
-      genre : "",
-      area : ""
+      passwordCheck : ""
     };
     this.handleInputValue = this.handleInputValue.bind(this);
   }
