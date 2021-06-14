@@ -39,7 +39,7 @@ class Signup extends React.Component {
           Accept: "application/json",
         },
       })
-      .then(() => this.props.history.push("/"))
+      .then(() => this.props.history.push("/"))// to-do:  등록한 공연의 상세정보 페이지로 리다이렉트하기 
       .catch(err=>console.log(err))
     }
   };
