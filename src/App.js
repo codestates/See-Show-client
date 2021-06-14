@@ -3,7 +3,7 @@ import { Switch, Route, Redirect, withRouter,  } from "react-router-dom";
 
 import Nav from "./pages/Nav";
 import Hello from "./pages/Hello";
-import Ad from "./pages/ad"
+import Ad from "./pages/Ad"
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Moreinfo from "./pages/Moreinfo";
