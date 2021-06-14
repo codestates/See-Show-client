@@ -33,7 +33,7 @@ class ResetPw extends React.Component {
         } else if(newpw !== pwCheck) {
             this.setState({ errorMessage: "비밀번호가 일치하지 않습니다"});
         } else {
-            axios.post("https://localhost:4000/resetpw", this.state, {
+            axios.post("https://localhost:4000/resetpw", {userId, password: newpw}, {
                 headers: {
                     "Content-type": "application/json",
                     Accept: "application/json"

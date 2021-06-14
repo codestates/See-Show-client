@@ -62,9 +62,16 @@ class ShowPage extends React.Component {
   }
 
   getReview() {
-    const { seq } = this.state.clickedData.seq
+    const { seq } = this.state.clickedData
     axios
-      .get("https://localhost:4000/review/get")
+      .get("https://localhost:4000/review/get", {seq}, {
+        headers : { 
+          authorization: `Bearer ${this.props.accessToken}`,
+          "Content-type": "application/json",
+          Accept: "application/json",
+        },
+        withCredentials: true
+      })
       .then((res) => {
         this.setState({ review: res.body });
       })
