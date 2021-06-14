@@ -1,13 +1,27 @@
+.hello-body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 80vh;
+}
+
 
 .greeting {
     border: 10px solid white;
     background-color: #ffffffa4;
     width: 50%;
     height: 500px;
-    text-align: center;
+}
+
+.contentsWrapper {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 }
 
 #greeting-logo {
