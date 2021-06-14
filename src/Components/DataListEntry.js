@@ -6,7 +6,7 @@ import '../pages/ShowPage.css'
 
 const DataListEntry = ({ data, handleClickedData}) => (
     <div className="showBox" onClick = {()=> handleClickedData(data)}>
-        <img className="showBox_img"  src={data.thumbnail._text} alt={data.title._text} />
+        <img className="showBox_img"  src={data.thumbnail} alt={data.title} />
     </div>
   )
   
