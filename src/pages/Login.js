@@ -30,13 +30,13 @@ class Login extends React.Component {
           { userId, password },
           {
             headers: {
-              "Content-type": "application/json",
-              Accept: "application/json",
+              "Content-type": "application/json"
             },
+            withCredentials: true
           }
         )
         .then((res) => {
-          this.props.handleResponseSuccess(res);
+          this.props.handleResponseSuccess(res.data);
         })
         .catch((err) => console.log(err));
     }
