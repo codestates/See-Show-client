@@ -36,24 +36,45 @@ class ShowPage extends React.Component {
         gpsY: "37.53463130540217",
       },
     ],
-    clickedData: null,
-    review: "",
+    clickedData: null, //클릭한 데이터의 정보
+    clickedShowData : "", //클릭한 공연의 상세 정보
+    review: "", //클릭한 공연의 리뷰 리스트
   };
 
-  hanldeApiData() {
+  handleApiData() {
     // 공연 정보 데이터 불러오기.
     axios
       .get("https://localhost:4000/show") //to-do 포스트 주소 변경하기
       .then((res) => {
-        this.setState({ apiData: res.data });
+        this.setState({ apiData: res.body.showList });
       })
       .catch((err) => console.log(err, "handleApiData err"));
   }
+  
+  getClickedApiData = () => {
+    //클릭한 공연의 상세 정보 데이터 불러오기.
+    const { seq } = this.state.clickedDataSeq;
+    axios
+      .get("https://localhost:4000/show/detail", seq, {
+        headers: {
+          "Content-type": "application/json",
+          Accept: "application/json",
+        },
+      })
+      .then((res) => {
+        this.setState({ clickedShowData: res.body.data });
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
 
   setClickedData(data) {
+    //공연 상세정보 뿌려주기 위해 ClickedData setState.
     this.setState({ clickedData: data });
-    console.log(this.state.clickedData);
-    this.getReview().bind(this)
+    console.log(this.state.clickedData,'clicked Data');
+    this.getClickedApiData.bind(this)
+    this.getReview.bind(this)
+
   }
 
   resetClickedData() {
@@ -61,7 +82,12 @@ class ShowPage extends React.Component {
     this.setState({ clickedData: null });
   }
 
-  getReview() {
+  getReview() {  //---------routing 다시 확인하기 !!!
+    const { seq } = this.state.clickedData.seq
+    axios
+      .get("https://localhost:4000/review")
+  }
+  getReviewF() {
     const { seq } = this.state.clickedData
     axios
       .get("https://localhost:4000/review/get", {seq}, {
@@ -73,10 +99,12 @@ class ShowPage extends React.Component {
         withCredentials: true
       })
       .then((res) => {
-        this.setState({ review: res.body });
+        this.setState({ review: res.body.data });
       })
       .catch((err) => console.log(err, "getReview err"));
   }
+
+ 
 
   render() {
     return (
@@ -94,6 +122,7 @@ class ShowPage extends React.Component {
             clickedDataSeq={this.state.clickedData.seq}
             resetClickedData={this.resetClickedData.bind(this)}
             review={this.state.review}
+            getReview={this.getReview.bind(this)}
           ></ClickedDataEntry>
         )}
       </div>
