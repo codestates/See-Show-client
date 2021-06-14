@@ -1,0 +1,22 @@
+.termsWrapper {
+    background-color: black;
+    color: white;
+    overflow: auto;
+    padding: 50px;
+}
+
+.termsheader {
+    margin-bottom: 50px;
+}
+
+
+
+.docu {
+    margin-bottom: 30px;
+}
+
+.header {
+    margin-bottom: 10px;
+}
+
+

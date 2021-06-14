@@ -2,7 +2,9 @@ import React from "react";
 import axios from "axios";
 import SearchBar from "../Components/SearchBar";
 import DataList from "../Components/DataList";
+import Nav from "../pages/Nav";
 import ClickedDataEntry from "../Components/ClickedDataEntry";
+// import './ShowPage.css'
 
 axios.defaults.withCredentials = true;
 
@@ -37,7 +39,7 @@ class ShowPage extends React.Component {
       },
     ],
     clickedData: null, //클릭한 데이터의 정보
-    clickedShowData : "", //클릭한 공연의 상세 정보
+    clickedShowData: "", //클릭한 공연의 상세 정보
     review: "", //클릭한 공연의 리뷰 리스트
   };
 
@@ -50,7 +52,7 @@ class ShowPage extends React.Component {
       })
       .catch((err) => console.log(err, "handleApiData err"));
   }
-  
+
   getClickedApiData = () => {
     //클릭한 공연의 상세 정보 데이터 불러오기.
     const { seq } = this.state.clickedDataSeq;
@@ -71,10 +73,9 @@ class ShowPage extends React.Component {
   setClickedData(data) {
     //공연 상세정보 뿌려주기 위해 ClickedData setState.
     this.setState({ clickedData: data });
-    console.log(this.state.clickedData,'clicked Data');
-    this.getClickedApiData.bind(this)
-    this.getReview.bind(this)
-
+    console.log(this.state.clickedData, "clicked Data");
+    this.getClickedApiData.bind(this);
+    this.getReview.bind(this);
   }
 
   resetClickedData() {
@@ -82,49 +83,55 @@ class ShowPage extends React.Component {
     this.setState({ clickedData: null });
   }
 
-  getReview() {  //---------routing 다시 확인하기 !!!
-    const { seq } = this.state.clickedData.seq
+ 
+  getReview() {
+    const { seq } = this.state.clickedData;
     axios
-      .get("https://localhost:4000/review")
-  }
-  getReviewF() {
-    const { seq } = this.state.clickedData
-    axios
-      .get("https://localhost:4000/review/get", {seq}, {
-        headers : { 
-          authorization: `Bearer ${this.props.accessToken}`,
-          "Content-type": "application/json",
-          Accept: "application/json",
-        },
-        withCredentials: true
-      })
+      .get(
+        "https://localhost:4000/review/get",
+        { seq },
+        {
+          headers: {
+            authorization: `Bearer ${this.props.accessToken}`,
+            "Content-type": "application/json",
+            Accept: "application/json",
+          },
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         this.setState({ review: res.body.data });
       })
       .catch((err) => console.log(err, "getReview err"));
   }
 
- 
-
   render() {
     return (
-      <div>
-        <SearchBar></SearchBar>
-        {this.state.clickedData === null ? (
-          <div>
-            <DataList
-              datas={this.state.apiData}
-              handleClickedData={this.setClickedData.bind(this)}
-            ></DataList>
+      <div className="show-body">
+        <div className="bodyWrapper">
+          <div className="searchWrapper">
+            <SearchBar></SearchBar>
           </div>
-        ) : (
-          <ClickedDataEntry
-            clickedDataSeq={this.state.clickedData.seq}
-            resetClickedData={this.resetClickedData.bind(this)}
-            review={this.state.review}
-            getReview={this.getReview.bind(this)}
-          ></ClickedDataEntry>
-        )}
+          <div className="mainstream">
+            {this.state.clickedData === null ? (
+              <div className="apidata">
+                <DataList
+                  datas={this.state.apiData}
+                  handleClickedData={this.setClickedData.bind(this)}
+                ></DataList>
+              </div>
+            ) : (
+              <ClickedDataEntry
+                clickedDataSeq={this.state.clickedData.seq}
+                resetClickedData={this.resetClickedData.bind(this)}
+                review={this.state.review}
+                getReview={this.getReview.bind(this)}
+              ></ClickedDataEntry>
+            )}
+            {/* // 클릭한 공연 상세정보 출력 */}
+            {/* 상세정보에서 뒤로가기 버튼 누르면 clickedData = null 로 변경하는 코드 구현 필요. */}
+          </div>
+        </div>
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import './ForgotPw.css'
+import './css/ForgotPw.css'
 
 axios.defaults.withCredentials = true;
 
@@ -47,23 +47,26 @@ class ForgotPw extends React.Component {
 
     render() {
         return(
-            <div className='container'>
-                <div className='window'>
-                    <div className='overlay'></div>
-                    <div className='content'>
-                        <div className='welcome'>Forgot Password</div>
-                        <div className='input-fields'>
+            <div className='forgot-body'>
+            <div className='forgot-container'>
+                <div className='forgot-window'>
+                    <div className='forgot-overlay'></div>
+                    <div className='forgot-goback'><img id="btn-goback" src="./resource/back_light_arrow_icon_131562.png"></img></div>
+                    <div className='forgot-content'>
+                        <div className='forgot-welcome'>Forgot Password</div>
+                        <div className='forgot-input-fields'>
                             <form onSubmit={(e)=> e.preventDefault()}>
-                                <input className='input-line full-width' type='userId' placeholder='ID' onChange={this.handleInputValue('userId')}></input>
-                                <input className='input-line full-width' type='email' placeholder='MAIL' onChange={this.handleInputValue('email')}></input>
-                                <div className='alert-box'>{this.state.errorMessage}</div>
+                                <input className='forgot-input-line full-width' type='userId' placeholder='ID' onChange={this.handleInputValue('userId')}></input>
+                                <input className='forgot-input-line full-width' type='email' placeholder='MAIL' onChange={this.handleInputValue('email')}></input>
+                                <div className='forgot-alert-box'>{this.state.errorMessage}</div>
                             </form>
                         </div>
-                        <div className='spacing-A'>계정 정보를 입력하시면, 일치하는 가입 정보에 등록된 주소로 비밀번호 재설정 메일을 보내드립니다.</div>
-                        <div className='spacing-B'>Once you enter your account, we will send you a password reset email with matching information.</div>
-                        <div><button className='choicebtn-login' type='submit' onClick={this.handleRequest}>SUBMIT</button></div>
+                        <div className='forgot-spacing-A'>계정 정보를 입력하시면, 일치하는 가입 정보에 등록된 주소로 비밀번호 재설정 메일을 보내드립니다.</div>
+                        <div className='forgot-spacing-B'>Once you enter your account, we will send you a password reset email with matching information.</div>
+                        <div><button className='forgot-choicebtn-login' type='submit' onClick={this.handleRequest}>SUBMIT</button></div>
                     </div>
                 </div>
+            </div>
             </div>
         )
     }

@@ -11,6 +11,7 @@ import Mypage from "./pages/Mypage";
 import ForgotPw from "./pages/ForgotPw";
 import ShowPage from "./pages/ShowPage";
 import ResetPw from "./pages/ResetPw";
+import Terms from "./pages/Terms";
 import axios from "axios";
 import "./App.css";
 import AddShow from "./pages/AddShow";
@@ -64,15 +65,15 @@ class App extends React.Component {
 
     return (
       <div className="root">
-        <Nav userinfo={this.state.userinfo} />
-        <video
-          id="backgroundVideo"
-          muted
-          autoplay=""
-          loop="loop"
-          src="./resource/backgroundvideo.mp4"
-        />
-        <div className="contents">
+        <Nav userinfo={userinfo} />
+      
+        {
+          !isLogin ? 
+        <video id="backgroundVideo" muted autoplay="" loop="loop" src="./resource/backgroundvideo.mp4" />
+        : <div></div>
+        }
+      
+        <div className="root-contents">
         <Switch>
           <Route path="/Hello" render={() => ( <Hello userinfo={this.state.userinfo} /> )}  />
           <Route path="/ad" render={() => <Ad />} />
@@ -84,6 +85,7 @@ class App extends React.Component {
           <Route exact path="/moreinfo" render={() => <Moreinfo />} />
           <Route exact path="/mypage" render={() => <Mypage userinfo ={userinfo} handleLogout = {this.handleLogout.bind(this)}  />} />
           <Route exact path="/resetpw" render={() => <ResetPw /> } />
+          <Route exact path="/terms" render={() => <Terms /> } />
           <Route path="/" render={() => {
               if (isLogin) {
                 return <Redirect to="/mypage" />;
