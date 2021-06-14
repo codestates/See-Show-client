@@ -41,6 +41,23 @@ class App extends React.Component {
     
     //moreinfo에서는 헤더에 토큰 넣어서 같이 보내고, 장르 로케이션값 바디에 실어 보내기
   }
+  async getToken(authorizationCode){
+    let resp = await axios.post('http://localhost:8080/oauth', { authorizationCode: authorizationCode });
+    this.setState({
+      isLogin: true,
+      accessToken: resp.data.data.accessToken,
+      firstCheck: 1,
+      userType: 'github',
+    })
+  }
+  componentDidMount() {
+    const url = new URL(window.location.href)// https://localhost:3000/show?code=wqkfb1j3bfvo1evo
+    const authorizationCode = url.searchParams.get('code')
+    if (authorizationCode) {
+      this.getToken(authorizationCode);
+    }
+  }
+
 
   render() {
     const { isLogin, userinfo } = this.state;
@@ -65,7 +82,7 @@ class App extends React.Component {
           <Route exact path="/forgotpw" render={() => <ForgotPw />} />
           <Route exact path="/signup" render={() => <Signup />} />
           <Route exact path="/moreinfo" render={() => <Moreinfo />} />
-          <Route exact path="/mypage" render={() => <Mypage userinfo ={this.state.userinfo} handleLogout = {this.handleLogout.bind(this)}  />} />
+          <Route exact path="/mypage" render={() => <Mypage userinfo ={userinfo} handleLogout = {this.handleLogout.bind(this)}  />} />
           <Route exact path="/resetpw" render={() => <ResetPw /> } />
           <Route path="/" render={() => {
               if (isLogin) {

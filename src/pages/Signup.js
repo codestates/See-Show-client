@@ -30,8 +30,9 @@ class Signup extends React.Component {
       this.setState({ errorMessage: "비밀번호가 일치하지 않습니다" });
     }
     else{
+      const { userId, password, username, email } = this.state;
       axios
-      .post("https://localhost:4000/signup", {userId: , password: , username: , email: }, {
+      .post("https://localhost:4000/signup", {userId, password, username, email}, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
