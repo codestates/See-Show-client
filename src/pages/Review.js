@@ -1,10 +1,14 @@
 import React from "react";
 
 
-class Review extends React.Component {
-    state ={
+function Review({review}){
+    return(
+        <div>
+        <div>{review.username}</div>
+        <div>{review.constent}</div>
+        </div>
 
-    }
+    )
 }
 
 export default Review

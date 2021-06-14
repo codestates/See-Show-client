@@ -10,26 +10,53 @@ class ClickedDataEntry extends React.Component {
     this.state = {
       data: "",
       clickedDataSeq: this.props.clickedDataSeq,
-    };
+      reivewContent : "",
+      reviewId : ""
+
+    }
+    this.reviewContent = this.reviewContent.bind(this);
+    this.createReview = this.createReview.bind(this);
+    this.hanldeClickedApiData = this.hanldeClickedApiData.bind(this);
+
   }
 
   hanldeClickedApiData = () => {
     //클릭한 공연의 상세 정보 데이터 불러오기.
     const { seq } = this.state.clickedDataSeq;
     axios
-      .post("https://localhost:4000/show", seq, {
-        //to-do 포스트 주소 변경하기
+      .get("https://localhost:4000/show/detail", seq, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
         },
       })
       .then((res) => {
-        this.setState({ data: res.body });
+        this.setState({ data: res.body.data });
         console.log(res);
       })
       .catch((err) => console.log(err));
   };
+
+  reviewContent=(e)=>{
+    //작성한 리뷰 reviewContent에 setState
+    this.setState({reviewContent : e.target.value})
+  }
+
+
+  createReview=() =>{   // --------Routing 정보 확인
+    const { seq } = this.state.clickedDataSeq;
+    const { content } = this.state.reivewContent;
+    axios.post("http://localhost:4000/review/create", {seq, content}, {
+      headers: {
+        "Content-type": "application/json",
+        Accept: "application/json",
+      }
+  })
+  .then(res=>{
+   this.props.getReview()
+  })
+  .catch((err) => console.log(err));
+}
 
   render() {
     const { data } = this.state.data;
@@ -50,9 +77,13 @@ class ClickedDataEntry extends React.Component {
           <div className="area">{data.area} </div>
           <div className="place">{data.realmName}</div>
           <div className="review">
-            {this.props.review.map(review => {
+            {this.props.review.map(review => { //리뷰 리스트
              return <Review review={review}></Review>
             })}
+          </div>
+          <div className='writeReview' >
+            <input type="text" onChange={this.reviewContent}></input>
+            <button onClick={this.createReview}>리뷰등록</button>
           </div>
         </div>
 
