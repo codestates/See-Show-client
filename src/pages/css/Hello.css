@@ -3,12 +3,12 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
-    height: 80vh;
 }
 
 
 .greeting {
+    margin-top: 10rem;
+    margin-bottom: 10rem;
     border: 10px solid white;
     background-color: #ffffffa4;
     width: 50%;
@@ -46,3 +46,71 @@
     text-shadow: 2px 2px 2px gray;
     font-family: 'Raleway', sans-serif;
 }
+
+.ad {
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.505);
+    color: white;
+}
+
+.adWrapper {
+    display: flex;
+    border-bottom: 5px solid gray;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.ad-left-text {
+    width: 49%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.ad-right-image {
+    width: 49%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.ad-left-image {
+    width: 49%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.ad-right-text {
+    width: 49%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.ad-text-title {
+    font-family: 'Do Hyeon';
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.ad-text-subtitle {
+    font-family: 'Jua';
+    font-size: 1.5rem;
+}
+
+#laptop-gif, #genre-icon, #location-icon, #ad-icon {
+    width: 400px;
+}
+
+/* Do+Hyeon
+Jua
+Noto+Sans+KR
+Noto+Serif+KR
+Raleway
+Roboto
+Song+Myung */
