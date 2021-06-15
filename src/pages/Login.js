@@ -37,7 +37,9 @@ class Login extends React.Component {
           }
         )
         .then((res) => {
-          this.props.handleResponseSuccess(res.data);
+          this.props.handleResponseSuccess(res);
+          // this.props.history.push("/moreinfo") 
+          //handleResponse에서 리다이렉트
         })
         .catch((err) => console.log(err));
     }

@@ -1,7 +1,7 @@
 import React from "react";
 import "../pages/ShowPage.css";
 import axios from "axios";
-import Review from "../Components/Review"
+import Review from "../Components/Review";
 
 //ShowPage에서 공연 썸네일을 클릭했을 때 나오는 '해당 공연 상세 정보' 페이지 입니다.
 class ClickedDataEntry extends React.Component {
@@ -10,14 +10,13 @@ class ClickedDataEntry extends React.Component {
     this.state = {
       data: "",
       clickedDataSeq: this.props.clickedDataSeq,
-      reivewContent : "",
-      reviewId : ""
-
-    }
+      content: "",
+      point:"",
+      reviewId: "",
+    };
     this.reviewContent = this.reviewContent.bind(this);
     this.createReview = this.createReview.bind(this);
     this.hanldeClickedApiData = this.hanldeClickedApiData.bind(this);
-
   }
 
   hanldeClickedApiData = () => {
@@ -37,26 +36,30 @@ class ClickedDataEntry extends React.Component {
       .catch((err) => console.log(err));
   };
 
-  reviewContent=(e)=>{
-    //작성한 리뷰 reviewContent에 setState
-    this.setState({reviewContent : e.target.value})
-  }
+  reviewContent = (key) => (e) => {
+    this.setState({ [key]: e.target.value });
+  };
 
-
-  createReview=() =>{   // --------Routing 정보 확인
+  createReview = () => {
+    // --------Routing 정보 확인
     const { seq } = this.state.clickedDataSeq;
-    const { content } = this.state.reivewContent;
-    axios.post("http://localhost:4000/review/create", {seq, content}, {
-      headers: {
-        "Content-type": "application/json",
-        Accept: "application/json",
-      }
-  })
-  .then(res=>{
-   this.props.getReview()
-  })
-  .catch((err) => console.log(err));
-}
+    const { content, point } = this.state;
+    axios
+      .post(
+        "http://localhost:4000/review/create",
+        { seq, content, point },
+        {
+          headers: {
+            "Content-type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        this.props.getReview();
+      })
+      .catch((err) => console.log(err));
+  };
 
   render() {
     const { data } = this.state.data;
@@ -76,15 +79,26 @@ class ClickedDataEntry extends React.Component {
           </div>
           <div className="area">{data.area} </div>
           <div className="place">{data.realmName}</div>
-          <div className="review">
-            {this.props.review.map(review => { //리뷰 리스트
-             return <Review review={review}></Review>
+          <div className="review" //----리뷰-----
+          >
+            {this.props.review.map((review) => {
+              
+              return <Review review={review}></Review>;
             })}
           </div>
-          <div className='writeReview' >
-            <input type="text" onChange={this.reviewContent}></input>
+          <form onSubmit={(e) => e.preventDefault()}>
+          <div className="writeReview">
+            <input type="text" onChange={this.reviewContent("reivewContent")}></input>
+            <select onChange={this.reviewContent("reviewPoint")}>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
             <button onClick={this.createReview}>리뷰등록</button>
           </div>
+          </form>
         </div>
 
         <div className="buttonBox">

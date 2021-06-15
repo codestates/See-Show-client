@@ -1,6 +1,5 @@
 import React from "react";
 import { Switch, Route, Redirect, withRouter,  } from "react-router-dom";
-
 import Nav from "./pages/Nav";
 import Hello from "./pages/Hello";
 import Ad from "./pages/Ad"
@@ -24,6 +23,15 @@ class App extends React.Component {
     firstCheck: null,
     userType: null,
   };
+
+  hanldeUserinfo (){
+    axios.get("https://localhost:4000/mypage").then((res) => {
+      this.setState({userinfo : res.data.userinfo })
+      this.props.history.push("/mypage");
+    });
+  }
+
+
   handleLogout() {
     axios.post("https://localhost:4000/signout").then((res) => {
       this.setState({ isLogin: false, userinfo: null });
@@ -31,13 +39,18 @@ class App extends React.Component {
     });
   }
   
+ 
   handleResponseSuccess(res) {
     // 사용자 정보를 호출, login state 변경.
     const { accessToken, userType } = res.data;
     this.setState({ accessToken, userType, isLogin: true });
     if(res.data.firstCheck) {
       this.setState({firstCheck: res.data.firstCheck});
-      //만약  firstCheck가 1이라면 바로 실행하는 함수 만들어서 moreinfo페이지로 넘어가게 하기.
+      //만약  firstCheck가 1이라면 바로 실행하는 함수 만들어서 
+      //moreinfo페이지로 넘어가게 하기.
+      if(this.state.firstCheck === 1){
+        return <Redirect to="/moreinfo" />
+      }
     };
     
     //moreinfo에서는 헤더에 토큰 넣어서 같이 보내고, 장르 로케이션값 바디에 실어 보내기
@@ -65,7 +78,7 @@ class App extends React.Component {
 
     return (
       <div className="root">
-        <Nav userinfo={userinfo} />
+        <Nav userinfo={userinfo} hanldeUserinfo={this.hanldeUserinfo.bind(this)}/>
       
         {
           !isLogin ? 

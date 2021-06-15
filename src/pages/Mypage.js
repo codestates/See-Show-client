@@ -15,6 +15,7 @@ function Mypage(props) {
   //     </Route>
   //   );
   // } else {
+    //server-userinfo에 뭐가오는건가...
   return (
     <div>
       <center>
