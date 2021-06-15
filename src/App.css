@@ -102,31 +102,32 @@ input, select {
     display: flexbox;
 } */
 
-.root-contents {
-    /* display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center; */
-    height: 80vh;
-}
 
-
-video {
-    object-fit: contain;
+/* video {
     z-index: -1;
     position: absolute;
     width: auto;
     height: auto;
-    top: 0;
-    left: 50%;
-    min-width: auto;
-    min-height: auto;
+    top: 0px;
+    left: 0px;
+    min-width: 100vw;
+    min-height: 100vh;
     overflow: hidden;
-    transform: translateX(-50%) translateY(0);
-    -webkit-transform: translateX(-50%) translateY(0);
-    -ms-transform: translateX(-50%) translateY(0);
-}
+} */
 
 body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+#backgroundVideo {
+    z-index: -1;
+    position: fixed;
+    width: auto;
+    height: auto;
+    top: 0px;
+    left: 0px;
+    min-width: 100vw;
+    min-height: 80vh;
     overflow: hidden;
 }
