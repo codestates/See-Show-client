@@ -1,5 +1,5 @@
 import React from "react";
-import "../pages/ShowPage.css";
+import "./ClickedDataEntry.css";
 import axios from "axios";
 import Review from "../Components/Review";
 
@@ -77,21 +77,42 @@ class ClickedDataEntry extends React.Component {
     const { data } = this.state.data;
     console.log(data)
     return (
+      <div className="cd-body">
       <div className="clicked_showBox">
+      <div>
+          <button>뒤로 가기</button>
+        </div>
         {/* 왼쪽 공연 썸네일 */}
-        <div className="left_thumbnail ">
-          <img className="thumbnail" src="http://www.culture.go.kr/upload/rdf/21/06/rdf_2021061113192585187.jpeg" alt="" />
+        <div className="cd-show-left_thumbnail ">
+          <img className="cd-show-thumbnail" src="http://www.culture.go.kr/upload/rdf/21/06/rdf_2021061113192585187.jpeg" alt="" />
         </div>
 
         {/* 오른쪽 공연 상세 정보 */}
-        <div className="right_description">
-          <div className="title">data.title</div>
-          <div className="category">data.realmName</div>
-          <div className="runPeriod">
-            `$"data.startDate"~$"data.endDate"`
+        <div className="cd-show-right_description">
+          <div className="cd-show-title">이현정 바이올린 독주회</div>
+
+          <div className="cd-show-parts">
+             <div className="cd-show-label">카테고리</div>
+             <div className="cd-show-category">음악 - 클래식</div>
           </div>
-          <div className="area">data.area</div>
-          <div className="place">data.realmName</div>
+          
+          <div className="cd-show-parts">
+             <div className="cd-show-label">공연기간</div>
+             <div className="cd-show-runPeriod">
+                2021. 07. 03 (토) ~ 2021. 07. 03 (토)
+             </div>
+          </div>
+
+          <div className="cd-show-parts">
+              <div className="cd-show-label">공연장소</div>
+              <div className="cd-show-area">영산양재홀</div>
+          </div>
+
+          <div className="cd-show-parts">
+              <div className="cd-show-label">공연시설</div>
+              <div className="cd-show-place">대공연장</div>
+          </div>
+
           {/* <div className="review" //----리뷰-----
           >
             {this.props.review.map((review) => {
@@ -99,8 +120,8 @@ class ClickedDataEntry extends React.Component {
             })}
           </div> */}
           <form onSubmit={(e) => e.preventDefault()}>
-          <div className="writeReview">
-            <input type="text" onChange={this.reviewContent("reivewContent")}></input>
+          <div className="cd-show-writeReview">
+            <input className="cd-show-review" type="text" onChange={this.reviewContent("reivewContent")}></input>
             <select onChange={this.reviewContent("reviewPoint")}>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -116,9 +137,8 @@ class ClickedDataEntry extends React.Component {
         <div className="지도">
           
         </div>
-        <div>
-          <button >뒤로 가기</button>
-        </div>
+
+      </div>
       </div>
     );
   }

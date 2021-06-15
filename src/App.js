@@ -11,6 +11,7 @@ import ForgotPw from "./pages/ForgotPw";
 import ShowPage from "./pages/ShowPage";
 import ResetPw from "./pages/ResetPw";
 import Terms from "./pages/Terms";
+import Terms_local from "./pages/Terms-local"
 import axios from "axios";
 import "./App.css";
 import AddShow from "./pages/AddShow";
@@ -103,7 +104,8 @@ class App extends React.Component {
           <Route exact path="/moreinfo" render={() => <Moreinfo />} />
           <Route exact path="/mypage" render={() => <Mypage userinfo ={userinfo} handleLogout = {this.handleLogout.bind(this)}  />} />
           <Route exact path="/resetpw" render={() => <ResetPw /> } />
-          <Route exact path="/terms" render={() => <Terms /> } />
+          <Route exact path="/terms-default" render={() => <Terms /> } />
+          <Route exact path="/terms-local" render={() => <Terms_local />} />
           <Route path="/" render={() => {
               if (isLogin) {
                 return <Redirect to="/mypage" />;

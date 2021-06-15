@@ -1,5 +1,5 @@
 import React from "react";
-import "../pages/ShowPage.css";
+import "./ClickedDataEntry.css";
 import axios from "axios";
 import Review from "../Components/Review";
 
@@ -64,22 +64,26 @@ class ClickedDataEntry extends React.Component {
   render() {
     const { data } = this.state.data;
     return (
+      <div className="cd-body">
       <div className="clicked_showBox">
+        <div>
+          <button onClick={this.props.resetClickedData()}>뒤로 가기</button>
+        </div>
         {/* 왼쪽 공연 썸네일 */}
-        <div className="left_thumbnail ">
-          <img className="thumbnail" src={data.thumbnail} alt={data.title} />
+        <div className="cd-show-left_thumbnail ">
+          <img className="cd-show-thumbnail" src={data.thumbnail} alt={data.title} />
         </div>
 
         {/* 오른쪽 공연 상세 정보 */}
-        <div className="right_description">
-          <div className="title">{data.title}</div>
-          <div className="category">{data.realmName} </div>
-          <div className="runPeriod">
+        <div className="cd-show-right_description">
+          <div className="cd-show-title">{data.title}</div>
+          <div className="cd-show-category">{data.realmName} </div>
+          <div className="cd-show-runPeriod">
             {`${data.startDate}~${data.endDate}`}{" "}
           </div>
-          <div className="area">{data.area} </div>
-          <div className="place">{data.realmName}</div>
-          <div className="review" //----리뷰-----
+          <div className="cd-show-area">{data.area} </div>
+          <div className="cd-show-place">{data.realmName}</div>
+          <div className="cd-show-review" //----리뷰-----
           >
             {this.props.review.map((review) => {
               
@@ -87,8 +91,8 @@ class ClickedDataEntry extends React.Component {
             })}
           </div>
           <form onSubmit={(e) => e.preventDefault()}>
-          <div className="writeReview">
-            <input type="text" onChange={this.reviewContent("reivewContent")}></input>
+          <div className="cd-show-writeReview">
+            <input className="cd-show-review" type="text" onChange={this.reviewContent("reivewContent")}></input>
             <select onChange={this.reviewContent("reviewPoint")}>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -101,14 +105,13 @@ class ClickedDataEntry extends React.Component {
           </form>
         </div>
 
-        <div className="buttonBox">
-          <button>공연장 위치 보기</button>
-          <button>공연장 홈페이지</button>
-          <button>티켓 예매</button>
+        <div className="cd-show-buttonBox">
+          <button className="cd-show-location">공연장 위치 보기</button>
+          <button className="cd-show-website">공연장 홈페이지</button>
+          <button className="cd-show-ticketsite">티켓 예매</button>
         </div>
-        <div>
-          <button onClick={this.props.resetClickedData()}>뒤로 가기</button>
-        </div>
+
+      </div>
       </div>
     );
   }
