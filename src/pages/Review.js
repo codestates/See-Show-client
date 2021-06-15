@@ -10,7 +10,7 @@ function Review({review}){
         <div>{review.constent}</div>
         <div>{review.point}</div>
         <button>review 수정</button>
-        <button onClick={}>review 삭제</button>
+        <button >review 삭제</button>
         </div>
 
     )
