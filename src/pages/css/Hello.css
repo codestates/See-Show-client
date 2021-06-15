@@ -107,10 +107,50 @@
     width: 400px;
 }
 
-/* Do+Hyeon
-Jua
-Noto+Sans+KR
-Noto+Serif+KR
-Raleway
-Roboto
-Song+Myung */
+.footer {
+    padding-top: 20px;
+    background-color: #000000c4;
+}
+
+.uppart {
+    display: flex;
+}
+
+.logoarea {
+    margin-left: 30px;
+    margin-right: 20px;
+    height: 100px;
+}
+
+.logoimg {
+    width: 300px;
+}
+
+.infoarea {
+    width: 70%;
+    height: 100px;
+}
+
+.infoPart {
+    justify-content: center;
+    align-items: center;
+}
+
+.infobody {
+    color: gray;
+    margin-top: 5px;
+}
+
+.infobuttons {
+    display: flex;
+    color: white;
+    margin-top: 5px;
+}
+
+.terms-spacer {
+    margin-right: 10px;
+}
+
+.terms-default, .terms-location {
+    color: white;
+}
