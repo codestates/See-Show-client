@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import './css/Moreinfo.css'
+axios.defaults.withCredentials = true;
 
 class Moreinfo extends React.Component {
     constructor(props) {
@@ -35,10 +36,9 @@ class Moreinfo extends React.Component {
                 authorization: `Bearer ${this.props.accessToken}`,
                 "content-type": "application/json",
                 Accept: "application/json"
-            },
-            withCredentials: true
+            }
         })
-        .then(() => this.props.history.push("/"))
+        .then(() => this.props.history.push("/show"))
         .catch(err=>console.log(err))
 
     }

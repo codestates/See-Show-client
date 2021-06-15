@@ -1,12 +1,9 @@
 /*global kakao*/
-
 import React from "react";
-// import DaumPostcode from "react-daum-postcode";
 import AddShowInput from "../Components/AddShowInput";
-// import {Helmet} from "react-helmet";
-// import KakaoMap from '../Components/AddShowMapContainer'
 import axios from "axios";
 import "./css/AddShow.css";
+import MapContainer from "../Components/MapContainer"
 
 class AddShow extends React.Component {
   constructor(props) {
@@ -74,11 +71,9 @@ class AddShow extends React.Component {
               handleInputValue={this.handleInputValue}
               startdateFormChange={this.startdateFormChange}
             ></AddShowInput>
-        
-            {/* <div id="map" > <KakaoMap></KakaoMap></div> */}
-            {/* <Helmet>
-              <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f7d0160ce4f9a416c4cc1077c1e52671" type="text/javascript" />
-            </Helmet> */}
+            <MapContainer></MapContainer>
+      
+           
            
             <div className="alert-box">{this.state.errorMessage}</div>
 	

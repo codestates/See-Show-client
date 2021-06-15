@@ -39,7 +39,7 @@ class Signup extends React.Component {
         },
         withCredentials: true
       })
-      .then(() => this.props.history.push("/"))// to-do:  등록한 공연의 상세정보 페이지로 리다이렉트하기 
+      .then(() => this.props.history.push("/login"))
       .catch(err=>console.log(err))
     }
   };

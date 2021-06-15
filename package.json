@@ -13,6 +13,7 @@
     "react-dom": "^17.0.2",
     "react-google-login": "^5.2.2",
     "react-helmet": "^6.1.0",
+    "react-kakao-maps": "^0.0.13",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-select": "^4.3.1",

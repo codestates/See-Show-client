@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./css/Nav.css";
 
 function Nav(props) {
-  const { userinfo, handleLogout } = props;
+  const { userinfo, handleLogout, handleUserinfo } = props;
   if (!userinfo) {
     return (
       <div className="headerWrapper">
@@ -28,8 +28,13 @@ function Nav(props) {
           src="src/resource/seeshow_logo_full_prototype.png"
           alt="See SHOW"
         ></img>
+<<<<<<< HEAD
+        
+        <button className="btn-default" onClick={handleUserinfo}>MY PAGE</button>
+=======
         <Link to="/show"><button className="btn-default">SHOW</button></Link>
         <Link to="/mypage"><button className="btn-default">MY PAGE</button></Link>
+>>>>>>> 29002894b684b2cecc925dfe1f43cdded310678c
         <button className="btn-default" onClick={handleLogout}>
           LOGOUT
         </button>
