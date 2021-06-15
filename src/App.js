@@ -14,6 +14,7 @@ import Terms from "./pages/Terms";
 import axios from "axios";
 import "./App.css";
 import AddShow from "./pages/AddShow";
+import ClickedDataEntry from "./Components/ClickedDataEntry copy";
 
 class App extends React.Component {
   state = {
@@ -90,6 +91,8 @@ class App extends React.Component {
       
         <div className="root-contents">
         <Switch>
+        <Route path="/showdetail" render={() => ( <ClickedDataEntry></ClickedDataEntry> )}  />
+
           <Route path="/Hello" render={() => ( <Hello userinfo={this.state.userinfo} /> )}  />
           {/* <Route path="/ad" render={() => <Ad />} /> */}
           <Route path="/login" render={() => ( <Login handleResponseSuccess={this.handleResponseSuccess.bind(this)} /> )}  />

@@ -8,11 +8,23 @@ class ClickedDataEntry extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: "",
+      data: {
+        seq: "166695",
+        title: "나의 친구, 그림책",
+        startDate: "20210102",
+        endDate: "20211231",
+        place: "ACC 어린이문화원",
+        realmName: "미술",
+        area: "광주",
+        thumbnail:
+          "http://www.culture.go.kr/upload/rdf/21/06/rdf_2021061113192585187.jpeg",
+        gpsX: "126.919994481568",
+        gpsY: "35.1469155857794",
+      },
       clickedDataSeq: this.props.clickedDataSeq,
-      content: "",
-      point:"",
-      reviewId: "",
+      content: "짱재밌음",
+      point:"5",
+      reviewId: "김코딩",
     };
     this.reviewContent = this.reviewContent.bind(this);
     this.createReview = this.createReview.bind(this);
@@ -21,19 +33,19 @@ class ClickedDataEntry extends React.Component {
 
   hanldeClickedApiData = () => {
     //클릭한 공연의 상세 정보 데이터 불러오기.
-    const { seq } = this.state.clickedDataSeq;
-    axios
-      .get("https://localhost:4000/show/detail", seq, {
-        headers: {
-          "Content-type": "application/json",
-          Accept: "application/json",
-        },
-      })
-      .then((res) => {
-        this.setState({ data: res.body.data });
-        console.log(res);
-      })
-      .catch((err) => console.log(err));
+    // const { seq } = this.state.clickedDataSeq;
+    // axios
+    //   .get("https://localhost:4000/show/detail", seq, {
+    //     headers: {
+    //       "Content-type": "application/json",
+    //       Accept: "application/json",
+    //     },
+    //   })
+    //   .then((res) => {
+    //     this.setState({ data: res.body.data });
+    //     console.log(res);
+    //   })
+      // .catch((err) => console.log(err));
   };
 
   reviewContent = (key) => (e) => {
@@ -63,29 +75,29 @@ class ClickedDataEntry extends React.Component {
 
   render() {
     const { data } = this.state.data;
+    console.log(data)
     return (
       <div className="clicked_showBox">
         {/* 왼쪽 공연 썸네일 */}
         <div className="left_thumbnail ">
-          <img className="thumbnail" src={data.thumbnail} alt={data.title} />
+          <img className="thumbnail" src="http://www.culture.go.kr/upload/rdf/21/06/rdf_2021061113192585187.jpeg" alt="" />
         </div>
 
         {/* 오른쪽 공연 상세 정보 */}
         <div className="right_description">
-          <div className="title">{data.title}</div>
-          <div className="category">{data.realmName} </div>
+          <div className="title">data.title</div>
+          <div className="category">data.realmName</div>
           <div className="runPeriod">
-            {`${data.startDate}~${data.endDate}`}{" "}
+            `$"data.startDate"~$"data.endDate"`
           </div>
-          <div className="area">{data.area} </div>
-          <div className="place">{data.realmName}</div>
-          <div className="review" //----리뷰-----
+          <div className="area">data.area</div>
+          <div className="place">data.realmName</div>
+          {/* <div className="review" //----리뷰-----
           >
             {this.props.review.map((review) => {
-              
               return <Review review={review}></Review>;
             })}
-          </div>
+          </div> */}
           <form onSubmit={(e) => e.preventDefault()}>
           <div className="writeReview">
             <input type="text" onChange={this.reviewContent("reivewContent")}></input>
@@ -101,13 +113,11 @@ class ClickedDataEntry extends React.Component {
           </form>
         </div>
 
-        <div className="buttonBox">
-          <button>공연장 위치 보기</button>
-          <button>공연장 홈페이지</button>
-          <button>티켓 예매</button>
+        <div className="지도">
+          
         </div>
         <div>
-          <button onClick={this.props.resetClickedData()}>뒤로 가기</button>
+          <button >뒤로 가기</button>
         </div>
       </div>
     );
