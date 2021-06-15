@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route, Redirect, withRouter,  } from "react-router-dom";
 import Nav from "./pages/Nav";
 import Hello from "./pages/Hello";
-import Ad from "./pages/Ad"
+// import Ad from "./pages/Ad-cancel"
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Moreinfo from "./pages/Moreinfo";
@@ -81,15 +81,17 @@ class App extends React.Component {
         <Nav userinfo={userinfo} hanldeUserinfo={this.hanldeUserinfo.bind(this)}/>
       
         {
-          !isLogin ? 
-        <video id="backgroundVideo" muted autoplay="" loop="loop" src="./resource/backgroundvideo.mp4" />
+          !isLogin ?
+          <div className="videoWrapper"> 
+            <video id="backgroundVideo" muted autoplay="" loop="loop" src="./resource/backgroundvideo.mp4" />
+          </div>
         : <div></div>
         }
       
         <div className="root-contents">
         <Switch>
           <Route path="/Hello" render={() => ( <Hello userinfo={this.state.userinfo} /> )}  />
-          <Route path="/ad" render={() => <Ad />} />
+          {/* <Route path="/ad" render={() => <Ad />} /> */}
           <Route path="/login" render={() => ( <Login handleResponseSuccess={this.handleResponseSuccess.bind(this)} /> )}  />
           <Route exact path="/show" render={() => <ShowPage />} />
           <Route exact path="/addShow" render={() => <AddShow />} />

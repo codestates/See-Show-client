@@ -25,6 +25,17 @@ class ShowPage extends React.Component {
         gpsY: "35.1469155857794",
       },
       {
+        seq: '167966',
+        title: '이현정 바이올린 독주회',
+        startDate: '20210703' ,
+        endDate: '20210703',
+        place: '영산양재홀',
+        realmName: '음악',
+        area:'서울', thumbnail:'http://www.culture.go.kr/upload/rdf/21/06/rdf_2021061113192585187.jpeg',
+        gpsX: '127.03840937755554',
+        gpsY: '37.48048582944657'
+      },
+      {
         seq: "167843",
         title: "PMF 영아티스트 콘서트_이지언 첼로 리사이틀",
         startDate: "20210710",
