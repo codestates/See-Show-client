@@ -16,13 +16,13 @@
     grid-template-rows: auto;
 }
 
-.searchWrapper {
+/* .searchWrapper {
     border: 2px solid white;
     justify-content: center;
     align-items: center;
     text-align: center;
     width: 50%;
-}
+} */
 
 .mainstream {
     width: 100vw;
