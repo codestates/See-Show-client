@@ -49,6 +49,27 @@ function Hello(props) {
             </div>
             </div>
 
+            <div className='footer'>
+                <div className="uppart">
+                    <div className="logoarea">
+                        <img className="logoimg" src="/resource/seeshow_logo_full_gray.png"></img>
+                    </div>
+
+                    <div className="infoarea">
+                        <div className="infoPart">
+                            <div className="infolabel">Copyright © Team DDH. All rights reserved.</div>
+                            <div className="infobody">공연 전시 정보 안내 서비스 'See SHOW'는 공공데이터포털 및 자체 데이터베이스에 등록된 정보를 안내합니다.</div>
+                            <div className="infobody">'See SHOW'로 등록된 정보는 외부로 제공되지 않으며, 어떠한 형태로도 재편집되거나 재배포될 수 없습니다.</div>
+                            <div className='infobuttons'>
+                                <a className='terms-default' href="/terms-default">이용약관</a>
+                                <div className='terms-spacer'></div>
+                                <a className='terms-location' href="/terms-local">위치기반서비스이용약관</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
 
 

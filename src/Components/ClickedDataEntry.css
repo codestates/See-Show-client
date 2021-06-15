@@ -1,0 +1,59 @@
+.cd-body {
+    background-color: gray;
+    width: 100vw;
+    height: 90vh;
+}
+
+.clicked_showBox {
+    border: 2px solid red;
+    display: flex;
+    height: 85vh;
+}
+
+/* 왼쪽 제어 (썸네일, 리뷰 등) */
+
+.cd-show-left_thumbnail {
+    border: 2px solid blue;
+    border-right: none;
+    width: 35%;
+    height: 70vh;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.cd-show-thumbnail {
+    width: 400px;
+}
+
+
+/* 오른쪽 제어 (공연 정보, 지도 등) */
+
+.cd-show-right_description {
+    border: 2px solid yellowgreen;
+    width: 65%;
+    height: 70vh;
+    margin-top: 50px;
+    border-left: 1px solid black;
+    padding-left: 30px;
+}
+
+.cd-show-title {
+    color: white;
+    font-family: 'Do Hyeon';
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.cd-show-parts {
+    display: flex;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.cd-show-label {
+    font-family: "Do Hyeon";
+    margin-right: 10px;
+    font-size: 1.7rem;
+}
