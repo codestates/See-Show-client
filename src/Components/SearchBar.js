@@ -1,7 +1,7 @@
 import React from "react";
 import "./SearchBar.css"
 
-function SearchBar(){
+function SearchBar({areaFiltered}){
     return(
       <div className="searchbar-body">
 
@@ -12,7 +12,7 @@ function SearchBar(){
 
 
           <label for=""></label>
-          <select className="select-search-location">
+          <select className="select-search-location" onChange={areaFiltered}>
              <option value='' disabled selected >지역별 검색</option>
              <option value='서울'>서울특별시</option>
              <option value='경기'>경기도</option>
@@ -30,8 +30,6 @@ function SearchBar(){
              <option value='부산'>부산광역시</option>
              <option value='제주'>제주특별자치도</option>
           </select>
-
-
           </div>
 
     )

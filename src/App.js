@@ -15,6 +15,8 @@ import axios from "axios";
 import "./App.css";
 import AddShow from "./pages/AddShow";
 import ClickedDataEntry from "./Components/ClickedDataEntry copy";
+import MapContent from "./Components/MapContent";
+import MapMarker from './Components/MapMarker'
 
 class App extends React.Component {
   state = {
@@ -37,7 +39,21 @@ class App extends React.Component {
     axios.post("https://localhost:4000/signout").then((res) => {
       this.setState({ isLogin: false, userinfo: null });
       this.props.history.push("/show");
+      console.log('hnadle logou')
     });
+  }
+
+  WithdrawAccount(){
+    axios.post("https://localhost:4000/myPage", '', {
+      headers: {
+          authorization: `Bearer ${this.props.accessToken}`,
+          "content-type": "application/json",
+          Accept: "application/json"
+      }
+  })
+  .then(() => this.props.history.push("/show"))
+  .catch(err=>console.log(err))
+
   }
   
  
@@ -91,8 +107,8 @@ class App extends React.Component {
       
         <div className="root-contents">
         <Switch>
+        <Route path="/mapmark" render={() => ( <MapMarker></MapMarker> )}  />
         <Route path="/showdetail" render={() => ( <ClickedDataEntry></ClickedDataEntry> )}  />
-
           <Route path="/Hello" render={() => ( <Hello userinfo={this.state.userinfo} /> )}  />
           {/* <Route path="/ad" render={() => <Ad />} /> */}
           <Route path="/login" render={() => ( <Login handleResponseSuccess={this.handleResponseSuccess.bind(this)} /> )}  />
@@ -101,7 +117,7 @@ class App extends React.Component {
           <Route exact path="/forgotpw" render={() => <ForgotPw />} />
           <Route exact path="/signup" render={() => <Signup />} />
           <Route exact path="/moreinfo" render={() => <Moreinfo />} />
-          <Route exact path="/mypage" render={() => <Mypage userinfo ={userinfo} handleLogout = {this.handleLogout.bind(this)}  />} />
+          <Route exact path="/mypage" render={() => <Mypage userinfo ={userinfo} WithdrawAccount={this.WithdrawAccount.bind(this)}handleLogout = {this.handleLogout.bind(this)}  />} />
           <Route exact path="/resetpw" render={() => <ResetPw /> } />
           <Route exact path="/terms" render={() => <Terms /> } />
           <Route path="/" render={() => {
