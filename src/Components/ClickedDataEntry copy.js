@@ -2,6 +2,7 @@ import React from "react";
 import "./ClickedDataEntry.css";
 import axios from "axios";
 import Review from "../Components/Review";
+import MapMarker from "../Components/MapMarker"
 
 //ShowPage에서 공연 썸네일을 클릭했을 때 나오는 '해당 공연 상세 정보' 페이지 입니다.
 class ClickedDataEntry extends React.Component {
@@ -119,6 +120,7 @@ class ClickedDataEntry extends React.Component {
               return <Review review={review}></Review>;
             })}
           </div> */}
+          <MapMarker data={this.state.data}></MapMarker>
           <form onSubmit={(e) => e.preventDefault()}>
           <div className="cd-show-writeReview">
             <input className="cd-show-review" type="text" onChange={this.reviewContent("reivewContent")}></input>

@@ -27,9 +27,6 @@ class AddShow extends React.Component {
 
     this.handleInputValue = this.handleInputValue.bind(this);
     this.startdateFormChange = this.startdateFormChange.bind(this);
-    this.handleGpsX = this.handleGpsX.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-
   }
 
   startdateFormChange = (key) => (e) => {
@@ -45,10 +42,6 @@ class AddShow extends React.Component {
     console.log(e.target.value);
     console.log(this.state)
   };
-
-  handleGpsX = (key,data)=>{
-  this.setState({[key] : data})
-  }
 
   handleSubmit = () => {
     const { title, startDate, endDate, realmName, place, area, thumbnail, gpsX, gpsY} = this.state
@@ -66,8 +59,6 @@ class AddShow extends React.Component {
     .then(()=> this.props.history.push("/show"))//등록한 공연의 상세페이지로 연결해야함.
     .catch(err => console.log(err))
       }
-
-      
    
   }
   render() {
@@ -79,7 +70,7 @@ class AddShow extends React.Component {
               handleInputValue={this.handleInputValue}
               startdateFormChange={this.startdateFormChange}
             ></AddShowInput>
-           <Map handleGpsX={this.handleGpsX}></Map>
+           <Map handleInputValue={this.handleInputValue}></Map>
             <div className="alert-box">{this.state.errorMessage}</div>
           </form>
           <div>
