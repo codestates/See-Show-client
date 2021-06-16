@@ -3,10 +3,9 @@ import React from "react";
 import AddShowInput from "../Components/AddShowInput";
 import axios from "axios";
 import "./css/AddShow.css";
-import { withRouter } from 'react-router-dom';
-import { confirmAlert } from 'react-confirm-alert'; // Import
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
-
+import { withRouter } from "react-router-dom";
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 
 class AddShow extends React.Component {
   constructor(props) {
@@ -18,14 +17,15 @@ class AddShow extends React.Component {
       place: "",
       realmName: "",
       area: "",
-      thumbnail: "http://www.culture.go.kr/upload/rdf/21/06/rdf_202106081662354418.jpg",
+      thumbnail:
+        "http://www.culture.go.kr/upload/rdf/21/06/rdf_202106081662354418.jpg",
       gpsX: "",
       gpsY: "",
       postCode: false,
       isAddress: "",
       isZoneCode: "",
-      errorMessage : ""
-    }; 
+      errorMessage: "",
+    };
 
     this.handleInputValue = this.handleInputValue.bind(this);
     this.startdateFormChange = this.startdateFormChange.bind(this);
@@ -33,84 +33,155 @@ class AddShow extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addShowConfirm = this.addShowConfirm.bind(this);
     this.setPlace = this.setPlace.bind(this);
-
   }
 
   startdateFormChange = (key) => (e) => {
     const newdate = e.target.value.replace(/-/gi, "");
     this.setState({ [key]: newdate });
     console.log(e.target.value);
-    console.log(this.state)
-
+    console.log(this.state);
   };
 
   handleInputValue = (key) => (e) => {
     this.setState({ [key]: e.target.value });
     console.log(e.target.value);
-    console.log(this.state)
+    console.log(this.state);
   };
-  setPlace(data){
-    this.setState({place : data})
-    console.log(this.state.place)
+  setPlace(data) {
+    this.setState({ place: data });
+    console.log(this.state.place);
   }
 
-  handleGpsX = (key,data)=>{
-  this.setState({[key] : data})
-  }
+  handleGpsX = (key, data) => {
+    this.setState({ [key]: data });
+  };
 
   handleSubmit = () => {
-    const { title, startDate, endDate, realmName, place, area, thumbnail, gpsX, gpsY} = this.state
-      if( !title || !startDate || !endDate || !realmName || !place || !area || !thumbnail || !gpsX || !gpsY){
-        this.setState({ errorMessage: "모든 항목은 필수입니다" });
-      } else{
-        axios.post("https://localhost:8080/show/posting", {title, startDate, endDate, realmName, place, area, thumbnail, gpsX, gpsY},
-    )
-    .then((res)=> {
-      this.props.history.push("/show")
-}
-  )//등록한 공연의 상세페이지로 연결해야함.
-}
-  }
+    const {
+      title,
+      startDate,
+      endDate,
+      realmName,
+      place,
+      area,
+      thumbnail,
+      gpsX,
+      gpsY,
+    } = this.state;
+    if (
+      !title ||
+      !startDate ||
+      !endDate ||
+      !realmName ||
+      !place ||
+      !area ||
+      !thumbnail ||
+      !gpsX ||
+      !gpsY
+    ) {
+      this.setState({ errorMessage: "모든 항목은 필수입니다" });
+    } else {
+      axios
+        .post("https://localhost:8080/show/posting", {
+          title,
+          startDate,
+          endDate,
+          realmName,
+          place,
+          area,
+          thumbnail,
+          gpsX,
+          gpsY,
+        })
+        .then((res) => {
+          this.props.history.push("/show");
+        }); //등록한 공연의 상세페이지로 연결해야함.
+    }
+  };
 
   addShowConfirm = () => {
     confirmAlert({
-      title: '공연을 등록하시겠습니까?',
+      title: "공연을 등록하시겠습니까?",
       // message: '정말로, 진짜로, 회원 탈퇴 하시겠습니까?',
       buttons: [
         {
-          label: '예',
+          label: "예",
           onClick: () => {
-            this.handleSubmit()
-            alert('공연이 등록되었습니다.') 
-          }
+            this.handleSubmit();
+            alert("공연이 등록되었습니다.");
+          },
         },
-        
-      ]
+        {
+          label: "아니오",
+          onClick: () => {},
+        },
+      ],
     });
-     
-    }
+  };
 
   render() {
+    const {
+      title,
+      startDate,
+      endDate,
+      realmName,
+      place,
+      area,
+      thumbnail,
+      gpsX,
+      gpsY,
+    } = this.state;
+    // if( !title || !startDate || !endDate || !realmName || !place || !area || !thumbnail || !gpsX || !gpsY){
     return (
       <div className="addshow-container">
-
         <div className="addshow-input-fields">
           <form onSubmit={(e) => e.preventDefault()}>
             <div className="addshow-contents-Wrapper">
-             <AddShowInput setPlace={this.setPlace} place={this.state.place} handleGpsX={this.handleGpsX} handleInputValue={this.handleInputValue} startdateFormChange={this.startdateFormChange}></AddShowInput>
-             {/* <Map handleGpsX={this.handleGpsX}></Map> */}
-             </div>
-             <div className="addshow-alert-box">{this.state.errorMessage}</div>
+              <AddShowInput
+                setPlace={this.setPlace}
+                place={this.state.place}
+                handleGpsX={this.handleGpsX}
+                handleInputValue={this.handleInputValue}
+                startdateFormChange={this.startdateFormChange}
+              ></AddShowInput>
+              {/* <Map handleGpsX={this.handleGpsX}></Map> */}
+            </div>
+            <div className="addshow-alert-box">{this.state.errorMessage}</div>
           </form>
-
         </div>
-        <div className="addshow-submit-btn-area">
-          <button className="addshow-submit-btn" onClick={this.addShowConfirm}>SUBMIT</button>
+        {!title ||
+        !startDate ||
+        !endDate ||
+        !realmName ||
+        !place ||
+        !area ||
+        !thumbnail ||
+        !gpsX ||
+        !gpsY ? (
+          <div className="addshow-submit-btn-area">
+            <button
+              className="addshow-submit-btn"
+              onClick={this.handleSubmit}
+            >
+              SUBMIT
+            </button>
           </div>
-
+        ) : (
+          <div className="addshow-submit-btn-area">
+            <button
+              className="addshow-submit-btn"
+              onClick={this.addShowConfirm}
+            >
+              SUBMIT
+            </button>
+          </div>
+        )}
+        {/* <div className="addshow-submit-btn-area">
+          <button className="addshow-submit-btn" onClick={this.addShowConfirm}>SUBMIT</button>
+          </div> */}
       </div>
     );
   }
 }
 
-export default withRouter(AddShow)
+export default withRouter(AddShow);
