@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios"
+import './AddShowInput.css'
 
 //img url 생성과 state에 set해주는 기능 필요.
 
@@ -40,99 +41,125 @@ function AddShowInput({ handleInputValue, startdateFormChange }) {
     }
   };
   return (
-    <div className="input-fields">
-      <input
-        className="input-line full-width addshow_title"
-        type="title"
-        placeholder="title"
-        onChange={handleInputValue("title")}  //공연제목
-      ></input>
-      
-      <div className="App"> 
-        {imgBase64 ? (// 공연 썸네일 첨부
-          <div>
-            <img
-              src={imgBase64}
-              alt={imgFile.name}
-              style={{
-                backgroundColor: "#efefef",
-                width: "150px",
-                height: "150px",
-              }}
-              onChange={(e)=> setFile(e)}
-            ></img> 
+    <div className="add-body">
+      <div className="add-bigtitle">공연 등록</div>
+
+      <div className='add-contents'>
+      <div className='add-left'>
+
+          <div className="add-thumbnail-Wrapper"> 
+            <div className='add-title'>공연 사진</div>
+              {imgBase64 ? (// 공연 썸네일 첨부
+            <div className='add-thumbnail-preview'>
+              <img className="add-thumbnail" src={imgBase64} alt={imgFile.name} onChange={(e)=> setFile(e)}></img> 
+            </div> 
+            ) : null}
+            <div className="add-thumbnail-uploadWrapper">
+              <div className="add-subtitle">사진 크기는 가로 300px, 세로 400px로 조정됩니다</div>
+              <input className="add-thumbnail-upload" type="file" name="imgFile" id="imgFile" onChange={handleChangeFile}/>
+            </div> 
           </div> 
-        ) : null}
-        <div>
-          <input
-            type="file"
-            name="imgFile"
-            id="imgFile"
-            onChange={handleChangeFile}
-          />
-        </div> 
-      </div> 
+      </div>
+
+
+      <div className='add-right'>
+      <div className='add-formWrapper'>
+          <div className='add-title'>공연제목</div>
+          <input className="add-showtitle" type="title" placeholder="title" onChange={handleInputValue("title")} ></input>
+      </div>
+
+      
+      <div className='add-formWrapper'>
+        <div className='add-title'>시작일자</div>
       <input //공연 시작일
-        className="input-line full-width addshow_startDate"
+        className="add-show-startDate"
         type="date"
         placeholder="title"
         onChange={startdateFormChange("startDate")}
       ></input> 
+      </div>
+
+      <div className='add-formWrapper'>
+        <div className='add-title'>종료일자</div>
       <input // 공연 종료일
-        className="input-line full-width addshow_endDate"
+        className="add-show-endDate"
         type="date"
         placeholder="title"
         onChange={startdateFormChange("endDate")}
       ></input>
+      </div>
 
-      <div className="address" > 
-        <div className="col-md-4 offset-md-5"> 
+      <div className='add-formWrapper'>
+        <div className='add-title'>공연주소</div>
+      <div className="add-address" > 
+        <div className="add-address-field1"> 
           <input //공연 주소(도로명)
             type="text"
-            className="form-control m-input m--margin-top-10"
+            className="adr1"
             name="address"
             id="address"
             placeholder="도로명 주소"
             readOnly
           />
         </div>
-        <div className="col-md-4 offset-md-5">
+        </div> 
+
+        <div className='add-formWrapper'>
+        <div className="add-adress-field2">
           <input //공연 주소(상세 주소)
             type="text"
-            className="form-control m-input m--margin-top-10"
+            className="adr2"
             name="detailAddress"
             placeholder="상세 주소"
             required
           />
         </div>
       </div>
+      </div>
 
+      <div className='add-formWrapper'>
+        <div className='add-title'>노출지역</div>
       <select
-        className="input-line full-width area"
+        className="add-show-location"
         name="지역"
         onChange={handleInputValue("area")}
       >
-        <option value="서울">서울</option>
-        <option value="경기">경기</option>
-        <option value="인천">인천</option>
-        <option value="강원">강원</option>
-        <option value="충청">충청</option>
-        <option value="세종">세종</option>
-        <option value="경상">경상</option>
-        <option value="부산">부산</option>
-        <option value="대구">대구</option>
-        <option value="전라">전라</option>
-        <option value="광주">광주</option>
+        <option value="" disabled selected >공연 정보가 노출될 지역을 선택하세요</option>
+        <option value='서울'>서울특별시</option>
+        <option value='경기'>경기도</option>
+        <option value='강원'>강원도</option>
+        <option value='대전'>대전광역시</option>
+        <option value='세종'>세종특별자치시</option>
+        <option value='충북'>충청북도</option>
+        <option value='충남'>충청남도</option>
+        <option value='광주'>광주광역시</option>
+        <option value='전북'>전라북도</option>
+        <option value='전남'>전라남도</option>
+        <option value='대구'>대구광역시</option>
+        <option value='경북'>경상북도</option>
+        <option value='경남'>경상남도</option>
+        <option value='울산'>울산광역시</option>
+        <option value='부산'>부산광역시</option>
+        <option value='제주'>제주특별자치도</option>
       </select>
+      </div>
+
+      <div className='add-formWrapper'>
+        <div className='add-title'>공연장르</div>
       <select
-        className="input-line full-width realmName"
+        className="add-show-genre"
         name="장르"
         onChange={handleInputValue("realmName")}
       >
+        <option value="" disabled selected>공연 정보가 노출될 장르(카테고리)를 선택하세요</option>
         <option value="뮤지컬">뮤지컬</option>
         <option value="버스킹">버스킹</option>
       
       </select>
+      </div>
+
+      </div>
+    </div>
     </div>
   );
 }
