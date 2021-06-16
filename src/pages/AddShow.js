@@ -3,7 +3,6 @@ import React from "react";
 import AddShowInput from "../Components/AddShowInput";
 import axios from "axios";
 import "./css/AddShow.css";
-import Map from "../Components/AddShowMap";
 
 class AddShow extends React.Component {
   constructor(props) {
@@ -77,8 +76,8 @@ class AddShow extends React.Component {
         <div className="addshow-input-fields">
           <form onSubmit={(e) => e.preventDefault()}>
             <div className="addshow-contents-Wrapper">
-             <AddShowInput handleInputValue={this.handleInputValue} startdateFormChange={this.startdateFormChange}></AddShowInput>
-             <Map handleGpsX={this.handleGpsX}></Map>
+             <AddShowInput handleGpsX={this.handleGpsX} handleInputValue={this.handleInputValue} startdateFormChange={this.startdateFormChange}></AddShowInput>
+             {/* <Map handleGpsX={this.handleGpsX}></Map> */}
              </div>
              <div className="addshow-alert-box">{this.state.errorMessage}</div>
           </form>
