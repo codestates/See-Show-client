@@ -12,7 +12,7 @@ function AddShowInput({ handleInputValue, startdateFormChange }) {
       const img = new FormData();
       img.append("file", e.target.files[0]);
       axios
-        .post("http://localhost:4000/upload", img)
+        .post("http://localhost:8080/upload", img)
         .then((res) => {
           setImageUrl(res.data);
         })

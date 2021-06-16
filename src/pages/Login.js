@@ -3,7 +3,6 @@ import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 import './css/Login.css'
 
-axios.defaults.withCredentials = true;
 
 class Login extends React.Component {
   constructor(props) {
@@ -28,17 +27,11 @@ class Login extends React.Component {
     if (!userId || !password) {
       this.setState({ errorMessage: "아이디와 비밀번호를 입력하세요" });
     } else {
-      axios.post("https://localhost:4000/login",{ userId, password },
-          {
-            headers: {
-              "Content-type": "application/json"
-            },
-            withCredentials: true
-          }
+      axios.post("https://localhost:8080/login",{ userId, password },
         )
         .then((res) => {
           this.props.handleResponseSuccess(res);
-          // this.props.history.push("/moreinfo") 
+          this.props.history.push("/moreinfo") 
           //handleResponse에서 리다이렉트
         })
         .catch((err) => console.log(err));

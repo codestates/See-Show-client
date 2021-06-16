@@ -59,7 +59,7 @@ class ClickedDataEntry extends React.Component {
     const { content, point } = this.state;
     axios
       .post(
-        "http://localhost:4000/review/create",
+        "http://localhost:8080/review/create",
         { seq, content, point },
         {
           headers: {
@@ -79,6 +79,7 @@ class ClickedDataEntry extends React.Component {
     console.log(data)
     return (
       <div className="cd-body">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin="anonymous"></script>
       <div className="clicked_showBox">
       <div>
           <button>뒤로 가기</button>
@@ -114,24 +115,33 @@ class ClickedDataEntry extends React.Component {
               <div className="cd-show-place">대공연장</div>
           </div>
 
+          <div className="cd-show-parts">
+              <div className="cd-show-label">시설위치</div>
+          </div>
+
+          <div className="kakaomap">
+                <MapMarker data={this.state.data}></MapMarker>
+          </div>
+
           {/* <div className="review" //----리뷰-----
           >
             {this.props.review.map((review) => {
               return <Review review={review}></Review>;
             })}
           </div> */}
-          <MapMarker data={this.state.data}></MapMarker>
           <form onSubmit={(e) => e.preventDefault()}>
           <div className="cd-show-writeReview">
-            <input className="cd-show-review" type="text" onChange={this.reviewContent("reivewContent")}></input>
-            <select onChange={this.reviewContent("reviewPoint")}>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
+            <div className="cd-show-reviewtitle">리뷰 등록</div>
+            <input className="cd-show-review" placeholder="리뷰를 작성해주세요" type="text" onChange={this.reviewContent("reivewContent")}></input>
+            <select className="cd-show-rating" onChange={this.reviewContent("reviewPoint")}>
+              <option value="" disabled selected >별점 선택</option>
+              <option value="5">★★★★★</option>
+              <option value="4">★★★★</option>
+              <option value="3">★★★</option>
+              <option value="2">★★</option>
+              <option value="1">★</option>
             </select>
-            <button onClick={this.createReview}>리뷰등록</button>
+            <button className="cd-show-reviewSubmit" onClick={this.createReview}>작성</button>
           </div>
           </form>
         </div>
@@ -140,7 +150,15 @@ class ClickedDataEntry extends React.Component {
           
         </div>
 
+
       </div>
+
+      <div className='cd-show-btn-area'>
+            <button className="cd-show-btn">Web site</button>
+            <button className="cd-show-btn">Tickets</button>
+          </div>
+
+
       </div>
     );
   }

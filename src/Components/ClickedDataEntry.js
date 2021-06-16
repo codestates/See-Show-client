@@ -23,7 +23,7 @@ class ClickedDataEntry extends React.Component {
     //클릭한 공연의 상세 정보 데이터 불러오기.
     const { seq } = this.state.clickedDataSeq;
     axios
-      .get("https://localhost:4000/show/detail", seq, {
+      .get("https://localhost:8080/show/detail", seq, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
@@ -46,7 +46,7 @@ class ClickedDataEntry extends React.Component {
     const { content, point } = this.state;
     axios
       .post(
-        "http://localhost:4000/review/create",
+        "http://localhost:8080/review/create",
         { seq, content, point },
         {
           headers: {
