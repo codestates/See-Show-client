@@ -1,9 +1,13 @@
 import React from "react";
 import "./ClickedDataEntry.css";
+import { Link, Redirect } from "react-router-dom";
+
 import axios from "axios";
 import Review from "../Components/Review";
-import MapMarker from "../Components/MapMarker"
+import MapMarker from "../Components/MapMarker";
 
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 //ShowPage에서 공연 썸네일을 클릭했을 때 나오는 '해당 공연 상세 정보' 페이지 입니다.
 class ClickedDataEntry extends React.Component {
@@ -11,35 +15,36 @@ class ClickedDataEntry extends React.Component {
     super(props);
     this.state = {
       data: "",
-      clickedData:  {
+      clickedData: {
         id: 5,
         seq: 167843,
-        title: 'PMF 영아티스트 콘서트_이지언 첼로 리사이틀',
-        startDate: '20210710',
-        endDate: '20210710',
-        place: 'PMF자양스테이션',
-        realmName: '음악',
-        area: '서울',
-        thumbnail: 'http://www.culture.go.kr/upload/rdf/21/06/rdf_202106081662354418.jpg',
-        gpsX: '127.08302634367884',
-        gpsY: '37.53463130540217',
+        title: "PMF 영아티스트 콘서트_이지언 첼로 리사이틀",
+        startDate: "20210710",
+        endDate: "20210710",
+        place: "PMF자양스테이션",
+        realmName: "음악",
+        area: "서울",
+        thumbnail:
+          "http://www.culture.go.kr/upload/rdf/21/06/rdf_202106081662354418.jpg",
+        gpsX: "127.08302634367884",
+        gpsY: "37.53463130540217",
       },
-      content: "",
-      point:"",
+      reivewContent: "",
+      reviewPoint: "",
       reviewId: "",
     };
     this.reviewContent = this.reviewContent.bind(this);
     this.createReview = this.createReview.bind(this);
+    this.reviewConfirmHandler = this.reviewConfirmHandler.bind(this);
+    
     // this.hanldeClickedApiData = this.hanldeClickedApiData.bind(this);
   }
 
+  conponentWillMount() {
+    console.log("dd");
 
-
-  conponentWillMount(){
-    console.log('dd')
-
-    this.setState({clickedData : this.props.clickedData})
-    console.log(this.state.clickedData)
+    this.setState({ clickedData: this.props.clickedData });
+    console.log(this.state.clickedData);
   }
   reviewContent = (key) => (e) => {
     this.setState({ [key]: e.target.value });
@@ -66,85 +71,135 @@ class ClickedDataEntry extends React.Component {
       .catch((err) => console.log(err));
   };
 
+  reviewConfirmHandler=() => {
+    confirmAlert({
+      title: '리뷰 작성은 로그인이 필요합니다. 로그인하시겠습니까?',
+      buttons: [
+        {
+          label: '예',
+          onClick: () => {
+           window.location.href='/login'
+          }
+        },
+        {
+          label: '아니오',
+        }
+      ]
+    });
+  };
+
+
   render() {
     return (
       <div className="cd-body">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin="anonymous"></script>
+        <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
+          integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4="
+          crossorigin="anonymous"
+        ></script>
         <div className="clicked_showBox">
-        <div>
-          <button onClick={this.props.resetClickedData()}>뒤로 가기</button>
-        </div> 
-        {/* 왼쪽 공연 썸네일 */}
-        <div className="cd-show-left_thumbnail ">
-          <img className="cd-show-thumbnail" src={this.props.clickedData.thumbnail} alt="" />
-        </div> 
-
-        {/* 오른쪽 공연 상세 정보 */}
-         <div className="cd-show-right_description">
-          <div className="cd-show-title">{this.props.clickedData.title}</div>
-         
-          <div className="cd-show-parts">
-          <div className="cd-show-label">카테고리</div>
-          <div className="cd-show-category">{this.props.clickedData.realmName} </div>
+          <div>
+            <button onClick={this.props.resetClickedData}>뒤로 가기</button>
+          </div>
+          {/* 왼쪽 공연 썸네일 */}
+          <div className="cd-show-left_thumbnail ">
+            <img
+              className="cd-show-thumbnail"
+              src={this.props.clickedData.thumbnail}
+              alt=""
+            />
           </div>
 
-          <div className="cd-show-parts">
-          <div className="cd-show-label">공연기간</div>
+          {/* 오른쪽 공연 상세 정보 */}
+          <div className="cd-show-right_description">
+            <div className="cd-show-title">{this.props.clickedData.title}</div>
 
-          <div className="cd-show-runPeriod">
-            {`${this.props.clickedData.startDate}~${this.props.clickedData.endDate}`}{" "}
-          </div>
-          </div>
+            <div className="cd-show-parts">
+              <div className="cd-show-label">카테고리</div>
+              <div className="cd-show-category">
+                {this.props.clickedData.realmName}{" "}
+              </div>
+            </div>
 
-          <div className="cd-show-parts">
-          <div className="cd-show-label">공연지역</div>
-          <div className="cd-show-area">{this.props.clickedData.area} </div>
-          </div>
+            <div className="cd-show-parts">
+              <div className="cd-show-label">공연기간</div>
 
-          <div className="cd-show-parts">
-          <div className="cd-show-label">공연시설</div>
-          <div className="cd-show-place">{this.props.clickedData.place}</div>
-          </div>
+              <div className="cd-show-runPeriod">
+                {`${this.props.clickedData.startDate}~${this.props.clickedData.endDate}`}{" "}
+              </div>
+            </div>
 
-          <div className="cd-show-parts">
+            <div className="cd-show-parts">
+              <div className="cd-show-label">공연지역</div>
+              <div className="cd-show-area">{this.props.clickedData.area} </div>
+            </div>
+
+            <div className="cd-show-parts">
+              <div className="cd-show-label">공연시설</div>
+              <div className="cd-show-place">
+                {this.props.clickedData.place}
+              </div>
+            </div>
+
+            <div className="cd-show-parts">
               <div className="cd-show-label">시설위치</div>
-          </div>
-          <div className="kakaomap">
-                <MapMarker data={this.state.clickedData}></MapMarker>
-          </div>
-          {/* <div className="cd-show-review" //----리뷰-----
+            </div>
+            <div className="kakaomap">
+              <MapMarker data={this.state.clickedData}></MapMarker>
+            </div>
+            {/* <div className="cd-show-review" //----리뷰-----
           >
             {this.props.review.map((review) => {
               
               return <Review review={review}></Review>;
             })} 
           </div> */}
-          <form onSubmit={(e) => e.preventDefault()}>
-          <div className="cd-show-writeReview">
-            <div className="cd-show-reviewtitle">리뷰 등록</div>
-            <input className="cd-show-review" placeholder="리뷰를 작성해주세요" type="text" onChange={this.reviewContent("reivewContent")}></input>
-            <select className="cd-show-rating" onChange={this.reviewContent("reviewPoint")}>
-              <option value="" disabled selected >별점 선택</option>
-              <option value="5">★★★★★</option>
-              <option value="4">★★★★</option>
-              <option value="3">★★★</option>
-              <option value="2">★★</option>
-              <option value="1">★</option>
-            </select>
-            <button className="cd-show-reviewSubmit" onClick={this.createReview}>리뷰등록</button>
+            <form onSubmit={(e) => e.preventDefault()}>
+              <div className="cd-show-writeReview">
+                <div className="cd-show-reviewtitle">리뷰 등록</div>
+                <input
+                  className="cd-show-review"
+                  placeholder="리뷰를 작성해주세요"
+                  type="text"
+                  onChange={this.reviewContent("reivewContent")}
+                ></input>
+                <select
+                  className="cd-show-rating"
+                  onChange={this.reviewContent("reviewPoint")}
+                >
+                  <option value="" disabled selected>
+                    별점 선택
+                  </option>
+                  <option value="5">★★★★★</option>
+                  <option value="4">★★★★</option>
+                  <option value="3">★★★</option>
+                  <option value="2">★★</option>
+                  <option value="1">★</option>
+                </select>
+                { !this.props.isLogin ?  
+                  <button
+                  className="cd-show-reviewSubmit"
+                  onClick={this.reviewConfirmHandler}
+                >
+                  리뷰등록
+                </button> : <button
+                  className="cd-show-reviewSubmit"
+                  onClick={this.createReview}
+                >
+                  리뷰등록
+                </button>}
+              
+              </div>
+            </form>
           </div>
-          </form>
-        </div>
 
-        <div className="지도">
-          
+          <div className="지도"></div>
         </div>
+        <div className="cd-show-btn-area">
+          <button className="cd-show-btn">Web site</button>
+          <button className="cd-show-btn">Tickets</button>
         </div>
-        <div className='cd-show-btn-area'>
-            <button className="cd-show-btn">Web site</button>
-            <button className="cd-show-btn">Tickets</button>
-          </div>
-      </div> 
+      </div>
     );
   }
 }

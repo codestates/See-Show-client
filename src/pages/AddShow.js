@@ -3,19 +3,22 @@ import React from "react";
 import AddShowInput from "../Components/AddShowInput";
 import axios from "axios";
 import "./css/AddShow.css";
+import { withRouter } from 'react-router-dom';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+
 
 class AddShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      seq: "",
       title: "",
       startDate: "",
       endDate: "",
       place: "",
       realmName: "",
       area: "",
-      thumbnail: "",
+      thumbnail: "http://www.culture.go.kr/upload/rdf/21/06/rdf_202106081662354418.jpg",
       gpsX: "",
       gpsY: "",
       postCode: false,
@@ -28,6 +31,8 @@ class AddShow extends React.Component {
     this.startdateFormChange = this.startdateFormChange.bind(this);
     this.handleGpsX = this.handleGpsX.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.addShowConfirm = this.addShowConfirm.bind(this);
+    this.setPlace = this.setPlace.bind(this);
 
   }
 
@@ -44,6 +49,10 @@ class AddShow extends React.Component {
     console.log(e.target.value);
     console.log(this.state)
   };
+  setPlace(data){
+    this.setState({place : data})
+    console.log(this.state.place)
+  }
 
   handleGpsX = (key,data)=>{
   this.setState({[key] : data})
@@ -54,21 +63,33 @@ class AddShow extends React.Component {
       if( !title || !startDate || !endDate || !realmName || !place || !area || !thumbnail || !gpsX || !gpsY){
         this.setState({ errorMessage: "모든 항목은 필수입니다" });
       } else{
-        axios.post("https://localhost:8080/addshow", {title, startDate, endDate, realmName, place, area, thumbnail, gpsX, gpsY},
-        {headers : { 
-          authorization: `Bearer ${this.props.accessToken}`,
-          "Content-type": "application/json",
-          Accept: "application/json",
-        },
-        withCredentials: true
-    })
-    .then(()=> this.props.history.push("/show"))//등록한 공연의 상세페이지로 연결해야함.
-    .catch(err => console.log(err))
-      }
-
-      
-   
+        axios.post("https://localhost:8080/show/posting", {title, startDate, endDate, realmName, place, area, thumbnail, gpsX, gpsY},
+    )
+    .then((res)=> {
+      this.props.history.push("/show")
+}
+  )//등록한 공연의 상세페이지로 연결해야함.
+}
   }
+
+  addShowConfirm = () => {
+    confirmAlert({
+      title: '공연을 등록하시겠습니까?',
+      // message: '정말로, 진짜로, 회원 탈퇴 하시겠습니까?',
+      buttons: [
+        {
+          label: '예',
+          onClick: () => {
+            this.handleSubmit()
+            alert('공연이 등록되었습니다.') 
+          }
+        },
+        
+      ]
+    });
+     
+    }
+
   render() {
     return (
       <div className="addshow-container">
@@ -76,14 +97,15 @@ class AddShow extends React.Component {
         <div className="addshow-input-fields">
           <form onSubmit={(e) => e.preventDefault()}>
             <div className="addshow-contents-Wrapper">
-                 <AddShowInput handleGpsX={this.handleGpsX} handleInputValue={this.handleInputValue} startdateFormChange={this.startdateFormChange}></AddShowInput>
-            </div>
+             <AddShowInput setPlace={this.setPlace} place={this.state.place} handleGpsX={this.handleGpsX} handleInputValue={this.handleInputValue} startdateFormChange={this.startdateFormChange}></AddShowInput>
+             {/* <Map handleGpsX={this.handleGpsX}></Map> */}
+             </div>
+             <div className="addshow-alert-box">{this.state.errorMessage}</div>
           </form>
           <div className="addshow-alert-box">{this.state.errorMessage}</div>
         </div>
         <div className="addshow-submit-btn-area">
-          
-          <button className="addshow-submit-btn" onClick={this.handleSubmit}>SUBMIT</button>
+          <button className="addshow-submit-btn" onClick={this.addShowConfirm}>SUBMIT</button>
           </div>
 
       </div>
@@ -91,4 +113,4 @@ class AddShow extends React.Component {
   }
 }
 
-export default AddShow;
+export default withRouter(AddShow)

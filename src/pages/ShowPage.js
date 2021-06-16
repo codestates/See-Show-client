@@ -1,10 +1,11 @@
 import React from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import SearchBar from "../Components/SearchBar";
 import DataList from "../Components/DataList";
-import Nav from "../pages/Nav";
 import ClickedDataEntry from "../Components/ClickedDataEntry";
 import RecommendDataList from "../Components/RecommendDataList";
+
 // import './ShowPage.css'
 
 
@@ -29,7 +30,7 @@ class ShowPage extends React.Component {
       ],
       clickedData: null, //클릭한 데이터의 정보
       clickedShowData: "", //클릭한 공연의 상세 정보
-      review: "", //클릭한 공연의 리뷰 리스트
+      review: [{reviewId : 1, content : '존잼', point : '5'}], //클릭한 공연의 리뷰 리스트
       recommendData: [
         {
           seq: "166695",
@@ -55,13 +56,14 @@ class ShowPage extends React.Component {
     this.getReview = this.getReview.bind(this);
     this.hanldeAreaState = this.hanldeAreaState.bind(this);
     this.getClickedApiData = this.getClickedApiData.bind(this);
+
     // this.setClicked = this.setClicked.bind(this);
   }
 
-  componentWillMount() {
+    componentWillMount () {
     console.log("Component WILL MOUNT!");
     console.log(this.state.apiData);
-    this.handleApiData();
+     this.handleApiData();
     console.log(this.state.apiData);
 
     // this.handleRecommendData();
@@ -69,30 +71,43 @@ class ShowPage extends React.Component {
 
   handleApiData() {
     // 공연 정보 데이터 불러오기.
-    if(this.props.accessToken === null) {
-      axios.get("https://localhost:8080/recommend/location")
-      .then((res) => {
-        this.setState({ apiData: res.data.data.list });
-      })
-      .then(res => axios.get("https://localhost:8080/recommend/genre"))
-      .then(res => {
-        // const { recommendData } = this.state.recommendData;
-        // const newRecommendData = [...recommendData, res.data.list];
-        this.setState({ recommendData: res.data.data.list });
-      })
-      console.log('getApi')
-    }else{
-      axios
-      .get("https://localhost:8080/recommend/location", {  headers: {
-        authorization: `Bearer ${this.props.accessToken}`,
-    }})
+    axios.get("https://localhost:8080/recommend/location")
+    .then((res) => {
+      this.setState({ apiData: res.data.data.list });
+    })
+    .then(res => axios.get("https://localhost:8080/recommend/genre"))
     .then(res => {
       // const { recommendData } = this.state.recommendData;
       // const newRecommendData = [...recommendData, res.data.list];
       this.setState({ recommendData: res.data.data.list });
     })
+    console.log('getApi')
+
   }
-}
+//     if(this.props.accessToken === null) {
+//       axios.get("https://localhost:8080/recommend/location")
+//       .then((res) => {
+//         this.setState({ apiData: res.data.data.list });
+//       })
+//       .then(res => axios.get("https://localhost:8080/recommend/genre"))
+//       .then(res => {
+//         // const { recommendData } = this.state.recommendData;
+//         // const newRecommendData = [...recommendData, res.data.list];
+//         this.setState({ recommendData: res.data.data.list });
+//       })
+//       console.log('getApi')
+//     }else{
+//       axios
+//       .get("https://localhost:8080/recommend/location", {  headers: {
+//         authorization: `Bearer ${this.props.accessToken}`,
+//     }})
+//     .then(res => {
+//       // const { recommendData } = this.state.recommendData;
+//       // const newRecommendData = [...recommendData, res.data.list];
+//       this.setState({ recommendData: res.data.data.list });
+//     })
+//   }
+// }
 
   getClickedApiData =  () => {
     //클릭한 공연의 상세 정보 데이터 불러오기.
@@ -119,7 +134,7 @@ class ShowPage extends React.Component {
 
   resetClickedData() {
     //상세보기 에서 뒤로가기 버튼 누를 때, clickedData reset.
-    // this.setState({ clickedData: null });
+    this.setState({ clickedData: null });
   }
 
   getReview() {
@@ -152,6 +167,8 @@ class ShowPage extends React.Component {
     console.log("filtered");
   }
 
+ 
+
   render() {
     return (
       <div className="show-body">
@@ -159,9 +176,11 @@ class ShowPage extends React.Component {
           <div className="searchWrapper">
             <SearchBar areaFiltered={this.areaFiltered}></SearchBar>
           </div>
+          
           <div className="mainstream">
             {this.state.clickedData === null ? (
               <div className="apidata">
+               <Link to='/addshow'> <button >공연 등록하기</button> </Link>
                 <DataList
                   datas={this.state.apiData}
                   handleClickedData={this.setClickedData}
@@ -174,13 +193,13 @@ class ShowPage extends React.Component {
               </div>
             ) : (
               <ClickedDataEntry
+              isLogin={this.props.isLogin}
                 clickedData={this.state.clickedData}
                 resetClickedData={this.resetClickedData}
                 review={this.state.review}
                 getReview={this.getReview}
               ></ClickedDataEntry>
             )}
-            {/* 상세정보에서 뒤로가기 버튼 누르면 clickedData = null 로 변경하는 코드 구현 필요. */}
           </div>
         </div>
       </div>

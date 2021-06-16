@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import axios from 'axios'
 import './css/Moreinfo.css'
 
@@ -31,12 +31,12 @@ class Moreinfo extends React.Component {
     handleSubmit = () => {
         const { area, genre } = this.state;
         console.log(this.props.accessToken,'access')
-        axios.post("https://localhost:8080/firstcheck", {area:1, genre}, {
+        axios.post("https://localhost:8080/firstcheck", {area:area, genre}, {
             headers: {
                 authorization: `Bearer ${this.props.accessToken}`,
             }
         })
-        .then(() => this.props.history.push("/show"))
+        .then(() =>{ this.props.history.push("/show")})
         .catch(err=>console.log(err))
 
     }
@@ -95,4 +95,4 @@ class Moreinfo extends React.Component {
 
 
 
-export default Moreinfo
+export default withRouter(Moreinfo)

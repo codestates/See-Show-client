@@ -1,7 +1,7 @@
 /*global kakao */
 import React, { useEffect } from "react";
 
-export default function MapMarker({handleGpsX}) {
+export default function MapMarker({handleGpsX, place}) {
   useEffect(() => {
     mapscript();
   }, []);
@@ -13,37 +13,82 @@ export default function MapMarker({handleGpsX}) {
       level: 5,
     };
     //map
-    const map = new kakao.maps.Map(container, options);
+    let map = new kakao.maps.Map(container, options);
+    const geocoder = new kakao.maps.services.Geocoder();
+    geocoder.addressSearch(place, function(result, status) {
 
-    //마커가 표시 될 위치
-    let markerPosition = new kakao.maps.LatLng(
-      35.1469155857794, 126.919994481568
-    );
-
-    // 마커를 생성
-    let marker = new kakao.maps.Marker({
-      position: markerPosition,
-    });
-
-    // 마커를 지도 위에 표시
-    marker.setMap(map);
-    kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
+      // 정상적으로 검색이 완료됐으면 
+       if (status === kakao.maps.services.Status.OK) {
+  
+          var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+  
+          // 결과값으로 받은 위치를 마커로 표시합니다
+          var marker = new kakao.maps.Marker({
+              map: map,
+              position: coords
+          });
+          marker.setPosition(coords);
+          // 인포윈도우로 장소에 대한 설명을 표시합니다
+          // var infowindow = new kakao.maps.InfoWindow({
+          //     content: '<div style="width:150px;text-align:center;padding:10px 10px;font-size:10px">정확한 위치를 클릭해 주세요</div>'
+          // });
+          // infowindow.open(map, marker);
+  
+          // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+          map.setCenter(coords);
+          console.log(coords)
+          kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
     
-      // 클릭한 위도, 경도 정보를 가져옵니다 
-      const latlng = mouseEvent.latLng; 
+            // 클릭한 위도, 경도 정보를 가져옵니다 
+            const latlng = mouseEvent.latLng; 
+            
+            // 마커 위치를 클릭한 위치로 옮깁니다
+            marker.setPosition(latlng);
+            
+            const gpsYvalue = latlng.getLat()
+            const gpsXvalue = latlng.getLng()
+            
+            handleGpsX("gpsY", gpsYvalue)
+            handleGpsX("gpsX", gpsXvalue)
+            
+            
+        })
+      } 
+    
+
+  });    
+
+
+    
+    // //마커가 표시 될 위치
+    // let markerPosition = new kakao.maps.LatLng(
+    //   35.1469155857794, 126.919994481568
+    // );
+
+    // // 마커를 생성
+    // let marker = new kakao.maps.Marker({
+    //   position: markerPosition,
+    // });
+
+    // // 마커를 지도 위에 표시
+    // marker.setMap(map);
+    // kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
+    
+    //   // 클릭한 위도, 경도 정보를 가져옵니다 
+    //   const latlng = mouseEvent.latLng; 
       
-      // 마커 위치를 클릭한 위치로 옮깁니다
-      marker.setPosition(latlng);
+    //   // 마커 위치를 클릭한 위치로 옮깁니다
+    //   marker.setPosition(latlng);
       
-      const gpsYvalue = latlng.getLat()
-      const gpsXvalue = latlng.getLng()
+    //   const gpsYvalue = latlng.getLat()
+    //   const gpsXvalue = latlng.getLng()
       
 
-      handleGpsX("gpsY", gpsYvalue)
-      handleGpsX("gpsX", gpsXvalue)
+    //   handleGpsX("gpsY", gpsYvalue)
+    //   handleGpsX("gpsX", gpsXvalue)
       
       
-  })
+  // })
   };
 
   return <div id="map" style={{ width: "65vw", height: "30vh" }}></div>;

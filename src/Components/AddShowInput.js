@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import axios from "axios"
 import './AddShowInput.css'
 import Map from "../Components/AddShowMap";
+import Test from "./test";
 
 
 //img url 생성과 state에 set해주는 기능 필요.
 
-function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX }) {
+function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX, place, setPlace }) {
   const [imgBase64, setImgBase64] = useState(""); // 파일 base64
   const [imgFile, setImgFile] = useState(null); //파일
   const [imageUrl, setImageUrl] = useState(imgBase64);
@@ -93,18 +94,6 @@ function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX }) {
 
       <div className='add-formWrapper'>
         <div className='add-title'>공연주소</div>
-      <div className="add-address" > 
-        <div className="add-address-field1"> 
-          <input //공연 주소(도로명)
-            type="text"
-            className="adr1"
-            name="address"
-            id="address"
-            placeholder="도로명 주소"
-            readOnly
-          />
-        </div>
-        </div> 
 
         <div className='add-formWrapper'>
         <div className="add-adress-field2">
@@ -112,13 +101,16 @@ function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX }) {
             type="text"
             className="adr2"
             name="detailAddress"
-            placeholder="상세 주소"
+            placeholder="주소를 검색해주세요."
             required
+            value={place}
+            // onChange={startdateFormChange("place")}
+            // readOnly
           />
         </div>
       </div>
       </div>
-
+      <Test setPlace={setPlace}></Test>
       <div className='add-formWrapper'>
         <div className='add-title'>노출지역</div>
       <select
@@ -145,7 +137,7 @@ function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX }) {
         <option value='제주'>제주특별자치도</option>
       </select>
       </div>
-
+      
       <div className='add-formWrapper'>
         <div className='add-title'>공연장르</div>
       <select
@@ -159,7 +151,7 @@ function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX }) {
       
       </select>
       </div>
-      <Map handleGpsX={handleGpsX}></Map>
+      <Map handleGpsX={handleGpsX} place={place}></Map>
 
       </div>
     </div>
