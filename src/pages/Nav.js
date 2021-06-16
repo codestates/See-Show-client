@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./css/Nav.css";
 
 function Nav(props) {
-  const { isLogin, handleLogout, handleUserinfo } = props;
+  const { isLogin, handleLogout, handleUserinfo} = props;
   if (!isLogin) {
     return (
       <div className="headerWrapper">

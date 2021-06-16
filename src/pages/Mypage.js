@@ -1,12 +1,12 @@
 import React from "react";
-import { Switch, Route, Redirect, withRouter,  } from "react-router-dom";
+import {  Route, Redirect } from "react-router-dom";
 
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import './css/Mypage.css'
 
 function Mypage(props) {
-  const { isLogin, handleLogout, WithdrawAccount } = props;
+  const { isLogin,  WithdrawAccount } = props;
 
   
   //Userinfo의 정보가 없을 시, 로그인 페이지로 리다이렉트.
