@@ -72,21 +72,22 @@ class AddShow extends React.Component {
   }
   render() {
     return (
-      <div className="container">
-        <div className="input-fields">
+      <div className="addshow-container">
+
+        <div className="addshow-input-fields">
           <form onSubmit={(e) => e.preventDefault()}>
-            <AddShowInput
-              handleInputValue={this.handleInputValue}
-              startdateFormChange={this.startdateFormChange}
-            ></AddShowInput>
-           <Map handleGpsX={this.handleGpsX}></Map>
-            <div className="alert-box">{this.state.errorMessage}</div>
+            <div className="addshow-contents-Wrapper">
+             <AddShowInput handleInputValue={this.handleInputValue} startdateFormChange={this.startdateFormChange}></AddShowInput>
+             <Map handleGpsX={this.handleGpsX}></Map>
+             </div>
+             <div className="addshow-alert-box">{this.state.errorMessage}</div>
           </form>
-          <div>
-          <button onClick={this.handleSubmit
-            }>submit</button>
-          </div>
+
         </div>
+        <div className="addshow-submit-btn-area">
+          <button className="addshow-submit-btn" onClick={this.handleSubmit}>SUBMIT</button>
+          </div>
+
       </div>
     );
   }

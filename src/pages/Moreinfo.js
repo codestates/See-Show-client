@@ -57,6 +57,7 @@ class Moreinfo extends React.Component {
                                 <option value='경기'>경기도</option>
                                 <option value='강원'>강원도</option>
                                 <option value='대전'>대전광역시</option>
+                                <option value='세종'>세종특별자치시</option>
                                 <option value='충북'>충청북도</option>
                                 <option value='충남'>충청남도</option>
                                 <option value='광주'>광주광역시</option>
