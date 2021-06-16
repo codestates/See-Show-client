@@ -56,8 +56,9 @@ function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX, place
             <div className='add-thumbnail-preview'>
               <img className="add-thumbnail" src={imgBase64} alt={imgFile.name} onChange={(e)=> setFile(e)}></img> 
             </div> 
-            ) : null}
+            ) : <div className="add-thumbnail-holder">사진을 업로드해주세요</div>}
             <div className="add-thumbnail-uploadWrapper">
+              
               <div className="add-subtitle">사진 크기는 가로 300px, 세로 400px로 조정됩니다</div>
               <input className="add-thumbnail-upload" type="file" name="imgFile" id="imgFile" onChange={handleChangeFile}/>
             </div> 
@@ -95,7 +96,6 @@ function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX, place
       <div className='add-formWrapper'>
         <div className='add-title'>공연주소</div>
 
-        <div className='add-formWrapper'>
         <div className="add-adress-field2">
           <input //공연 주소(상세 주소)
             type="text"
@@ -108,9 +108,9 @@ function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX, place
             // readOnly
           />
         </div>
+        <Test setPlace={setPlace}></Test>
       </div>
-      </div>
-      <Test setPlace={setPlace}></Test>
+
       <div className='add-formWrapper'>
         <div className='add-title'>노출지역</div>
       <select

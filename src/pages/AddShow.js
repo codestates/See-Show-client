@@ -100,11 +100,11 @@ class AddShow extends React.Component {
              <AddShowInput setPlace={this.setPlace} place={this.state.place} handleGpsX={this.handleGpsX} handleInputValue={this.handleInputValue} startdateFormChange={this.startdateFormChange}></AddShowInput>
              {/* <Map handleGpsX={this.handleGpsX}></Map> */}
              </div>
-             <div className="addshow-alert-box">{this.state.errorMessage}</div>
+             
           </form>
-          <div className="addshow-alert-box">{this.state.errorMessage}</div>
         </div>
         <div className="addshow-submit-btn-area">
+          <div className="addshow-alert-box">{this.state.errorMessage}</div>
           <button className="addshow-submit-btn" onClick={this.addShowConfirm}>SUBMIT</button>
           </div>
 
