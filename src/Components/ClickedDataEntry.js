@@ -87,7 +87,6 @@ class ClickedDataEntry extends React.Component {
           },
           {
             label: '아니오',
-            onClick: () => alert('공연등록을 진행해주세요.')
           }
         ]
       });
