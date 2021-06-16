@@ -25,11 +25,13 @@ function Nav(props) {
   } else {
     return (
       <div className="headerWrapper">
-        <img
-          id="head-logo"
-          src="src/resource/seeshow_logo_full_prototype.png"
-          alt="See SHOW"
-        ></img>
+       <Link to="/">
+          <img
+            id="head-logo"
+            src="/resource/seeshow_logo_full_prototype.png"
+            alt="See SHOW"
+          ></img>
+        </Link>
         <Link to="/mypage"><button className="btn-default">MY PAGE</button></Link>
         <Link to="/show"><button className="btn-default">SHOW</button></Link>
         <button className="btn-default" onClick={handleLogout}>

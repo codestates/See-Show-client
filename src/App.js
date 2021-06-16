@@ -16,6 +16,7 @@ import axios from "axios";
 import "./App.css";
 import AddShow from "./pages/AddShow";
 import ClickedDataEntry from "./Components/ClickedDataEntry copy";
+import Blank from "./pages/blank"
 
 class App extends React.Component {
   constructor(props) {
@@ -45,7 +46,7 @@ class App extends React.Component {
   handleLogout() {
     axios.post("https://localhost:8080/logout").then((res) => {
       this.setState({ isLogin: false, userinfo: null, accessToken:null });
-      this.props.history.push("/login");
+      this.props.history.push("/Hello");
       console.log('hnadle logout')
     });
   }
@@ -107,7 +108,7 @@ class App extends React.Component {
 
     return (
       <div className="root">
-        <Nav isLogin={isLogin} userinfo={userinfo} hanldeUserinfo={this.hanldeUserinfo} handleLogout = {this.handleLogout} />
+        <Nav accessToken={this.state.accessToken} isLogin={isLogin} userinfo={userinfo} hanldeUserinfo={this.hanldeUserinfo} handleLogout = {this.handleLogout} />
       
         {
           path === '/mypage' || path === '/Hello' || path ==='/login' || path ==='/signup' || path ==='/moreinfo' || path ==='/forgotpw' || path ==='/resetpw' || path ==='/terms' || path ==='/terms-local' ?
@@ -119,8 +120,8 @@ class App extends React.Component {
       
         <div className="root-contents">
         <Switch>
+        <Route path="/blank" render={() => ( <Blank></Blank> )}  />
         <Route path="/addshow" render={() => ( <AddShow accessToken={this.state.accessToken}></AddShow> )}  />
-
         <Route path="/showdetail" render={() => ( <ClickedDataEntry></ClickedDataEntry> )}  />
           <Route path="/Hello" render={() => ( <Hello userinfo={this.state.userinfo} /> )}  />
           {/* <Route path="/ad" render={() => <Ad />} /> */}
@@ -129,23 +130,23 @@ class App extends React.Component {
           <Route exact path="/forgotpw" render={() => <ForgotPw />} />
           <Route exact path="/signup" render={() => <Signup />} />
           <Route exact path="/moreinfo" render={() => <Moreinfo accessToken={this.state.accessToken}/>} />
-          <Route exact path="/mypage" render={() => <Mypage userinfo ={userinfo}  WithdrawAccount={this.WithdrawAccount}handleLogout = {this.handleLogout}  />} />
+          <Route exact path="/mypage" render={() => <Mypage isLogin ={isLogin}  WithdrawAccount={this.WithdrawAccount} handleLogout = {this.handleLogout}  />} />
           <Route exact path="/resetpw" render={() => <ResetPw /> } />
           <Route exact path="/terms-default" render={() => <Terms /> } />
           <Route exact path="/terms-local" render={() => <Terms_local />} />
           <Route path="/" render={() => {
               if (isLogin) {
-                return <Redirect to="/mypage" />;
+                return <Redirect to="/Hello" />;
               }
-              return <Redirect to="/Hello" />;
+              return <Redirect to="/Hello"/>;
             }}
           />
-          <Route exact path="/show" render={() => {
+          {/* <Route exact path="/show" render={() => {
               if (isLogin) {
                 return <Redirect to="/show" />;
               }
               return <Redirect to="/login" />;
-            }} />
+            }} /> */}
         </Switch>
         </div>
       </div>
