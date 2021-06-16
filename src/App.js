@@ -16,7 +16,7 @@ import axios from "axios";
 import "./App.css";
 import AddShow from "./pages/AddShow";
 import ClickedDataEntry from "./Components/ClickedDataEntry copy";
-import MapMarker from './Components/MapMarker'
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -43,10 +43,10 @@ class App extends React.Component {
 
 
   handleLogout() {
-    axios.post("https://localhost:8080/signout").then((res) => {
-      this.setState({ isLogin: false, userinfo: null });
-      this.props.history.push("/show");
-      console.log('hnadle logou')
+    axios.post("https://localhost:8080/logout").then((res) => {
+      this.setState({ isLogin: false, userinfo: null, accessToken:null });
+      this.props.history.push("/login");
+      console.log('hnadle logout')
     });
   }
 
@@ -107,7 +107,7 @@ class App extends React.Component {
 
     return (
       <div className="root">
-        <Nav isLogin={isLogin} userinfo={userinfo} hanldeUserinfo={this.hanldeUserinfo} />
+        <Nav isLogin={isLogin} userinfo={userinfo} hanldeUserinfo={this.hanldeUserinfo} handleLogout = {this.handleLogout} />
       
         {
           path === '/mypage' || path === '/Hello' || path ==='/login' || path ==='/signup' || path ==='/moreinfo' || path ==='/forgotpw' || path ==='/resetpw' || path ==='/terms' || path ==='/terms-local' ?
@@ -119,13 +119,13 @@ class App extends React.Component {
       
         <div className="root-contents">
         <Switch>
-        <Route path="/mapmark" render={() => ( <MapMarker></MapMarker> )}  />
+        <Route path="/addshow" render={() => ( <AddShow accessToken={this.state.accessToken}></AddShow> )}  />
+
         <Route path="/showdetail" render={() => ( <ClickedDataEntry></ClickedDataEntry> )}  />
           <Route path="/Hello" render={() => ( <Hello userinfo={this.state.userinfo} /> )}  />
           {/* <Route path="/ad" render={() => <Ad />} /> */}
           <Route path="/login" render={() => ( <Login handleResponseSuccess={this.handleResponseSuccess} /> )}  />
           <Route exact path="/show" render={() => <ShowPage accessToken={this.state.accessToken}/>} />
-          <Route exact path="/addShow" render={() => <AddShow />} />
           <Route exact path="/forgotpw" render={() => <ForgotPw />} />
           <Route exact path="/signup" render={() => <Signup />} />
           <Route exact path="/moreinfo" render={() => <Moreinfo accessToken={this.state.accessToken}/>} />

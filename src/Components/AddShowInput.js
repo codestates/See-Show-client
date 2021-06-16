@@ -93,7 +93,7 @@ function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX }) {
 
       <div className='add-formWrapper'>
         <div className='add-title'>공연주소</div>
-      <div className="add-address" > 
+      {/* <div className="add-address" > 
         <div className="add-address-field1"> 
           <input //공연 주소(도로명)
             type="text"
@@ -104,7 +104,7 @@ function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX }) {
             readOnly
           />
         </div>
-        </div> 
+        </div>  */}
 
         <div className='add-formWrapper'>
         <div className="add-adress-field2">
@@ -114,6 +114,7 @@ function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX }) {
             name="detailAddress"
             placeholder="상세 주소"
             required
+            onChange={startdateFormChange("place")}
           />
         </div>
       </div>
