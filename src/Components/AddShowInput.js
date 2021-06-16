@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios"
 import './AddShowInput.css'
+import Map from "../Components/AddShowMap";
+
 
 //img url 생성과 state에 set해주는 기능 필요.
 
-function AddShowInput({ handleInputValue, startdateFormChange }) {
+function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX }) {
   const [imgBase64, setImgBase64] = useState(""); // 파일 base64
   const [imgFile, setImgFile] = useState(null); //파일
   const [imageUrl, setImageUrl] = useState(imgBase64);
@@ -13,7 +15,7 @@ function AddShowInput({ handleInputValue, startdateFormChange }) {
       const img = new FormData();
       img.append("file", e.target.files[0]);
       axios
-        .post("http://localhost:4000/upload", img)
+        .post("http://localhost:8080/upload", img)
         .then((res) => {
           setImageUrl(res.data);
         })
@@ -157,6 +159,7 @@ function AddShowInput({ handleInputValue, startdateFormChange }) {
       
       </select>
       </div>
+      <Map handleGpsX={handleGpsX}></Map>
 
       </div>
     </div>

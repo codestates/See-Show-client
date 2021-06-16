@@ -16,20 +16,26 @@ import axios from "axios";
 import "./App.css";
 import AddShow from "./pages/AddShow";
 import ClickedDataEntry from "./Components/ClickedDataEntry copy";
-import MapContent from "./Components/MapContent";
 import MapMarker from './Components/MapMarker'
-
 class App extends React.Component {
-  state = {
+  constructor(props) {
+    super(props);
+  this.state = {
     isLogin: false,
     userinfo: null,
     accessToken: null,
     firstCheck: null,
-    userType: null,
+    usertype: null,
   };
+  this.hanldeUserinfo = this.hanldeUserinfo.bind(this);
+  this.handleLogout = this.handleLogout.bind(this);
+  this.WithdrawAccount = this.WithdrawAccount.bind(this);
+  this.handleResponseSuccess = this.handleResponseSuccess.bind(this);
+  this.getToken = this.getToken.bind(this);
+}
 
   hanldeUserinfo (){
-    axios.get("https://localhost:4000/mypage").then((res) => {
+    axios.get("https://localhost:/mypage").then((res) => {
       this.setState({userinfo : res.data.userinfo })
       this.props.history.push("/mypage");
     });
@@ -37,7 +43,7 @@ class App extends React.Component {
 
 
   handleLogout() {
-    axios.post("https://localhost:4000/signout").then((res) => {
+    axios.post("https://localhost:8080/signout").then((res) => {
       this.setState({ isLogin: false, userinfo: null });
       this.props.history.push("/show");
       console.log('hnadle logou')
@@ -45,7 +51,7 @@ class App extends React.Component {
   }
 
   WithdrawAccount(){
-    axios.post("https://localhost:4000/myPage", '', {
+    axios.post("https://localhost:8080/myPage", '', {
       headers: {
           authorization: `Bearer ${this.props.accessToken}`,
           "content-type": "application/json",
@@ -60,14 +66,14 @@ class App extends React.Component {
  
   handleResponseSuccess(res) {
     // 사용자 정보를 호출, login state 변경.
-    const { accessToken, userType } = res.data;
-    this.setState({ accessToken, userType, isLogin: true });
-    if(res.data.firstCheck) {
-      this.setState({firstCheck: res.data.firstCheck});
+    const { accessToken, usertype } = res.data.data;
+    this.setState({ accessToken, usertype, isLogin: true });
+    if(res.data.data.firstCheck) {
+      this.setState({firstCheck: res.data.data.firstCheck});
       //만약  firstCheck가 1이라면 바로 실행하는 함수 만들어서 
       //moreinfo페이지로 넘어가게 하기.
       if(this.state.firstCheck === 1){
-        return <Redirect to="/moreinfo" />
+        return <Redirect accessToken={this.state.accessToken} to="/moreinfo" />
       }
     };
     
@@ -90,16 +96,21 @@ class App extends React.Component {
     }
   }
 
+ 
+  
+ 
 
   render() {
     const { isLogin, userinfo } = this.state;
+    let url = new URL (window.location.href)
+    let path = url.pathname;
 
     return (
       <div className="root">
-        <Nav userinfo={userinfo} hanldeUserinfo={this.hanldeUserinfo.bind(this)}/>
+        <Nav isLogin={isLogin} userinfo={userinfo} hanldeUserinfo={this.hanldeUserinfo} />
       
         {
-          !isLogin ?
+          path === '/mypage' || path === '/Hello' || path ==='/login' || path ==='/signup' || path ==='/moreinfo' || path ==='/forgotpw' || path ==='/resetpw' || path ==='/terms' || path ==='/terms-local' ?
           <div className="videoWrapper"> 
             <video id="backgroundVideo" muted autoplay="" loop="loop" src="./resource/backgroundvideo.mp4" />
           </div>
@@ -112,13 +123,13 @@ class App extends React.Component {
         <Route path="/showdetail" render={() => ( <ClickedDataEntry></ClickedDataEntry> )}  />
           <Route path="/Hello" render={() => ( <Hello userinfo={this.state.userinfo} /> )}  />
           {/* <Route path="/ad" render={() => <Ad />} /> */}
-          <Route path="/login" render={() => ( <Login handleResponseSuccess={this.handleResponseSuccess.bind(this)} /> )}  />
-          <Route exact path="/show" render={() => <ShowPage />} />
+          <Route path="/login" render={() => ( <Login handleResponseSuccess={this.handleResponseSuccess} /> )}  />
+          <Route exact path="/show" render={() => <ShowPage accessToken={this.state.accessToken}/>} />
           <Route exact path="/addShow" render={() => <AddShow />} />
           <Route exact path="/forgotpw" render={() => <ForgotPw />} />
           <Route exact path="/signup" render={() => <Signup />} />
-          <Route exact path="/moreinfo" render={() => <Moreinfo />} />
-          <Route exact path="/mypage" render={() => <Mypage userinfo ={userinfo} WithdrawAccount={this.WithdrawAccount.bind(this)}handleLogout = {this.handleLogout.bind(this)}  />} />
+          <Route exact path="/moreinfo" render={() => <Moreinfo accessToken={this.state.accessToken}/>} />
+          <Route exact path="/mypage" render={() => <Mypage userinfo ={userinfo}  WithdrawAccount={this.WithdrawAccount}handleLogout = {this.handleLogout}  />} />
           <Route exact path="/resetpw" render={() => <ResetPw /> } />
           <Route exact path="/terms-default" render={() => <Terms /> } />
           <Route exact path="/terms-local" render={() => <Terms_local />} />

@@ -3,7 +3,6 @@ import { withRouter} from "react-router-dom";
 import axios from "axios";
 import './css/Signup.css'
 
-axios.defaults.withCredentials = true;
 class Signup extends React.Component {
   constructor(props) {
     super(props);
@@ -31,15 +30,11 @@ class Signup extends React.Component {
     }
     else{
       const { userId, password, username, email } = this.state;
+      console.log(userId)
       axios
-      .post("https://localhost:4000/signup", {userId, password, username, email}, {
-        headers: {
-          "Content-type": "application/json",
-          Accept: "application/json",
-        },
-        withCredentials: true
-      })
-      .then(() => this.props.history.push("/login"))
+      .post("https://localhost:8080/signUp", {userId, password, username, email})
+      .then((res) => {this.props.history.push("/login")
+    console.log(res)})
       .catch(err=>console.log(err))
     }
   };

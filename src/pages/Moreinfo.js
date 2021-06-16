@@ -2,15 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import './css/Moreinfo.css'
-axios.defaults.withCredentials = true;
 
 class Moreinfo extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            area: '',
-            genre: '',
+            area: '서울',
+            genre: '기타',
         }
         this.handleChangeGenre = this.handleChangeGenre.bind(this)
         this.handleChangeLocation = this.handleChangeLocation.bind(this)
@@ -31,11 +30,10 @@ class Moreinfo extends React.Component {
 
     handleSubmit = () => {
         const { area, genre } = this.state;
-        axios.post("https://localhost:4000/moreinfo", {area, genre}, {
+        console.log(this.props.accessToken,'access')
+        axios.post("https://localhost:8080/firstcheck", {area:1, genre}, {
             headers: {
                 authorization: `Bearer ${this.props.accessToken}`,
-                "content-type": "application/json",
-                Accept: "application/json"
             }
         })
         .then(() => this.props.history.push("/show"))

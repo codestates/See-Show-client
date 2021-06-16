@@ -29,25 +29,13 @@ class ClickedDataEntry extends React.Component {
     };
     this.reviewContent = this.reviewContent.bind(this);
     this.createReview = this.createReview.bind(this);
-    this.hanldeClickedApiData = this.hanldeClickedApiData.bind(this);
+    // this.hanldeClickedApiData = this.hanldeClickedApiData.bind(this);
   }
 
-  hanldeClickedApiData = () => {
-    //클릭한 공연의 상세 정보 데이터 불러오기.
-    // const { seq } = this.state.clickedDataSeq;
-    // axios
-    //   .get("https://localhost:4000/show/detail", seq, {
-    //     headers: {
-    //       "Content-type": "application/json",
-    //       Accept: "application/json",
-    //     },
-    //   })
-    //   .then((res) => {
-    //     this.setState({ data: res.body.data });
-    //     console.log(res);
-    //   })
-      // .catch((err) => console.log(err));
-  };
+  conponentWillMount(){
+
+    this.setState({clickedData : this.props.clickedData})
+  }
 
   reviewContent = (key) => (e) => {
     this.setState({ [key]: e.target.value });
@@ -59,7 +47,7 @@ class ClickedDataEntry extends React.Component {
     const { content, point } = this.state;
     axios
       .post(
-        "http://localhost:4000/review/create",
+        "http://localhost:8080/review/create",
         { seq, content, point },
         {
           headers: {
@@ -75,8 +63,7 @@ class ClickedDataEntry extends React.Component {
   };
 
   render() {
-    const { data } = this.state.data;
-    console.log(data)
+    
     return (
       <div className="cd-body">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin="anonymous"></script>
