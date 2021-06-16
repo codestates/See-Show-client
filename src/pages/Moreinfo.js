@@ -1,14 +1,15 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
-import './Moreinfo.css'
+import './css/Moreinfo.css'
+axios.defaults.withCredentials = true;
 
 class Moreinfo extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            location: '',
+            area: '',
             genre: '',
         }
         this.handleChangeGenre = this.handleChangeGenre.bind(this)
@@ -17,7 +18,7 @@ class Moreinfo extends React.Component {
 
     handleChangeLocation(e){
         this.setState({
-            location: e.target.value
+            area: e.target.value
         })
     }
 
@@ -29,29 +30,31 @@ class Moreinfo extends React.Component {
 
 
     handleSubmit = () => {
-        const { location, genre } = this.state;
-        axios.post("https://localhost:4000/moreinfo", this.state, {
+        const { area, genre } = this.state;
+        axios.post("https://localhost:8080/moreinfo", {area, genre}, {
             headers: {
+                authorization: `Bearer ${this.props.accessToken}`,
                 "content-type": "application/json",
                 Accept: "application/json"
-            },
+            }
         })
-        .then(() => this.props.history.push("/"))
+        .then(() => this.props.history.push("/show"))
         .catch(err=>console.log(err))
 
     }
 
     render() {
     return (
-        <div className='container'>
-            <div className='window-select'>
-                <div className='overlay'></div>
-                <div className='content'>
-                    <div className='welcome'>Personal Options</div>
-                    <div className='infoTable'>
+        <div className='moreinfo-body'>
+        <div className='moreinfo-container'>
+            <div className='moreinfo-window-select'>
+                <div className='moreinfo-overlay'></div>
+                <div className='moreinfo-content'>
+                    <div className='moreinfo-welcome'>Personal Options</div>
+                    <div className='moreinfo-infoTable'>
                     <form onSubmit={(e)=> e.preventDefault()}>
-                        <div className='local'>관심지역 선택</div>
-                            <select className='select-location' onChange={this.handleChangeLocation}>
+                        <div className='moreinfo-local'>관심지역 선택</div>
+                            <select className='moreinfo-select-location' onChange={this.handleChangeLocation}>
                                 <option value='서울'>서울특별시</option>
                                 <option value='경기'>경기도</option>
                                 <option value='강원'>강원도</option>
@@ -68,8 +71,8 @@ class Moreinfo extends React.Component {
                                 <option value='부산'>부산광역시</option>
                                 <option value='제주'>제주특별자치도</option>
                             </select>
-                        <div className='genre'>관심장르 선택</div>
-                            <select className='select-genre' onChange={this.handleChangeGenre}>
+                        <div className='moreinfo-genre'>관심장르 선택</div>
+                            <select className='moreinfo-select-genre' onChange={this.handleChangeGenre}>
                             <option value='뮤지컬'>뮤지컬</option>
                             <option value='콘서트'>콘서트</option>
                             <option value='연극'>연극</option>
@@ -79,11 +82,12 @@ class Moreinfo extends React.Component {
                             <option value='기타'>기타</option>
                             </select>
                     </form>
-                    <div className='spacing-PO'>관심지역과 관심장르를 선택해 주세요. 이 옵션은 나중에 마이페이지에서도 변경할 수 있습니다</div>
-                    <div> <Link to="/showpage"> <button className='choicebtn-login' type='submit' onClick={this.handleSubmit}>SUBMIT</button> </Link> </div>
+                    <div className='moreinfo-spacing-PO'>관심지역과 관심장르를 선택해 주세요. 이 옵션은 나중에 마이페이지에서도 변경할 수 있습니다</div>
+                    <div> <Link to="/showpage"> <button className='moreinfo-choicebtn-login' type='submit' onClick={this.handleSubmit}>SUBMIT</button> </Link> </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     )
     }

@@ -1,10 +1,26 @@
 import React, { useState } from "react";
+import axios from "axios"
 
 //img url 생성과 state에 set해주는 기능 필요.
 
 function AddShowInput({ handleInputValue, startdateFormChange }) {
   const [imgBase64, setImgBase64] = useState(""); // 파일 base64
   const [imgFile, setImgFile] = useState(null); //파일
+  const [imageUrl, setImageUrl] = useState(imgBase64);
+  const setFile = (e) => {
+    if (e.target.files[0]) {
+      const img = new FormData();
+      img.append("file", e.target.files[0]);
+      axios
+        .post("http://localhost:8080/upload", img)
+        .then((res) => {
+          setImageUrl(res.data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  };
 
   const handleChangeFile = (event) => {
     let reader = new FileReader();
@@ -43,6 +59,7 @@ function AddShowInput({ handleInputValue, startdateFormChange }) {
                 width: "150px",
                 height: "150px",
               }}
+              onChange={(e)=> setFile(e)}
             ></img> 
           </div> 
         ) : null}
@@ -106,6 +123,15 @@ function AddShowInput({ handleInputValue, startdateFormChange }) {
         <option value="대구">대구</option>
         <option value="전라">전라</option>
         <option value="광주">광주</option>
+      </select>
+      <select
+        className="input-line full-width realmName"
+        name="장르"
+        onChange={handleInputValue("realmName")}
+      >
+        <option value="뮤지컬">뮤지컬</option>
+        <option value="버스킹">버스킹</option>
+      
       </select>
     </div>
   );

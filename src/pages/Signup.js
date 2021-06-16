@@ -1,9 +1,8 @@
 import React from "react";
 import { withRouter} from "react-router-dom";
 import axios from "axios";
-import './Signup.css'
+import './css/Signup.css'
 
-axios.defaults.withCredentials = true;
 class Signup extends React.Component {
   constructor(props) {
     super(props);
@@ -12,10 +11,8 @@ class Signup extends React.Component {
       email: "",
       password: "",
       username: "",
-      errorMessage: "",
       passwordCheck : "",
-      genre : "",
-      area : ""
+      errorMessage: ""
     };
     this.handleInputValue = this.handleInputValue.bind(this);
   }
@@ -32,39 +29,38 @@ class Signup extends React.Component {
       this.setState({ errorMessage: "비밀번호가 일치하지 않습니다" });
     }
     else{
+      const { userId, password, username, email } = this.state;
+      console.log(userId)
       axios
-      .post("https://localhost:4000/signup", this.state, {
-        headers: {
-          "Content-type": "application/json",
-          Accept: "application/json",
-        },
-      })
-      .then(() => this.props.history.push("/"))
+      .post("https://localhost:8080/signUp", {userId, password, username, email})
+      .then((res) => {this.props.history.push("/login")
+    console.log(res)})
       .catch(err=>console.log(err))
     }
   };
 
   render() {
     return (
-      <div>
-          <div className='container'>
-            <div className='window'>
-              <div className='overlay'></div>
-              <div className='content'>
-                <div className='welcome'>Sign Up</div>
-                <div className='input-fields'>
+      <div className='signup-body'>
+          <div className='signup-container'>
+            <div className='signup-window'>
+              <div className='signup-overlay'></div>
+              <div className='signup-goback'><img id="btn-goback" src="../resource/back_light_arrow_icon_131562.png"></img></div>
+              <div className='signup-content'>
+                <div className='signup-welcome'>Sign Up</div>
+                <div className='signup-input-fields'>
                   <form onSubmit={(e)=> e.preventDefault()}>
-                    <input className='input-line full-width' type='userId' placeholder='ID' onChange={this.handleInputValue('userId')}></input>
-                    <input className='input-line full-width' type='email' placeholder='MAIL' onChange={this.handleInputValue('email')}></input>
-                    <input className='input-line full-width' type='username' placeholder='NICKNAME' onChange={this.handleInputValue('username')}></input>
-                    <input className='input-line full-width' type='password' placeholder='PASSWORD' onChange={this.handleInputValue('password')}></input>
-                    <input className='input-line full-width' type='password' placeholder='CONFIRM PASSWORD' onChange={this.handleInputValue('passwordCheck')}></input>
+                    <input className='signup-input-line full-width' type='userId' placeholder='ID' onChange={this.handleInputValue('userId')}></input>
+                    <input className='signup-input-line full-width' type='email' placeholder='MAIL' onChange={this.handleInputValue('email')}></input>
+                    <input className='signup-input-line full-width' type='username' placeholder='NICKNAME' onChange={this.handleInputValue('username')}></input>
+                    <input className='signup-input-line full-width' type='password' placeholder='PASSWORD' onChange={this.handleInputValue('password')}></input>
+                    <input className='signup-input-line full-width' type='password' placeholder='CONFIRM PASSWORD' onChange={this.handleInputValue('passwordCheck')}></input>
                     
-                    <div className='alert-box'>{this.state.errorMessage}</div>
+                    <div className='signup-alert-box'>{this.state.errorMessage}</div>
                   </form>
                 </div>
-                <div className='spacing'>or sign up with <span className='highlight'>Github</span></div>
-                <div><button className='choicebtn-login' type='submit' onClick={this.handleSignup}>SUBMIT</button></div>
+                <div className='signup-spacing-signup'>or sign up with <span className='signup-highlight'>Github</span></div>
+                <div><button className='signup-choicebtn-login' type='submit' onClick={this.handleSignup}>SUBMIT</button></div>
               </div>
             </div>
           </div>

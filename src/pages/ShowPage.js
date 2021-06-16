@@ -1,78 +1,250 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import SearchBar from "../Components/SearchBar";
 import DataList from "../Components/DataList";
-import ClickedDataEntry from "../Components/ClickedDataEntry"
+import Nav from "../pages/Nav";
+import ClickedDataEntry from "../Components/ClickedDataEntry";
+import RecommendDataList from "../Components/RecommendDataList";
+// import './ShowPage.css'
 
-axios.defaults.withCredentials = true;
 
 class ShowPage extends React.Component {
-  state = {
-    apiData: [
-      {
-        seq: { _text: '166695' },
-        title: { _text: '나의 친구, 그림책' },
-        startDate: { _text: '20210102' },
-        endDate: { _text: '20211231' },
-        place: { _text: 'ACC 어린이문화원' },
-        realmName: { _text: '미술' },
-        area: { _text: '광주' },
-        thumbnail: {
-          _text: 'http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif'
+  constructor(props) {
+    super(props);
+    this.state = {
+      apiData: [
+        {
+          seq: "166695",
+          title: "나의 친구, 그림책",
+          startDate: "20210102",
+          endDate: "20211231",
+          place: "ACC 어린이문화원",
+          realmName: "미술",
+          area: "광주",
+          thumbnail:
+            "http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif",
+          gpsX: "126.919994481568",
+          gpsY: "35.1469155857794",
         },
-        gpsX: { _text: '126.919994481568' },
-        gpsY: { _text: '35.1469155857794' }
-      },
-      {
-        seq: { _text: '167843' },
-        title: { _text: 'PMF 영아티스트 콘서트_이지언 첼로 리사이틀' },
-        startDate: { _text: '20210710' },
-        endDate: { _text: '20210710' },
-        place: { _text: 'PMF자양스테이션' },
-        realmName: { _text: '음악' },
-        area: { _text: '서울' },
-        thumbnail: {
-          _text: 'http://www.culture.go.kr/upload/rdf/21/06/rdf_202106081662354418.jpg'
+        {
+          seq: "167966",
+          title: "이현정 바이올린 독주회",
+          startDate: "20210703",
+          endDate: "20210703",
+          place: "영산양재홀",
+          realmName: "음악",
+          area: "서울",
+          thumbnail:
+            "http://www.culture.go.kr/upload/rdf/21/06/rdf_2021061113192585187.jpeg",
+          gpsX: "127.03840937755554",
+          gpsY: "37.48048582944657",
         },
-        gpsX: { _text: '127.08302634367884' },
-        gpsY: { _text: '37.53463130540217' }
-      },
-      
-    ],
-    clickedData: null,
-  };
-
-  hanldeApiData() {
-    axios
-      .get("https://localhost:4000/show")
-      .then((res) => {
-        this.setState({ apiData: res.data });
-      })
-      .catch((err) => console.log(err, "handleApiData axios err"));
+        {
+          seq: "167843",
+          title: "PMF 영아티스트 콘서트_이지언 첼로 리사이틀",
+          startDate: "20210710",
+          endDate: "20210710",
+          place: "PMF자양스테이션",
+          realmName: "음악",
+          area: "서울",
+          thumbnail:
+            "http://www.culture.go.kr/upload/rdf/21/06/rdf_202106081662354418.jpg",
+          gpsX: "127.08302634367884",
+          gpsY: "37.53463130540217",
+        },
+      ],
+      clickedData: null, //클릭한 데이터의 정보
+      clickedShowData: "", //클릭한 공연의 상세 정보
+      review: "", //클릭한 공연의 리뷰 리스트
+      recommendData: [
+        {
+          seq: "166695",
+          title: "나의 친구, 그림책",
+          startDate: "20210102",
+          endDate: "20211231",
+          place: "ACC 어린이문화원",
+          realmName: "미술",
+          area: "광주",
+          thumbnail:
+            "http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif",
+          gpsX: "126.919994481568",
+          gpsY: "35.1469155857794",
+        },
+        {
+          seq: "167843",
+          title: "PMF 영아티스트 콘서트_이지언 첼로 리사이틀",
+          startDate: "20210710",
+          endDate: "20210710",
+          place: "PMF자양스테이션",
+          realmName: "음악",
+          area: "서울",
+          thumbnail:
+            "http://www.culture.go.kr/upload/rdf/21/06/rdf_202106081662354418.jpg",
+          gpsX: "127.08302634367884",
+          gpsY: "37.53463130540217",
+        },
+      ],
+      area: "",
+      filteredData: null,
+    };
+    this.handleApiData = this.handleApiData.bind(this);
+    // this.handleRecommendData = this.handleRecommendData.bind(this);
+    this.getClickedApiData = this.getClickedApiData.bind(this);
+    this.resetClickedData = this.resetClickedData.bind(this);
+    this.getReview = this.getReview.bind(this);
+    this.hanldeAreaState = this.hanldeAreaState.bind(this);
   }
 
+  componentWillMount() {
+    console.log("Component WILL MOUNT!");
+    console.log(this.state.apiData);
+    this.handleApiData();
+    console.log(this.state.apiData);
+
+    // this.handleRecommendData();
+  }
+
+  handleApiData() {
+    axios.get("https://localhost:8080/recommend/location")
+    .then((res) => {
+      console.log(res)
+      this.setState({ apiData: res.data.showList });
+    })
+    // 공연 정보 데이터 불러오기.
+    // if(this.props.accessToken === null) {
+    //   axios
+    //   .get("https://localhost:8080/recommend/location")
+    //   .then((res) => {
+    //     console.log(res)
+    //     this.setState({ apiData: res.data.showList });
+    //   })
+    //   .then(res => axios.get("https://localhost:8080/recommend/genre"))
+    //   .then(res => {
+    //     console.log(res.data)
+    //     const { recommendData } = this.state.recommendData;
+    //     const newRecommendData = [...recommendData, res.data.list];
+    //     this.setState({ recommendData: newRecommendData });
+    //   })
+    //   console.log('getApi')
+    // }else{
+    //   axios
+    //   .get("https://localhost:8080/recommend/location", {  headers: {
+    //     authorization: `Bearer ${this.props.accessToken}`,
+
+    // }})
+    //   .then((res) => {
+    //     console.log(res,'res')
+
+    //     this.setState({ apiData: res.data.showList });
+    //   })
+    //   .catch((err) => console.log(err, "handleApiData err"));
+
+    // }
+    console.log('handleApi')
+   
+  }
+
+  // handleRecommendData() {
+  //     axios.get("https://localhost:8080/recommend/genre")
+  //     .then((res) => {
+  //       const { recommendData } = this.state.recommendData;
+  //       const newRecommendData = [...recommendData, res.data.list];
+  //       this.setState({ recommendData: newRecommendData });
+  //     })
+  //     .catch((err) => console.log(err));
+  // }
+
+  getClickedApiData = () => {
+    //클릭한 공연의 상세 정보 데이터 불러오기.
+    const { seq } = this.state.clickedDataSeq;
+    axios
+      .get("https://localhost:8080/show/detail", seq, {
+        headers: {
+          "Content-type": "application/json",
+          Accept: "application/json",
+        },
+      })
+      .then((res) => {
+        this.setState({ clickedShowData: res.body.data });
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
   setClickedData(data) {
+    //공연 상세정보 뿌려주기 위해 ClickedData setState.
     this.setState({ clickedData: data });
-    console.log(this.state.clickedData);
+    console.log(this.state.clickedData, "clicked Data");
+    this.getClickedApiData();
+    this.getReview();
+  }
+
+  resetClickedData() {
+    //상세보기 에서 뒤로가기 버튼 누를 때, clickedData reset.
+    this.setState({ clickedData: null });
+  }
+
+  getReview() {
+    const { seq } = this.state.clickedData;
+    axios
+      .get(
+        "https://localhost:8080/review/get",
+        { seq },
+      )
+      .then((res) => {
+        this.setState({ review: res.body.data });
+      })
+      .catch((err) => console.log(err, "getReview err"));
+  }
+
+  areaFiltered(e) {
+    const value = e.target.value;
+    this.setState({ area: value });
+    console.log(this.state);
+    const filteredData = this.state.apiData.filter(
+      (data) => data.area === this.state.area
+    );
+    this.setState({ filteredData: filteredData });
+    console.log(filteredData);
+  }
+
+  hanldeAreaState() {
+    console.log("filtered");
   }
 
   render() {
     return (
-        <div>
-        <SearchBar></SearchBar>
-        {this.state.clickedData === null ? (
-          <div>
-            
-              <DataList
-                datas={this.state.apiData}
-                handleClickedData={this.setClickedData.bind(this)}
-              ></DataList>
-            
+      <div className="show-body">
+        <div className="bodyWrapper">
+          <div className="searchWrapper">
+            <SearchBar areaFiltered={this.areaFiltered}></SearchBar>
           </div>
-        ) : <ClickedDataEntry data={this.state.clickedData}></ClickedDataEntry>}
-        {/* // 클릭한 공연 상세정보 출력 */}
-        {/* 상세정보에서 뒤로가기 버튼 누르면 clickedData = null 로 변경하는 코드 구현 필요. */}
+          <div className="mainstream">
+            {this.state.clickedData === null ? (
+              <div className="apidata">
+                <DataList
+                  datas={this.state.apiData}
+                  handleClickedData={this.setClickedData}
+                ></DataList>
+
+                <RecommendDataList
+                  recommendData={this.state.recommendData}
+                  handleClickedData={this.setClickedData}
+                ></RecommendDataList>
+              </div>
+            ) : (
+              <ClickedDataEntry
+                clickedDataSeq={this.state.clickedData.seq}
+                resetClickedData={this.resetClickedData}
+                review={this.state.review}
+                getReview={this.getReview}
+              ></ClickedDataEntry>
+            )}
+            {/* // 클릭한 공연 상세정보 출력 */}
+            {/* 상세정보에서 뒤로가기 버튼 누르면 clickedData = null 로 변경하는 코드 구현 필요. */}
+          </div>
         </div>
+      </div>
     );
   }
 }

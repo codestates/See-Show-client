@@ -1,32 +1,29 @@
-/* 지민이 테스트 위해 일단 대충 만짐... 수정하셔도 됩니다. */
-
-.showBox{
-    margin:40px 40px;
-    padding: 30px;
-    width: 20%;
-    display: inline;
-    flex-direction: row;
-    float: left;
-    border-radius: 5px;
-    box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
-    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
-    justify-content: center;
-    height: 80vh;
-
-    
+.show-body {
+    background-color: rgb(49, 49, 49);
+    display: grid;
 }
 
-.showBox_img{
-    position: relative;
-    float: left;
-    padding: 5px;
-    padding-right: 10px;
-    overflow: inherit;
-    box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
-       0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
-    
-   }
 
-   .right_description {
-       background-color: grey;
-   }
+
+
+
+.bodyWrapper {
+    background-color: #343434;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    grid-template-rows: auto;
+}
+
+/* .searchWrapper {
+    border: 2px solid white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 50%;
+} */
+
+.mainstream {
+    width: 100vw;
+}
