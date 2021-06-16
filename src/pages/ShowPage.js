@@ -327,6 +327,7 @@ class ShowPage extends React.Component {
             ) : (
               <ClickedDataEntry
               isLogin={this.props.isLogin}
+              accessToken={this.props.accessToken}
                 clickedData={this.state.clickedData}
                 resetClickedData={this.resetClickedData}
                 review={this.state.review}

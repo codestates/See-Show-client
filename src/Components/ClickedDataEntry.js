@@ -6,8 +6,8 @@ import axios from "axios";
 import Review from "../Components/Review";
 import MapMarker from "../Components/MapMarker";
 
-import { confirmAlert } from 'react-confirm-alert'; // Import
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 
 //ShowPage에서 공연 썸네일을 클릭했을 때 나오는 '해당 공연 상세 정보' 페이지 입니다.
 class ClickedDataEntry extends React.Component {
@@ -29,65 +29,67 @@ class ClickedDataEntry extends React.Component {
         gpsX: "127.08302634367884",
         gpsY: "37.53463130540217",
       },
-      reivewContent: "",
-      reviewPoint: "",
-      reviewId: "",
+      content: "너무 재밌어요~",
+      point: "5",
+      reviewId: 'DDH',
     };
     this.reviewContent = this.reviewContent.bind(this);
     this.createReview = this.createReview.bind(this);
     this.reviewConfirmHandler = this.reviewConfirmHandler.bind(this);
-    
+    this.handleInputValue = this.handleInputValue.bind(this);
+
     // this.hanldeClickedApiData = this.hanldeClickedApiData.bind(this);
   }
+  handleInputValue = (key) => (e) => {
+    this.setState({ [key]: e.target.value });
+    console.log(e.target.value);
+    console.log(this.state)
+  };
 
   conponentWillMount() {
-    console.log("dd");
-
     this.setState({ clickedData: this.props.clickedData });
-    console.log(this.state.clickedData);
+    console.log(this.state.clickedData,'componentwillmount-clickeddata');
   }
   reviewContent = (key) => (e) => {
     this.setState({ [key]: e.target.value });
   };
 
   createReview = () => {
-    // --------Routing 정보 확인
-    const { seq } = this.state.clickedDataSeq;
-    const { content, point } = this.state;
+     const { seq } =  this.state.clickedData;
+     const { content, point } =  this.state;
+    console.log(this.props.accessToken)
+
     axios
       .post(
-        "http://localhost:8080/review/create",
-        { seq, content, point },
-        {
+        "https://localhost:8080/review/create",
+        { seq, content, point },{
           headers: {
-            "Content-type": "application/json",
-            Accept: "application/json",
-          },
-        }
-      )
+              authorization: `Bearer ${this.props.accessToken}`,
+          }
+      })
       .then((res) => {
-        this.props.getReview();
+        console.log(res,'getReviewres')
+        // this.props.getReview();
       })
       .catch((err) => console.log(err));
   };
 
-  reviewConfirmHandler=() => {
+  reviewConfirmHandler = () => {
     confirmAlert({
-      title: '리뷰 작성은 로그인이 필요합니다. 로그인하시겠습니까?',
+      title: "리뷰 작성은 로그인이 필요합니다. 로그인하시겠습니까?",
       buttons: [
         {
-          label: '예',
+          label: "예",
           onClick: () => {
-           window.location.href='/login'
-          }
+            window.location.href = "/login";
+          },
         },
         {
-          label: '아니오',
-        }
-      ]
+          label: "아니오",
+        },
+      ],
     });
   };
-
 
   render() {
     return (
@@ -161,11 +163,11 @@ class ClickedDataEntry extends React.Component {
                   className="cd-show-review"
                   placeholder="리뷰를 작성해주세요"
                   type="text"
-                  onChange={this.reviewContent("reivewContent")}
+                  onChange={this.handleInputValue("reivewContent")}
                 ></input>
                 <select
                   className="cd-show-rating"
-                  onChange={this.reviewContent("reviewPoint")}
+                  onChange={this.handleInputValue("reviewPoint")}
                 >
                   <option value="" disabled selected>
                     별점 선택
@@ -176,18 +178,22 @@ class ClickedDataEntry extends React.Component {
                   <option value="2">★★</option>
                   <option value="1">★</option>
                 </select>
-                { !this.props.isLogin ?  
+                <div className="cd-show-review">
+                  <div className="reviewBox">
+                    <div>{this.state.reviewId}</div>
+                    <div>{this.state.reivewContent}</div>
+                    <div>{this.state.reviewPoint}</div>
+                  </div>
+                </div>
+                {!this.props.isLogin ? (
                   <button
                   className="cd-show-reviewSubmit"
                   onClick={this.reviewConfirmHandler}
                 >
                   등록
-                </button> : <button
-                  className="cd-show-reviewSubmit"
-                  onClick={this.createReview}
-                >
-                  등록
-                </button>}
+                </button>) : (<button className="cd-show-reviewSubmit" onClick={this.createReview}>등록</button>
+                )
+                }
               
               </div>
             </form>

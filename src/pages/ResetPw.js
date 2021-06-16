@@ -3,7 +3,6 @@ import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 import './css/ResetPw.css'
 
-axios.defaults.withCredentials = true;
 
 
 class ResetPw extends React.Component {
@@ -33,12 +32,8 @@ class ResetPw extends React.Component {
         } else if(newpw !== pwCheck) {
             this.setState({ errorMessage: "비밀번호가 일치하지 않습니다"});
         } else {
-            axios.post("https://localhost:8080/resetpw", {userId, password: newpw}, {
-                headers: {
-                    "Content-type": "application/json",
-                    Accept: "application/json"
-                },
-            })
+            axios.post("https://localhost:8080/changepw", {userId, password: newpw}
+            )
             .then(()=> this.props.history.push("/"))
             .catch(err=>console.log(err))
         }
