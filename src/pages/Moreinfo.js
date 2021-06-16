@@ -36,7 +36,7 @@ class Moreinfo extends React.Component {
                 authorization: `Bearer ${this.props.accessToken}`,
             }
         })
-        .then(() =>{ this.props.history.push("/Hello")})
+        .then(() =>{ this.props.history.push("/show")})
         .catch(err=>console.log(err))
 
     }
