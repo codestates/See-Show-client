@@ -3,19 +3,19 @@ import React from "react";
 import AddShowInput from "../Components/AddShowInput";
 import axios from "axios";
 import "./css/AddShow.css";
+import { withRouter } from 'react-router-dom';
 
 class AddShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      seq: "",
       title: "",
       startDate: "",
       endDate: "",
       place: "",
       realmName: "",
       area: "",
-      thumbnail: "",
+      thumbnail: "http://www.culture.go.kr/upload/rdf/21/06/rdf_202106081662354418.jpg",
       gpsX: "",
       gpsY: "",
       postCode: false,
@@ -54,17 +54,13 @@ class AddShow extends React.Component {
       if( !title || !startDate || !endDate || !realmName || !place || !area || !thumbnail || !gpsX || !gpsY){
         this.setState({ errorMessage: "모든 항목은 필수입니다" });
       } else{
-        axios.post("https://localhost:8080/addshow", {title, startDate, endDate, realmName, place, area, thumbnail, gpsX, gpsY},
-        {headers : { 
-          authorization: `Bearer ${this.props.accessToken}`,
-          "Content-type": "application/json",
-          Accept: "application/json",
-        },
-        withCredentials: true
-    })
-    .then(()=> this.props.history.push("/show"))//등록한 공연의 상세페이지로 연결해야함.
-    .catch(err => console.log(err))
-      }
+        axios.post("https://localhost:8080/show/posting", {title, startDate, endDate, realmName, place, area, thumbnail, gpsX, gpsY},
+    )
+    .then((res)=> {
+      this.props.history.push("/show")
+}
+  )//등록한 공연의 상세페이지로 연결해야함.
+}
 
       
    
@@ -92,4 +88,4 @@ class AddShow extends React.Component {
   }
 }
 
-export default AddShow;
+export default withRouter(AddShow)
