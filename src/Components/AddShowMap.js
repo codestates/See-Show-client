@@ -46,5 +46,5 @@ export default function MapMarker({handleGpsX}) {
   })
   };
 
-  return <div id="map" style={{ width: "30vw", height: "30vh" }}></div>;
+  return <div id="map" style={{ width: "65vw", height: "30vh" }}></div>;
 }
