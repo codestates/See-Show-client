@@ -25,7 +25,7 @@ class App extends React.Component {
     userinfo: null,
     accessToken: null,
     firstCheck: null,
-    userType: null,
+    usertype: null,
   };
   this.hanldeUserinfo = this.hanldeUserinfo.bind(this);
   this.handleLogout = this.handleLogout.bind(this);
@@ -66,14 +66,14 @@ class App extends React.Component {
  
   handleResponseSuccess(res) {
     // 사용자 정보를 호출, login state 변경.
-    const { accessToken, userType } = res.data;
-    this.setState({ accessToken, userType, isLogin: true });
-    if(res.data.firstCheck) {
-      this.setState({firstCheck: res.data.firstCheck});
+    const { accessToken, usertype } = res.data.data;
+    this.setState({ accessToken, usertype, isLogin: true });
+    if(res.data.data.firstCheck) {
+      this.setState({firstCheck: res.data.data.firstCheck});
       //만약  firstCheck가 1이라면 바로 실행하는 함수 만들어서 
       //moreinfo페이지로 넘어가게 하기.
       if(this.state.firstCheck === 1){
-        return <Redirect to="/moreinfo" />
+        return <Redirect accessToken={this.state.accessToken} to="/moreinfo" />
       }
     };
     
@@ -128,7 +128,7 @@ class App extends React.Component {
           <Route exact path="/addShow" render={() => <AddShow />} />
           <Route exact path="/forgotpw" render={() => <ForgotPw />} />
           <Route exact path="/signup" render={() => <Signup />} />
-          <Route exact path="/moreinfo" render={() => <Moreinfo />} />
+          <Route exact path="/moreinfo" render={() => <Moreinfo accessToken={this.state.accessToken}/>} />
           <Route exact path="/mypage" render={() => <Mypage userinfo ={userinfo}  WithdrawAccount={this.WithdrawAccount}handleLogout = {this.handleLogout}  />} />
           <Route exact path="/resetpw" render={() => <ResetPw /> } />
           <Route exact path="/terms-default" render={() => <Terms /> } />

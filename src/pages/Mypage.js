@@ -1,4 +1,6 @@
 import React from "react";
+import { Switch, Route, Redirect, withRouter,  } from "react-router-dom";
+
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
@@ -9,17 +11,17 @@ function Mypage(props) {
   //Userinfo의 정보가 없을 시, 로그인 페이지로 리다이렉트.
   //기능테스트를 위해 일시적으로 주석처리함.
 
-  // if (!userinfo) {
-  //   return (
-  //     <Route>
-  //       <Redirect
-  //         to={{
-  //           pathname: "/login",
-  //         }}
-  //       />
-  //     </Route>
-  //   );
-  // } else {
+  if (!userinfo) {
+    return (
+      <Route>
+        <Redirect
+          to={{
+            pathname: "/login",
+          }}
+        />
+      </Route>
+    );
+  } else {
     //server-userinfo에 뭐가오는건가...
 
 
@@ -56,6 +58,6 @@ function Mypage(props) {
     </div>
   );
 }
-// }
+}
 
 export default Mypage;

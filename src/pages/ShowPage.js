@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import axios from "axios";
 import SearchBar from "../Components/SearchBar";
 import DataList from "../Components/DataList";
@@ -12,7 +12,7 @@ class ShowPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      apiData: [
+      apiData: [ //location
         {
           seq: "166695",
           title: "나의 친구, 그림책",
@@ -25,32 +25,6 @@ class ShowPage extends React.Component {
             "http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif",
           gpsX: "126.919994481568",
           gpsY: "35.1469155857794",
-        },
-        {
-          seq: "167966",
-          title: "이현정 바이올린 독주회",
-          startDate: "20210703",
-          endDate: "20210703",
-          place: "영산양재홀",
-          realmName: "음악",
-          area: "서울",
-          thumbnail:
-            "http://www.culture.go.kr/upload/rdf/21/06/rdf_2021061113192585187.jpeg",
-          gpsX: "127.03840937755554",
-          gpsY: "37.48048582944657",
-        },
-        {
-          seq: "167843",
-          title: "PMF 영아티스트 콘서트_이지언 첼로 리사이틀",
-          startDate: "20210710",
-          endDate: "20210710",
-          place: "PMF자양스테이션",
-          realmName: "음악",
-          area: "서울",
-          thumbnail:
-            "http://www.culture.go.kr/upload/rdf/21/06/rdf_202106081662354418.jpg",
-          gpsX: "127.08302634367884",
-          gpsY: "37.53463130540217",
         },
       ],
       clickedData: null, //클릭한 데이터의 정보
@@ -70,29 +44,18 @@ class ShowPage extends React.Component {
           gpsX: "126.919994481568",
           gpsY: "35.1469155857794",
         },
-        {
-          seq: "167843",
-          title: "PMF 영아티스트 콘서트_이지언 첼로 리사이틀",
-          startDate: "20210710",
-          endDate: "20210710",
-          place: "PMF자양스테이션",
-          realmName: "음악",
-          area: "서울",
-          thumbnail:
-            "http://www.culture.go.kr/upload/rdf/21/06/rdf_202106081662354418.jpg",
-          gpsX: "127.08302634367884",
-          gpsY: "37.53463130540217",
-        },
       ],
       area: "",
       filteredData: null,
+      wh : ''
     };
     this.handleApiData = this.handleApiData.bind(this);
-    // this.handleRecommendData = this.handleRecommendData.bind(this);
-    this.getClickedApiData = this.getClickedApiData.bind(this);
+    this.setClickedData = this.setClickedData.bind(this);
     this.resetClickedData = this.resetClickedData.bind(this);
     this.getReview = this.getReview.bind(this);
     this.hanldeAreaState = this.hanldeAreaState.bind(this);
+    this.getClickedApiData = this.getClickedApiData.bind(this);
+    // this.setClicked = this.setClicked.bind(this);
   }
 
   componentWillMount() {
@@ -105,96 +68,73 @@ class ShowPage extends React.Component {
   }
 
   handleApiData() {
-    axios.get("https://localhost:8080/recommend/location")
-    .then((res) => {
-      console.log(res)
-      this.setState({ apiData: res.data.showList });
-    })
     // 공연 정보 데이터 불러오기.
-    // if(this.props.accessToken === null) {
-    //   axios
-    //   .get("https://localhost:8080/recommend/location")
-    //   .then((res) => {
-    //     console.log(res)
-    //     this.setState({ apiData: res.data.showList });
-    //   })
-    //   .then(res => axios.get("https://localhost:8080/recommend/genre"))
-    //   .then(res => {
-    //     console.log(res.data)
-    //     const { recommendData } = this.state.recommendData;
-    //     const newRecommendData = [...recommendData, res.data.list];
-    //     this.setState({ recommendData: newRecommendData });
-    //   })
-    //   console.log('getApi')
-    // }else{
-    //   axios
-    //   .get("https://localhost:8080/recommend/location", {  headers: {
-    //     authorization: `Bearer ${this.props.accessToken}`,
-
-    // }})
-    //   .then((res) => {
-    //     console.log(res,'res')
-
-    //     this.setState({ apiData: res.data.showList });
-    //   })
-    //   .catch((err) => console.log(err, "handleApiData err"));
-
-    // }
-    console.log('handleApi')
-   
-  }
-
-  // handleRecommendData() {
-  //     axios.get("https://localhost:8080/recommend/genre")
-  //     .then((res) => {
-  //       const { recommendData } = this.state.recommendData;
-  //       const newRecommendData = [...recommendData, res.data.list];
-  //       this.setState({ recommendData: newRecommendData });
-  //     })
-  //     .catch((err) => console.log(err));
-  // }
-
-  getClickedApiData = () => {
-    //클릭한 공연의 상세 정보 데이터 불러오기.
-    const { seq } = this.state.clickedDataSeq;
-    axios
-      .get("https://localhost:8080/show/detail", seq, {
-        headers: {
-          "Content-type": "application/json",
-          Accept: "application/json",
-        },
-      })
+    if(this.props.accessToken === null) {
+      axios.get("https://localhost:8080/recommend/location")
       .then((res) => {
-        this.setState({ clickedShowData: res.body.data });
-        console.log(res);
+        this.setState({ apiData: res.data.data.list });
+      })
+      .then(res => axios.get("https://localhost:8080/recommend/genre"))
+      .then(res => {
+        // const { recommendData } = this.state.recommendData;
+        // const newRecommendData = [...recommendData, res.data.list];
+        this.setState({ recommendData: res.data.data.list });
+      })
+      console.log('getApi')
+    }else{
+      axios
+      .get("https://localhost:8080/recommend/location", {  headers: {
+        authorization: `Bearer ${this.props.accessToken}`,
+    }})
+    .then(res => {
+      // const { recommendData } = this.state.recommendData;
+      // const newRecommendData = [...recommendData, res.data.list];
+      this.setState({ recommendData: res.data.data.list });
+    })
+  }
+}
+
+  getClickedApiData =  () => {
+    //클릭한 공연의 상세 정보 데이터 불러오기.
+    axios
+      .post("https://localhost:8080/show/detail", this.state.clickedData )
+      .then((res) => {
+        // console.log(res)
+        this.setState({ clickedShowData: res.data.data });
+        // console.log(res.data.data,'받아온 res.data');
       })
       .catch((err) => console.log(err));
   };
 
-  setClickedData(data) {
+  async setClickedData (data) {
     //공연 상세정보 뿌려주기 위해 ClickedData setState.
-    this.setState({ clickedData: data });
-    console.log(this.state.clickedData, "clicked Data");
-    this.getClickedApiData();
-    this.getReview();
+    await this.setState({clickedData: data });
+    await this.getClickedApiData(data);
+    // await this.getReview();
+    console.log('setClickedData')
   }
+
+
+  
 
   resetClickedData() {
     //상세보기 에서 뒤로가기 버튼 누를 때, clickedData reset.
-    this.setState({ clickedData: null });
+    // this.setState({ clickedData: null });
   }
 
   getReview() {
-    const { seq } = this.state.clickedData;
-    axios
-      .get(
-        "https://localhost:8080/review/get",
-        { seq },
-      )
-      .then((res) => {
-        this.setState({ review: res.body.data });
-      })
-      .catch((err) => console.log(err, "getReview err"));
+    console.log('getReview')
+  //   axios
+  //     .post(
+  //       "https://localhost:8080/review/get",
+  //       this.state.clickedData
+  //     )
+  //     .then((res) => {
+  //       console.log(res)
+  //       this.setState({ review: res.body.data });
+  //     })
+  //     .catch((err) => console.log(err, "getReview err"));
+  // }
   }
 
   areaFiltered(e) {
@@ -234,13 +174,12 @@ class ShowPage extends React.Component {
               </div>
             ) : (
               <ClickedDataEntry
-                clickedDataSeq={this.state.clickedData.seq}
+                clickedData={this.state.clickedData}
                 resetClickedData={this.resetClickedData}
                 review={this.state.review}
                 getReview={this.getReview}
               ></ClickedDataEntry>
             )}
-            {/* // 클릭한 공연 상세정보 출력 */}
             {/* 상세정보에서 뒤로가기 버튼 누르면 clickedData = null 로 변경하는 코드 구현 필요. */}
           </div>
         </div>
