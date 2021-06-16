@@ -6,7 +6,7 @@ import DataList from "../Components/DataList";
 import ClickedDataEntry from "../Components/ClickedDataEntry";
 import RecommendDataList from "../Components/RecommendDataList";
 
-// import './ShowPage.css'
+import './ShowPage.css'
 
 
 class ShowPage extends React.Component {
@@ -27,11 +27,141 @@ class ShowPage extends React.Component {
           gpsX: "126.919994481568",
           gpsY: "35.1469155857794",
         },
+        {
+          seq: "166695",
+          title: "나의 친구, 그림책",
+          startDate: "20210102",
+          endDate: "20211231",
+          place: "ACC 어린이문화원",
+          realmName: "미술",
+          area: "광주",
+          thumbnail:
+            "http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif",
+          gpsX: "126.919994481568",
+          gpsY: "35.1469155857794",
+        },
+        {
+          seq: "166695",
+          title: "나의 친구, 그림책",
+          startDate: "20210102",
+          endDate: "20211231",
+          place: "ACC 어린이문화원",
+          realmName: "미술",
+          area: "광주",
+          thumbnail:
+            "http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif",
+          gpsX: "126.919994481568",
+          gpsY: "35.1469155857794",
+        },
+        {
+          seq: "166695",
+          title: "나의 친구, 그림책",
+          startDate: "20210102",
+          endDate: "20211231",
+          place: "ACC 어린이문화원",
+          realmName: "미술",
+          area: "광주",
+          thumbnail:
+            "http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif",
+          gpsX: "126.919994481568",
+          gpsY: "35.1469155857794",
+        },
+        {
+          seq: "166695",
+          title: "나의 친구, 그림책",
+          startDate: "20210102",
+          endDate: "20211231",
+          place: "ACC 어린이문화원",
+          realmName: "미술",
+          area: "광주",
+          thumbnail:
+            "http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif",
+          gpsX: "126.919994481568",
+          gpsY: "35.1469155857794",
+        },
+        {
+          seq: "166695",
+          title: "나의 친구, 그림책",
+          startDate: "20210102",
+          endDate: "20211231",
+          place: "ACC 어린이문화원",
+          realmName: "미술",
+          area: "광주",
+          thumbnail:
+            "http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif",
+          gpsX: "126.919994481568",
+          gpsY: "35.1469155857794",
+        },
       ],
       clickedData: null, //클릭한 데이터의 정보
       clickedShowData: "", //클릭한 공연의 상세 정보
       review: [{reviewId : 1, content : '존잼', point : '5'}], //클릭한 공연의 리뷰 리스트
       recommendData: [
+        {
+          seq: "166695",
+          title: "나의 친구, 그림책",
+          startDate: "20210102",
+          endDate: "20211231",
+          place: "ACC 어린이문화원",
+          realmName: "미술",
+          area: "광주",
+          thumbnail:
+            "http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif",
+          gpsX: "126.919994481568",
+          gpsY: "35.1469155857794",
+        },
+        {
+          seq: "166695",
+          title: "나의 친구, 그림책",
+          startDate: "20210102",
+          endDate: "20211231",
+          place: "ACC 어린이문화원",
+          realmName: "미술",
+          area: "광주",
+          thumbnail:
+            "http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif",
+          gpsX: "126.919994481568",
+          gpsY: "35.1469155857794",
+        },
+        {
+          seq: "166695",
+          title: "나의 친구, 그림책",
+          startDate: "20210102",
+          endDate: "20211231",
+          place: "ACC 어린이문화원",
+          realmName: "미술",
+          area: "광주",
+          thumbnail:
+            "http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif",
+          gpsX: "126.919994481568",
+          gpsY: "35.1469155857794",
+        },
+        {
+          seq: "166695",
+          title: "나의 친구, 그림책",
+          startDate: "20210102",
+          endDate: "20211231",
+          place: "ACC 어린이문화원",
+          realmName: "미술",
+          area: "광주",
+          thumbnail:
+            "http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif",
+          gpsX: "126.919994481568",
+          gpsY: "35.1469155857794",
+        },
+        {
+          seq: "166695",
+          title: "나의 친구, 그림책",
+          startDate: "20210102",
+          endDate: "20211231",
+          place: "ACC 어린이문화원",
+          realmName: "미술",
+          area: "광주",
+          thumbnail:
+            "http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif",
+          gpsX: "126.919994481568",
+          gpsY: "35.1469155857794",
+        },
         {
           seq: "166695",
           title: "나의 친구, 그림책",
@@ -180,16 +310,19 @@ class ShowPage extends React.Component {
           <div className="mainstream">
             {this.state.clickedData === null ? (
               <div className="apidata">
-               <Link to='/addshow'> <button >공연 등록하기</button> </Link>
-                <DataList
-                  datas={this.state.apiData}
-                  handleClickedData={this.setClickedData}
-                ></DataList>
+                  <div className="dataWrapper">
+                      <div className='datatitle'>가까운 추천 공연</div>
+                       <div className="data1">
+                           <DataList datas={this.state.apiData} handleClickedData={this.setClickedData}></DataList>
+                       </div>
+                   </div>
 
-                <RecommendDataList
-                  recommendData={this.state.recommendData}
-                  handleClickedData={this.setClickedData}
-                ></RecommendDataList>
+                  <div className='dataWrapper'>
+                      <div className='datatitle'>관심사 추천 공연</div>
+                      <div className="data2">
+                           <RecommendDataList recommendData={this.state.recommendData} handleClickedData={this.setClickedData}></RecommendDataList>
+                       </div>
+                  </div>
               </div>
             ) : (
               <ClickedDataEntry

@@ -1,11 +1,12 @@
 import React from "react";
 import RecommendDataEntry from "./RecommendDataEntry";
+// import './DataList.css'
 
 const RecommendDataList = ({ recommendData, handleClickedData }) => {
 
 
   return (
-    <div className="">
+    <div className="datalistup">
       {recommendData.map((data) => (
         <RecommendDataEntry
           data={data}

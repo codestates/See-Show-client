@@ -1,8 +1,8 @@
 .searchbar-body {
-    margin-top: 10px;
+    padding-top: 10px;
     display: flex;
     border: none;
-    background-color: #0000007a;
+    background-color: #3d3d3d78;
     width: 100vw;
     justify-content: center;
     align-items: center;

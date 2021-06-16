@@ -99,7 +99,7 @@ class ClickedDataEntry extends React.Component {
         ></script>
         <div className="clicked_showBox">
           <div>
-            <button onClick={this.props.resetClickedData}>뒤로 가기</button>
+              <img id="btn-goback" src="./resource/back_light_arrow_icon_131562.png" onClick={this.props.resetClickedData} />
           </div>
           {/* 왼쪽 공연 썸네일 */}
           <div className="cd-show-left_thumbnail ">
@@ -181,12 +181,12 @@ class ClickedDataEntry extends React.Component {
                   className="cd-show-reviewSubmit"
                   onClick={this.reviewConfirmHandler}
                 >
-                  리뷰등록
+                  등록
                 </button> : <button
                   className="cd-show-reviewSubmit"
                   onClick={this.createReview}
                 >
-                  리뷰등록
+                  등록
                 </button>}
               
               </div>

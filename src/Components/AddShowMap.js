@@ -1,5 +1,7 @@
 /*global kakao */
 import React, { useEffect } from "react";
+import "./AddShowInput.css"
+
 
 export default function MapMarker({handleGpsX, place}) {
   useEffect(() => {
@@ -91,5 +93,5 @@ export default function MapMarker({handleGpsX, place}) {
   // })
   };
 
-  return <div id="map" style={{ width: "65vw", height: "30vh" }}></div>;
+  return <div id="map" style={{ width: "65vw", height: "30vh"}}></div>;
 }
