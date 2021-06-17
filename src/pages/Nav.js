@@ -17,8 +17,7 @@ function Nav(props) {
 
         <div className='buttonWrapper'>
             <Link to="/login"><button className="btn-default">LOGIN</button></Link>
-            <Link to="/show"><button className="btn-default" >SHOW</button></Link>
-
+            {/* <Link to="/show"><button className="btn-default" >SHOW</button></Link> */}
         </div>
       </div>
     );
@@ -32,11 +31,12 @@ function Nav(props) {
             alt="See SHOW"
           ></img>
         </Link>
-        <Link to="/mypage"><button className="btn-default">MY PAGE</button></Link>
-        <Link to="/show"><button className="btn-default">SHOW</button></Link>
-        <button className="btn-default" onClick={handleLogout}>
-          LOGOUT
-        </button>
+        <div className='buttonWrapper'>
+            <Link to='/addshow'> <button className="btn-default">Add show</button> </Link>
+            <Link to="/show"><button className="btn-default">SHOW list</button></Link>
+             <Link to="/mypage"><button className="btn-default">MY PAGE</button></Link>
+        <button className="btn-default" onClick={handleLogout}>LOGOUT</button>
+        </div>
       </div>
     );
   }

@@ -137,6 +137,17 @@ class AddShow extends React.Component {
         <div className="addshow-input-fields">
           <form onSubmit={(e) => e.preventDefault()}>
             <div className="addshow-contents-Wrapper">
+// <<<<<<< conflict_clear_1
+             <AddShowInput setPlace={this.setPlace} place={this.state.place} handleGpsX={this.handleGpsX} handleInputValue={this.handleInputValue} startdateFormChange={this.startdateFormChange}></AddShowInput>
+             {/* <Map handleGpsX={this.handleGpsX}></Map> */}
+             </div>
+             
+          </form>
+        </div>
+        <div className="addshow-submit-btn-area">
+          <div className="addshow-alert-box">{this.state.errorMessage}</div>
+          <button className="addshow-submit-btn" onClick={this.addShowConfirm}>SUBMIT</button>
+// =======
               <AddShowInput
                 setPlace={this.setPlace}
                 place={this.state.place}
@@ -165,6 +176,7 @@ class AddShow extends React.Component {
             >
               SUBMIT
             </button>
+// >>>>>>> dev
           </div>
         ) : (
           <div className="addshow-submit-btn-area">
