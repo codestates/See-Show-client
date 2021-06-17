@@ -191,14 +191,14 @@ class ShowPage extends React.Component {
     this.setState({ clickedArea: value });
     // console.log(value, "handleAreaState");
     // console.log(this.state.clickedArea, "state.area");
-    // this.areaFiltered(value)
+    this.areaFiltered(value)
   }
 
   handleInputValue(e) {
     const value = e.target.value;
     // console.log(value);
     this.setState({ search: e.target.value });
-    // this.areaFiltered(value)
+    this.areaFiltered(value)
   }
   resetCheck() {
     this.setState({ check: 0, clickedShowData: "", clickedData: null });

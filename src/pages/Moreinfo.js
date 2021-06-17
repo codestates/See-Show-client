@@ -38,12 +38,20 @@ class Moreinfo extends React.Component {
                 authorization: `Bearer ${this.props.accessToken}`,
             }
         })
+        .then(res => {
+            console.log(this.props.accessToken,'else 안')
+                 this.props.setStateUserInfo(area, genre)
+            // console.log(res.data.data.accessToken,'ddddd')
+            if(res.data.data.accessToken){
+                return this.props.setStateAccessToken(res.data.data.accessToken)
+            }
+        })
         .catch(err=>console.log(err))
-
     }
 
     render() {
-        console.log(this.state, '@@@@@@@@@')
+        // const {userinfo} =this.props.userinfo
+        // console.log(userinfo, '@@@@@@@@@')
     return (
         <div className='moreinfo-body'>
         <div className='moreinfo-container'>
