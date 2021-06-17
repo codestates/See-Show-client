@@ -77,11 +77,11 @@ class ShowPage extends React.Component {
   handleApiData() {
     // 공연 정보 데이터 불러오기.
     axios
-      .get("https://localhost:8080/recommend/location")
+      .get(process.env.domain+"/recommend/location")
       .then((res) => {
         this.setState({ apiData: res.data.data.list });
       })
-      .then((res) => axios.get("https://localhost:8080/recommend/genre"))
+      .then((res) => axios.get(process.env.domain+"/recommend/genre"))
       .then((res) => {
         // const { recommendData } = this.state.recommendData;
         // const newRecommendData = [...recommendData, res.data.list];
@@ -118,7 +118,7 @@ class ShowPage extends React.Component {
     //클릭한 공연의 상세 정보 데이터 불러오기.
     // console.log(this.state.clickedData, 'clickedData')
     axios
-      .post("https://localhost:8080/show/detail", this.state.clickedData)
+      .post(process.env.domain+"/show/detail", this.state.clickedData)
       .then((res) => {
         // console.log(res)
         this.setState({ clickedShowData: res.data.data });
@@ -158,9 +158,8 @@ class ShowPage extends React.Component {
 
   areaFiltered() {
     this.setState({ clickedData: null });
-    console.log(this.state.clickedArea, "buttonclicked");
     axios
-      .post("https://localhost:8080/show", {
+      .post(process.env.domain+"/show", {
         searchWord: this.state.clickedArea,
       })
       .then((res) => {

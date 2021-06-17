@@ -7,12 +7,6 @@ import './SearchedDataList.css'
 
 
 function SearchedDataList({datas,handleClickedData, resetCheck }){
-// console.log(state.datas)
-// const location = useLocation();
-// const datas = location.state.datas;
-// const handleClickedData = location.state.handleClickedData;
-
-// console.log(location.state)
 if(datas.length === 0){
   return(
     <div className="sc-body">

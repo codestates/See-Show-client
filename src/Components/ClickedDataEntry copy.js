@@ -47,7 +47,7 @@ class ClickedDataEntry extends React.Component {
     const { content, point } = this.state;
     axios
       .post(
-        "http://localhost:8080/review/create",
+        process.env.domain+"/review/create",
         { seq, content, point },
         {
           headers: {

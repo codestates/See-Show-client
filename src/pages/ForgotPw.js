@@ -31,7 +31,7 @@ class ForgotPw extends React.Component {
         } else {
             this.setState({isRequest: true, errorMessage: "비밀번호 재설정 메일을 발송하였습니다"});
 
-            axios.post("https://localhost:8080/findpw", {userId, email})
+            axios.post(process.env.domain+"/findpw", {userId, email})
             .then(()=> this.props.history.push("/"))
             .catch(err=>console.log(err))
         }

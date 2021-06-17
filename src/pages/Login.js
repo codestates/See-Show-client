@@ -29,7 +29,7 @@ class Login extends React.Component {
     if (!userId || !password) {
       this.setState({ errorMessage: "아이디와 비밀번호를 입력하세요" });
     } else {
-      axios.post("https://localhost:8080/login",{ userId, password },
+      axios.post(process.env.domain+"/login",{ userId, password },
         )
         .then((res) => {
           // console.log(res.data,'성공')
