@@ -102,9 +102,8 @@ function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX, place
             className="adr2"
             name="detailAddress"
             placeholder="주소를 검색해주세요."
-            required
-            value={place}
-            // onChange={startdateFormChange("place")}
+            // value={place}
+            onChange={handleInputValue("place")}
             // readOnly
           />
         </div>

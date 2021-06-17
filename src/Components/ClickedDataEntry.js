@@ -74,24 +74,27 @@ class ClickedDataEntry extends React.Component {
       .catch((err) => console.log(err));
   };
 
-  reviewConfirmHandler = () => {
-    confirmAlert({
-      title: "리뷰 작성은 로그인이 필요합니다. 로그인하시겠습니까?",
-      buttons: [
-        {
-          label: "예",
-          onClick: () => {
-            window.location.href = "/login";
+    reviewConfirmHandler = () => {
+      confirmAlert({
+        title: "리뷰 작성은 로그인이 필요합니다. 로그인하시겠습니까?",
+        // message: ,
+        buttons: [
+          {
+            label: '예',
+            onClick: () => {
+              window.location.href = "/login";
+            }
           },
-        },
-        {
-          label: "아니오",
-        },
-      ],
-    });
-  };
+          {
+            label: '아니오',
+          }
+        ]
+      });
+    };
 
   render() {
+        // const { title, startDate, endDate, realmName, place, area, thumbnail, gpsX, gpsY} = this.props.state
+
     return (
       <div className="cd-body">
         <script
