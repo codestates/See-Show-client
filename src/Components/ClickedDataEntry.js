@@ -108,11 +108,40 @@ class ClickedDataEntry extends React.Component {
           </div>
           {/* 왼쪽 공연 썸네일 */}
           <div className="cd-show-left_thumbnail ">
-            <img
-              className="cd-show-thumbnail"
-              src={this.props.clickedData.thumbnail}
-              alt=""
-            />
+            <img className="cd-show-thumbnail" src={this.props.clickedData.thumbnail} alt="" />
+            <div className="cd-show-reviewWrapper">
+              <div className="cd-show-review-title">공연 리뷰</div>
+              <div className="cd-show-review-tableIndex">
+                <div className="cd-review-tablelabel-info">작성자</div>
+                <div className="cd-review-tablelabel-contents">내용</div>
+                <div className="cd-review-tablelabel-rate">별점</div>
+              </div>
+                  <div className="cd-show-reviewBox">
+                    <div className="cd-review-info">{this.state.reviewId}</div>
+                    <div className="cd-review-contents">{this.state.reivewContent}</div>
+                    <div className="cd-review-rate">{this.state.reviewPoint}</div>
+                  </div>
+                  <div className="cd-show-reviewBox">
+                    <div className="cd-review-info">{this.state.reviewId}</div>
+                    <div className="cd-review-contents">{this.state.reivewContent}</div>
+                    <div className="cd-review-rate">{this.state.reviewPoint}</div>
+                  </div>
+                  <div className="cd-show-reviewBox">
+                    <div className="cd-review-info">{this.state.reviewId}</div>
+                    <div className="cd-review-contents">{this.state.reivewContent}</div>
+                    <div className="cd-review-rate">{this.state.reviewPoint}</div>
+                  </div>
+                  <div className="cd-show-reviewBox">
+                    <div className="cd-review-info">{this.state.reviewId}</div>
+                    <div className="cd-review-contents">{this.state.reivewContent}</div>
+                    <div className="cd-review-rate">{this.state.reviewPoint}</div>
+                  </div>
+                  <div className="cd-show-reviewBox">
+                    <div className="cd-review-info">{this.state.reviewId}</div>
+                    <div className="cd-review-contents">{this.state.reivewContent}</div>
+                    <div className="cd-review-rate">{this.state.reviewPoint}</div>
+                  </div>
+                </div>
           </div>
 
           {/* 오른쪽 공연 상세 정보 */}
@@ -152,49 +181,24 @@ class ClickedDataEntry extends React.Component {
             <div className="kakaomap">
               <MapMarker data={this.state.clickedData}></MapMarker>
             </div>
-            {/* <div className="cd-show-review" //----리뷰-----
-          >
-            {this.props.review.map((review) => {
-              
-              return <Review review={review}></Review>;
-            })} 
-          </div> */}
+
             <form onSubmit={(e) => e.preventDefault()}>
               <div className="cd-show-writeReview">
                 <div className="cd-show-reviewtitle">리뷰 등록</div>
-                <input
-                  className="cd-show-review"
-                  placeholder="리뷰를 작성해주세요"
-                  type="text"
-                  onChange={this.handleInputValue("reivewContent")}
-                ></input>
-                <select
-                  className="cd-show-rating"
-                  onChange={this.handleInputValue("reviewPoint")}
-                >
-                  <option value="" disabled selected>
-                    별점 선택
-                  </option>
+                <input className="cd-show-review" placeholder="리뷰를 작성해주세요" type="text" onChange={this.handleInputValue("reivewContent")}></input>
+                <select className="cd-show-rating" onChange={this.handleInputValue("reviewPoint")}>
+                  <option value="" disabled selected>별점 선택</option>
                   <option value="5">★★★★★</option>
                   <option value="4">★★★★</option>
                   <option value="3">★★★</option>
                   <option value="2">★★</option>
                   <option value="1">★</option>
                 </select>
-                <div className="cd-show-review">
-                  <div className="reviewBox">
-                    <div>{this.state.reviewId}</div>
-                    <div>{this.state.reivewContent}</div>
-                    <div>{this.state.reviewPoint}</div>
-                  </div>
-                </div>
+
                 {!this.props.isLogin ? (
-                  <button
-                  className="cd-show-reviewSubmit"
-                  onClick={this.reviewConfirmHandler}
-                >
-                  등록
-                </button>) : (<button className="cd-show-reviewSubmit" onClick={this.createReview}>등록</button>
+                  <button className="cd-show-reviewSubmit" onClick={this.reviewConfirmHandler}>등록</button>
+                  ) : (
+                   <button className="cd-show-reviewSubmit" onClick={this.createReview}>등록</button>
                 )
                 }
               

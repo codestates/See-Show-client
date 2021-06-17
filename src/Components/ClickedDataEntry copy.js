@@ -69,7 +69,7 @@ class ClickedDataEntry extends React.Component {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin="anonymous"></script>
       <div className="clicked_showBox">
       <div>
-          <button>뒤로 가기</button>
+      <img id="btn-goback" src="./resource/back_light_arrow_icon_131562.png" onClick={this.props.resetClickedData} />
         </div>
         {/* 왼쪽 공연 썸네일 */}
         <div className="cd-show-left_thumbnail ">
