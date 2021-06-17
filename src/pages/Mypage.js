@@ -27,7 +27,7 @@ function Mypage(props) {
 
     const withDraw = () => {
       confirmAlert({
-        title: "회원탈퇴,, 진심입니까?",
+        title: "회원탈퇴.. 진심입니까?",
         // message: '정말로, 진짜로, 회원 탈퇴 하시겠습니까?',
         buttons: [
           {
@@ -74,39 +74,37 @@ function Mypage(props) {
 // username: "jimin"
 
     return (
-      <div>
-        <center>
-          <h1>Mypage</h1>
-          <div className="">
-            <div className="">username :</div>
-            <div className="username">{userinfo.username}</div>
-          </div>
-
-          <div className="">
-            <div className="">userid :</div>
-            <div className="userid">{userinfo.userId}</div>
-          </div>
-
-          <div className="">
-            <div className="">useremail :</div>
-            <div className="useremail">{userinfo.email}</div>
-          </div>
-
-          <div className="">
-            <div className="">내가 선택한 선호 지역</div>
-            <div>{userinfo.area}</div>
-            <div className="">내가 선택한 선호 장르</div>
-            <div>{userinfo.genre}</div>
-            <Link to='/moreinfo'><button>선호 지역과 장르 변경하기</button></Link>
-          </div>
+      <div className="mypage-body">
+          <div className="mypage-title">마이페이지</div>
 
 
-          <div className="">
-            <div>비밀번호 변경</div>
-            <button onClick={ChangePw}>비밀번호 변경</button>
+        <div className="mypage-container">
+          <div className="mypage-contentsWrapper-left">
+              <div className="mypage-contents-title">닉네임 </div>
+              <div className="mypage-contents-title">아이디 </div>
+              <div className="mypage-contents-title">이메일 </div>
+              <div className="mypage-contents-title">선호 지역 </div>
+              <div className="mypage-contents-title">선호 장르 </div>
           </div>
-          <button onClick={withDraw}>회원 탈퇴</button>
-        </center>
+  
+  
+          <div className="mypage-contentsWrapper-right">
+            <div className="mypage-contents-info">{userinfo.username}</div>
+            <div className="mypage-contents-info">{userinfo.userId}</div>
+            <div className="mypage-contents-info">{userinfo.email}</div>
+            <div className="mypage-contents-info">{userinfo.area}</div>
+            <div className="mypage-contents-info">{userinfo.genre}</div>
+          </div>
+
+          </div>
+
+          <div className="mypage-btn-area">
+            <Link to='/moreinfo'><button className="mypage-btn">지역/장르 변경</button></Link>
+            <button className="mypage-btn" onClick={ChangePw}>비밀번호 변경</button>
+            <button className="mypage-btn" onClick={withDraw}>회원 탈퇴</button>
+          </div>
+          
+          
       </div>
     );
   }
