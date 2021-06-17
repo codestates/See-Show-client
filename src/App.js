@@ -137,16 +137,16 @@ await   axios
           accessToken: accessToken,
           usertype: usertype,
         })
-        this.props.history.push("/moreinfo")
+        this.handleUserinfo();
       } else {
         this.setState({
           isLogin: true,
           accessToken: accessToken,
           usertype: usertype,
-        })
-      }
-    })
-  }
+        });
+      };
+    });
+  };
   
   componentDidMount() {
     console.log('componentDidMount')

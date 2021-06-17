@@ -195,8 +195,8 @@ class ClickedDataEntry extends React.Component {
 
         </div>
         <div className="cd-show-btn-area">
-          <button className="cd-show-btn">Web site</button>
-          <button className="cd-show-btn">Tickets</button>
+          <button className="cd-show-btn" onClick={() => window.open(this.props.clickedShowData.url, '_blank')}>Web Site</button>
+          <button className="cd-show-btn" onClick={() => window.open(this.props.clickedShowData.placeUrl, '_blank')}>Tickets</button>
         </div>
       </div>
     );

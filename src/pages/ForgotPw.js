@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import './css/ForgotPw.css'
 
-axios.defaults.withCredentials = true;
 
 class ForgotPw extends React.Component {
     constructor(props) {
@@ -32,13 +31,7 @@ class ForgotPw extends React.Component {
         } else {
             this.setState({isRequest: true, errorMessage: "비밀번호 재설정 메일을 발송하였습니다"});
 
-            axios.post("https://localhost:8080/forgotpw", {userId, email}, {
-                headers: {
-                    "Content-type" : "application/json",
-                    Accept: "application/json",
-                },
-                withCredentials: true
-            })
+            axios.post("https://localhost:8080/findpw", {userId, email})
             .then(()=> this.props.history.push("/"))
             .catch(err=>console.log(err))
         }

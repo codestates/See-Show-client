@@ -222,6 +222,7 @@ class ShowPage extends React.Component {
                 resetClickedData={this.resetClickedData}
                 review={this.state.review}
                 getReview={this.getReview}
+                clickedShowData={this.state.clickedShowData}
               ></ClickedDataEntry>
             )}
           </div>
@@ -271,6 +272,7 @@ class ShowPage extends React.Component {
                   resetClickedData={this.resetClickedData}
                   review={this.state.review}
                   getReview={this.getReview}
+                  clickedShowData={this.state.clickedShowData}
                 ></ClickedDataEntry>
               )}
             </div>

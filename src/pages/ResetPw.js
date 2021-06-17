@@ -69,4 +69,4 @@ class ResetPw extends React.Component {
 }
 
 
-export default ResetPw
+export default withRouter(ResetPw)
