@@ -32,18 +32,24 @@ class Moreinfo extends React.Component {
 
     handleSubmit = () => {
         const { area, genre } = this.state;
-        console.log(this.props.accessToken,'access')
-        axios.post("https://localhost:8080/firstcheck", {area:area, genre}, {
+        axios.post(process.env.domain+"/firstcheck", {area:area, genre}, {
             headers: {
                 authorization: `Bearer ${this.props.accessToken}`,
             }
         })
+        .then(res => {
+                 this.props.setStateUserInfo(area, genre)
+            // console.log(res.data.data.accessToken,'ddddd')
+            if(res.data.data.accessToken){
+                return this.props.setStateAccessToken(res.data.data.accessToken)
+            }
+        })
         .catch(err=>console.log(err))
-
     }
 
     render() {
-        console.log(this.state, '@@@@@@@@@')
+        // const {userinfo} =this.props.userinfo
+        // console.log(userinfo, '@@@@@@@@@')
     return (
         <div className='moreinfo-body'>
         <div className='moreinfo-container'>

@@ -16,7 +16,7 @@ function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX, place
       const img = new FormData();
       img.append("file", e.target.files[0]);
       axios
-        .post("http://localhost:8080/upload", img)
+        .post(process.env.domain+"/upload", img)
         .then((res) => {
           setImageUrl(res.data);
         })
@@ -38,7 +38,7 @@ function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX, place
     };
     if (event.target.files[0]) {
       reader.readAsDataURL(event.target.files[0]); // 1. 파일을 읽어 버퍼에 저장
-      console.log(event.target.files[0]);
+
 
       setImgFile(event.target.files[0]); // 파일 상태 업데이트
     }

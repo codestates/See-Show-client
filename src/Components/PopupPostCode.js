@@ -16,12 +16,7 @@ const PopupPostCode = (props) => {
           }
           fullAddress += (extraAddress !== '' ? ` (${extraAddress})` : '');
         }
-        // console.log(data)
-        console.log(props)
         props.setPlace(fullAddress)
-        // console.log(fullAddress)  
-        // 입력된 주소
-        console.log(data.zonecode)
         props.onClose()
     }
  

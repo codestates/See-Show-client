@@ -17,7 +17,8 @@ class AddShow extends React.Component {
       place: "",
       realmName: "",
       area: "",
-      thumbnail: "",
+      thumbnail:
+        "",
       gpsX: "",
       gpsY: "",
       postCode: false,
@@ -37,18 +38,14 @@ class AddShow extends React.Component {
   startdateFormChange = (key) => (e) => {
     const newdate = e.target.value.replace(/-/gi, "");
     this.setState({ [key]: newdate });
-    console.log(e.target.value);
-    console.log(this.state);
   };
 
   handleInputValue = (key) => (e) => {
     this.setState({ [key]: e.target.value });
-    console.log(e.target.value);
-    console.log(this.state);
   };
   setPlace(data) {
     this.setState({ place: data });
-    console.log(this.state.place);
+
   }
 
   handleGpsX = (key, data) => {
@@ -81,7 +78,7 @@ class AddShow extends React.Component {
       this.setState({ errorMessage: "모든 항목은 필수입니다" });
     } else {
       axios
-        .post("https://localhost:8080/show/posting", {
+        .post(process.env.domain+"/show/posting", {
           title,
           startDate,
           endDate,

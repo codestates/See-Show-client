@@ -2,7 +2,6 @@ import React from "react";
 import { Switch, Route, Redirect, withRouter,  } from "react-router-dom";
 import Nav from "./pages/Nav";
 import Hello from "./pages/Hello";
-// import Ad from "./pages/Ad-cancel"
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Moreinfo from "./pages/Moreinfo";
@@ -34,46 +33,60 @@ class App extends React.Component {
   this.WithdrawAccount = this.WithdrawAccount.bind(this);
   this.handleResponseSuccess = this.handleResponseSuccess.bind(this);
   this.getToken = this.getToken.bind(this);
+  this.setStateAccessToken = this.setStateAccessToken.bind(this);
+  this.setStateUserInfo = this.setStateUserInfo.bind(this);
+}
+
+setStateUserInfo(area, genre){
+  const info = this.state.userinfo
+  this.setState({userinfo : { ...info, area, genre }})
 }
 
 
+async setStateAccessToken(data) {
 
+  await this.setState({accessToken : data})
+await axios
+  .get(process.env.domain+"/myPage", {headers: {
+    authorization: `Bearer ${this.state.accessToken}`,
+}})
+  .then((res) => {
+    this.setState({userinfo : res.data.data.userInfo })
+  })
 
+}
 
   handleLogout() {
-    axios.post("https://localhost:8080/logout").then((res) => {
+    axios.post(process.env.domain+"/logout").then((res) => {
       this.setState({ isLogin: false, accessToken:null });
       this.props.history.push("/Hello");
-      console.log('hnadle logout')
     });
   }
 
- async WithdrawAccount(){
-    console.log(this.state.accessToken,'withdraw')
-   await axios.post("https://localhost:8080/myPage", '', {
+  WithdrawAccount(){
+    axios.post(process.env.domain+"/myPage", '', {
       headers: {
         authorization: `Bearer ${this.state.accessToken}`,
       }
-  }).then((res)=> {console.log(res)
+  }).then((res)=> {
   this.setState({ isLogin: false, accessToken:null })
 })
   .then(() => this.props.history.push("/Hello"))
-  .catch(err=>console.log(err))
+  .catch(err=> console.log(err))
 
   }
 
   //3. 아래 함수에서 실행. Userinfo 받아오는 곳.
   handleUserinfo (){
-    console.log('mypage handleUserInfo clicked')
+
     axios
-    .get("https://localhost:8080/myPage", {headers: {
+    .get(process.env.domain+"/myPage", {headers: {
       authorization: `Bearer ${this.state.accessToken}`,
   }})
     .then((res) => {
-      // console.log(res.data.data.userInfo, 'handleUserinfo!!')
       this.setState({userinfo : res.data.data.userInfo })
-      console.log(this.state.userinfo, 'userinfo - 3.handleUserInfo')
-    }).then(()=>{
+    })
+    .then(()=>{
       if(this.state.userinfo.firstcheck === 1){
               this.props.history.push("/moreinfo") 
               }else{
@@ -101,35 +114,33 @@ class App extends React.Component {
     //     window.location.href = "/moreinfo";
     //   }
     // // };
-    console.log('handleREsponseSuccess')
     
     //moreinfo에서는 헤더에 토큰 넣어서 같이 보내고, 장르 로케이션값 바디에 실어 보내기
   }
   async getToken(authorizationCode){
-    await axios.post('https://localhost:8080/oauth', { authorizationCode: authorizationCode })
+    await axios.post(process.env.domain+'/oauth', { authorizationCode: authorizationCode })
     .then(res => {
       const {accessToken, usertype} = res.data.data;
       if(!!res.data.data.firstcheck){
-        console.log("if문 안임");
         this.setState({
           firstCheck : 1,
           isLogin: true,
           accessToken: accessToken,
           usertype: usertype,
         })
-        this.props.history.push("/moreinfo")
+        this.handleUserinfo();
       } else {
         this.setState({
           isLogin: true,
           accessToken: accessToken,
           usertype: usertype,
-        })
-      }
-    })
-  }
+        });
+      };
+    });
+  };
   
   componentDidMount() {
-    console.log('componentDidMount')
+
     const url = new URL(window.location.href)// https://localhost:3000/show?code=wqkfb1j3bfvo1evo
     const authorizationCode = url.searchParams.get('code')
     if (authorizationCode) {
@@ -143,7 +154,7 @@ class App extends React.Component {
 
   render() {
     const { isLogin, userinfo } = this.state;
-    // console.log(userinfo,'성공')
+
 
     let url = new URL (window.location.href)
     let path = url.pathname;
@@ -173,7 +184,7 @@ class App extends React.Component {
           <Route exact path="/show" render={() => <ShowPage isLogin={this.state.isLogin} accessToken={this.state.accessToken}/>} />
           <Route exact path="/forgotpw" render={() => <ForgotPw />} />
           <Route exact path="/signup" render={() => <Signup />} />
-          <Route exact path="/moreinfo" render={() => <Moreinfo accessToken={this.state.accessToken}/>} />
+          <Route exact path="/moreinfo" render={() => <Moreinfo setStateUserInfo={this.setStateUserInfo}handleUserinfo={this.handleUserinfo} setStateAccessToken={this.setStateAccessToken}accessToken={this.state.accessToken}/>} />
           <Route exact path="/mypage" render={() => <Mypage userinfo={this.state.userinfo} isLogin ={isLogin}  WithdrawAccount={this.WithdrawAccount} handleLogout = {this.handleLogout}  />} />
           <Route exact path="/resetpw" render={() => <ResetPw /> } />
           <Route exact path="/terms-default" render={() => <Terms /> } />

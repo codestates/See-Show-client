@@ -32,15 +32,11 @@ class AddShow extends React.Component {
   startdateFormChange = (key) => (e) => {
     const newdate = e.target.value.replace(/-/gi, "");
     this.setState({ [key]: newdate });
-    console.log(e.target.value);
-    console.log(this.state)
 
   };
 
   handleInputValue = (key) => (e) => {
     this.setState({ [key]: e.target.value });
-    console.log(e.target.value);
-    console.log(this.state)
   };
 
   handleSubmit = () => {
@@ -48,7 +44,7 @@ class AddShow extends React.Component {
       if( !title || !startDate || !endDate || !realmName || !place || !area || !thumbnail || !gpsX || !gpsY){
         this.setState({ errorMessage: "모든 항목은 필수입니다" });
       } else{
-        axios.post("https://localhost:8080/addshow", {title, startDate, endDate, realmName, place, area, thumbnail, gpsX, gpsY},
+        axios.post(process.env.domain+"/addshow", {title, startDate, endDate, realmName, place, area, thumbnail, gpsX, gpsY},
         {headers : { 
           authorization: `Bearer ${this.props.accessToken}`,
           "Content-type": "application/json",

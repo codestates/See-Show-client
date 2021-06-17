@@ -35,5 +35,5 @@ export default function MapMarker({data}) {
     marker.setMap(map);
   };
 
-  return <div id="map" style={{ width: "60vw", height: "30vh" }}></div>;
+  return <div id="map" style={{ width: "55vw", height: "30vh" }}></div>;
 }
