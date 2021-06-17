@@ -95,7 +95,7 @@
 
 .adr2 {
     margin-right: 10px;
-    width: 450px;
+    width: 465px;
     height: 30px;
 }
 
@@ -117,3 +117,6 @@
     border: none;
 }
 
+.addshow-alert {
+    color: white;
+}

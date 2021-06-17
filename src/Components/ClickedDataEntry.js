@@ -126,21 +126,6 @@ class ClickedDataEntry extends React.Component {
                     <div className="cd-review-contents">{this.state.reivewContent}</div>
                     <div className="cd-review-rate">{this.state.reviewPoint}</div>
                   </div>
-                  <div className="cd-show-reviewBox">
-                    <div className="cd-review-info">{this.state.reviewId}</div>
-                    <div className="cd-review-contents">{this.state.reivewContent}</div>
-                    <div className="cd-review-rate">{this.state.reviewPoint}</div>
-                  </div>
-                  <div className="cd-show-reviewBox">
-                    <div className="cd-review-info">{this.state.reviewId}</div>
-                    <div className="cd-review-contents">{this.state.reivewContent}</div>
-                    <div className="cd-review-rate">{this.state.reviewPoint}</div>
-                  </div>
-                  <div className="cd-show-reviewBox">
-                    <div className="cd-review-info">{this.state.reviewId}</div>
-                    <div className="cd-review-contents">{this.state.reivewContent}</div>
-                    <div className="cd-review-rate">{this.state.reviewPoint}</div>
-                  </div>
                 </div>
           </div>
 
@@ -204,9 +189,10 @@ class ClickedDataEntry extends React.Component {
               
               </div>
             </form>
+
+            
           </div>
 
-          <div className="지도"></div>
         </div>
         <div className="cd-show-btn-area">
           <button className="cd-show-btn">Web site</button>
