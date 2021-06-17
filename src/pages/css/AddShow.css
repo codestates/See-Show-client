@@ -1,7 +1,7 @@
 .addshow-container {
     background-color: rgb(56, 48, 38);
     width: 100vw;
-    height: 90vh;
+    height: 93vh;
 }
 
 .addshow-contents-Wrapper {
@@ -45,8 +45,8 @@
 }
 
 .addshow-submit-btn:hover {
-  background-color: #2EE59D;
-  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  background-color: #e56b2e;
+  box-shadow: 0px 15px 20px rgba(229, 107, 46, 0.4);
   color: #fff;
   transform: translateY(-7px);
 }

@@ -148,37 +148,20 @@ class AddShow extends React.Component {
             </div>
           </form>
         </div>
-        <div className="addshow-submit-btn-area">
-        <div className="addshow-alert-box">{this.state.errorMessage}</div>
+        
 
-        {!title ||
-        !startDate ||
-        !endDate ||
-        !realmName ||
-        !place ||
-        !area ||
-        !thumbnail ||
-        !gpsX ||
-        !gpsY ? (
+        {!title || !startDate || !endDate || !realmName || !place || !area || !thumbnail || !gpsX || !gpsY ? 
+        (
           <div className="addshow-submit-btn-area">
-            <button
-              className="addshow-submit-btn"
-              onClick={this.handleSubmit}
-            >
-              SUBMIT
-            </button>
+            <div className="addshow-alert-box">{this.state.errorMessage}</div>
+            <button className="addshow-submit-btn" onClick={this.handleSubmit}> SUBMIT </button>
           </div>
         ) : (
           <div className="addshow-submit-btn-area">
-            <button
-              className="addshow-submit-btn"
-              onClick={this.addShowConfirm}
-            >
-              SUBMIT
-            </button>
+            <div className="addshow-alert-box">{this.state.errorMessage}</div>
+            <button className="addshow-submit-btn" onClick={this.addShowConfirm}> SUBMIT </button>
           </div>
         )}
-      </div>
       </div>
     );
   }

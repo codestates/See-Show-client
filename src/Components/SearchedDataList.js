@@ -2,7 +2,7 @@ import React from "react";
 import {Link } from "react-router-dom";
 
 import SearchedDataListEntry from "./SearchedDataListEntry";
-import './DataList.css'
+import './SearchedDataList.css'
 // import {useLocation} from "react-router";
 
 
@@ -15,19 +15,22 @@ function SearchedDataList({datas,handleClickedData, resetCheck }){
 // console.log(location.state)
 if(datas.length === 0){
   return(
-    <div>
-      <button onClick={resetCheck}>추천 공연 리스트 다시보기</button>
-      <div style={{ color: "red" }}>해당 지역에는 공연이 없습니다.</div>
+    <div className="sc-body">
+      <img id="btn-goback" src="./resource/back_light_arrow_icon_131562.png" onClick={resetCheck} />
+      <div className="searchedlistup-cancel">
+      <div className="sc-notice">해당 지역 내에 등록된 공연을 찾을 수 없습니다</div>
+      </div>
     </div>
 
   )
 }else{
   return (
     
-    <div>
+    <div className="sc-body">
     {/* // <div className="datalistup"> */}
-    <div className="">
-        <button onClick={resetCheck}>뒤로가기</button>
+    <img id="btn-goback" src="./resource/back_light_arrow_icon_131562.png" onClick={resetCheck} />
+    <div className="searchedlistup">
+        
       {datas.map((data) => (
         <SearchedDataListEntry
           data={data}

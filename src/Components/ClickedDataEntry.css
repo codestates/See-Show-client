@@ -3,7 +3,7 @@
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
     width: 100vw;
-    height: 90vh;
+    height: 95vh;
 }
 
 @keyframes gradient {
@@ -38,8 +38,75 @@
 }
 
 .cd-show-thumbnail {
-    width: 70%;
+    width: 300px;
+    height: 400px;
 }
+
+.cd-show-reviewWrapper{
+    background-color: #00000063;
+    margin-top: 20px;
+    margin-right: 30px;
+    height: 200px;
+}
+
+.cd-show-review-title {
+    background-color: #000000;
+    font-family: 'Do Hyeon';
+    font-size: 2rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.cd-show-review-tableIndex {
+    display: flex;
+    justify-content: space-between;
+    background-color: #252525;
+    margin-bottom: 5px;
+}
+
+.cd-review-tablelabel-info{
+    text-align: center;
+    width: 100px;
+}
+.cd-review-tablelabel-contents{
+    text-align: center;
+    width: 370px;
+}
+.cd-review-tablelabel-rate{
+    text-align: center;
+    width: 50px;
+}
+
+.cd-show-reviewBox {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cd-review-info {
+    width: 100px;
+    height: 1rem;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.cd-review-contents {
+    width: 370px;
+    height: 1rem;
+    overflow: scroll;
+    margin-bottom: 10px;
+}
+
+.cd-review-rate {
+    width: 50px;
+    height: 1rem;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+
+
+
+
 
 
 /* 오른쪽 제어 (공연 정보, 지도 등) */
@@ -149,8 +216,8 @@
 }
 
 .cd-show-btn:hover {
-    background-color: #2EE59D;
-    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    background-color: #e56b2e;
+    box-shadow: 0px 15px 20px rgba(229, 107, 46, 0.4);
     color: #fff;
     transform: translateY(-7px);
   }

@@ -189,7 +189,6 @@ await   axios
         <Route path="/addshow" render={() => ( <AddShow accessToken={this.state.accessToken}></AddShow> )}  />
         <Route path="/showdetail" render={() => ( <ClickedDataEntry></ClickedDataEntry> )}  />
           <Route path="/Hello" render={() => ( <Hello /> )}  />
-          {/* <Route path="/ad" render={() => <Ad />} /> */}
           <Route path="/login" render={() => ( <Login firstCheck={userinfo.firstcheck}handleResponseSuccess={this.handleResponseSuccess} handleUserinfo={this.handleUserinfo}/> )}  />
           <Route exact path="/show" render={() => <ShowPage isLogin={this.state.isLogin} accessToken={this.state.accessToken}/>} />
           <Route exact path="/forgotpw" render={() => <ForgotPw />} />
