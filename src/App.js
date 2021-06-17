@@ -118,7 +118,7 @@ await axios
     //moreinfo에서는 헤더에 토큰 넣어서 같이 보내고, 장르 로케이션값 바디에 실어 보내기
   }
   async getToken(authorizationCode){
-    await axios.post('https://localhost:8080/oauth', { authorizationCode: authorizationCode })
+    await axios.post(process.env.domain+'/oauth', { authorizationCode: authorizationCode })
     .then(res => {
       const {accessToken, usertype} = res.data.data;
       if(!!res.data.data.firstcheck){

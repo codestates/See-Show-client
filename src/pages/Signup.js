@@ -31,7 +31,7 @@ class Signup extends React.Component {
     else{
       const { userId, password, username, email } = this.state;
       axios
-      .post("https://localhost:8080/signUp", {userId, password, username, email})
+      .post(process.env.domain+"/signUp", {userId, password, username, email})
       .then((res) => {this.props.history.push("/login")})
       .catch(err=>console.log(err))
     }

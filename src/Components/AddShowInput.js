@@ -16,7 +16,7 @@ function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX, place
       const img = new FormData();
       img.append("file", e.target.files[0]);
       axios
-        .post("http://localhost:8080/upload", img)
+        .post(process.env.domain+"/upload", img)
         .then((res) => {
           setImageUrl(res.data);
         })
