@@ -6,7 +6,7 @@ function SearchBar({areaFiltered, hanldeAreaState, handleInputValue}){
       <div className="searchbar-body">
 
         <input class="searchbar-form-search" type="text" size="25" placeholder="공연 정보 검색" onChange={handleInputValue}/>
-        <button className="searchbar-form-button"><img class="searchbtn" src="/resource/icons/search.png"></img></button>
+        <button onClick={areaFiltered} className="searchbar-form-button"><img class="searchbtn" src="/resource/icons/search.png"></img></button>
         
 
           <select className="select-search-location" onChange={hanldeAreaState}>
