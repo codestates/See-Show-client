@@ -1,6 +1,5 @@
 .add-body {
     padding: 30px;
-
 }
 
 .add-bigtitle {
@@ -15,7 +14,7 @@
 
 .add-title {
     color: white;
-    font-family: "Jua";
+    font-family: "Do Hyeon";
     font-size: 2rem;
     margin-left: 10px;
     margin-right: 10px;
@@ -36,7 +35,6 @@
 
 
 .add-left {
-    border: 2px solid yellow;
     width: 35%;
     display: flex;
     justify-content: center;
@@ -44,7 +42,6 @@
     text-align: center;
 }
 .add-thumbnail-Wrapper {
-    border: 2px solid blue;
     justify-content: center;
     text-align: center;
     align-items: center;
@@ -53,6 +50,17 @@
 .add-thumbnail {
     width: 300px;
     height: 400px;
+}
+
+.add-thumbnail-holder {
+    width: 300px;
+    height: 400px;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
 }
 
 .add-thumbnail-upload {
@@ -65,9 +73,6 @@
     margin-top: 5px;
     height: 23px;
 }
-
-
-
 
 
 
@@ -88,15 +93,16 @@
     margin-bottom: 10px;
 }
 
-.adr1 {
-    width: 270px;
-    height: 27px;
+.adr2 {
+    margin-right: 10px;
+    width: 450px;
+    height: 30px;
 }
 
-.adr2 {
-    margin-left: 10px;
-    width: 255px;
-    height: 27px;
+.adr-search-btn {
+    border: none;
+    width: 80px;
+    height: 30px;
 }
 
 .add-show-location {
@@ -110,3 +116,4 @@
     height: 30px;
     border: none;
 }
+

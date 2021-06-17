@@ -52,6 +52,8 @@
 
 // export default MapContainer;
 import React, { useEffect } from "react";
+import "./AddShowInput.css"
+
 
 export default function MapMarker({handleGpsX}) {
   useEffect(() => {
@@ -98,5 +100,9 @@ export default function MapMarker({handleGpsX}) {
   })
   };
 
+// <<<<<<< conflict_clear_1
+  return <div id="map" style={{ width: "65vw", height: "30vh"}}></div>;
+// =======
   return <div id="map" style={{ width: "50vw", height: "50vh" }}></div>;
+// >>>>>>> dev
 }

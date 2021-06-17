@@ -1,0 +1,18 @@
+.datalistup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.showBox_img {
+    width: 70%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.recommendShowBox_img {
+    width: 70%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

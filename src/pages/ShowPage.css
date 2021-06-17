@@ -1,29 +1,50 @@
 .show-body {
-    background-color: rgb(49, 49, 49);
+    background-color: #111111;
     display: grid;
+    height: 100vh;
+    overflow-x: hidden;
 }
-
-
-
-
-
-.bodyWrapper {
-    background-color: #343434;
-    width: 100vw;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    grid-template-rows: auto;
-}
-
-/* .searchWrapper {
-    border: 2px solid white;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 50%;
-} */
 
 .mainstream {
     width: 100vw;
+}
+
+.show-add-btn-area {
+    background-color: #393939;
+    height: 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.show-add-btn {
+    border: none;
+    border-radius: 5px;
+    margin-right: 20px;
+    height: 25px;
+}
+
+.datatitle {
+    margin-top: 5px;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: white;
+    font-family: 'Do Hyeon';
+    font-size: 2rem;
+    background-color: rgba(0, 0, 0, 0.587);
+}
+
+
+
+.data1 {
+    background-color: #3d3d3d78;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.data2 {
+    background-color: #3d3d3d78;
+    padding-left: 30px;
+    padding-right: 30px;
 }
