@@ -23,29 +23,37 @@ class App extends React.Component {
     super(props);
   this.state = {
     isLogin: false,
-    userinfo: null,
+    userinfo: {firstCheck : 1},
     accessToken: null,
     firstCheck: null,
     usertype: null,
   };
-  this.hanldeUserinfo = this.hanldeUserinfo.bind(this);
+  this.handleUserinfo = this.handleUserinfo.bind(this);
   this.handleLogout = this.handleLogout.bind(this);
   this.WithdrawAccount = this.WithdrawAccount.bind(this);
   this.handleResponseSuccess = this.handleResponseSuccess.bind(this);
   this.getToken = this.getToken.bind(this);
 }
 
-  hanldeUserinfo (){
-    axios.get("https://localhost:/mypage").then((res) => {
-      this.setState({userinfo : res.data.userinfo })
-      this.props.history.push("/mypage");
+  handleUserinfo (){
+    console.log('mypage handleUserInfo clicked')
+    axios
+    .get("https://localhost:8080/myPage", {  headers: {
+      authorization: `Bearer ${this.state.accessToken}`,
+  }})
+    .then((res) => {
+      console.log(res.data.data.userInfo)
+      this.setState({userinfo : res.data.data.userInfo })
+      console.log(this.state.userinfo)
     });
   }
 
 
+
+
   handleLogout() {
     axios.post("https://localhost:8080/logout").then((res) => {
-      this.setState({ isLogin: false, userinfo: null, accessToken:null });
+      this.setState({ isLogin: false, userinfo: {firstCheck : 1}, accessToken:null });
       this.props.history.push("/Hello");
       console.log('hnadle logout')
     });
@@ -122,7 +130,7 @@ class App extends React.Component {
 
     return (
       <div className="root">
-        <Nav accessToken={this.state.accessToken} isLogin={isLogin} userinfo={userinfo} hanldeUserinfo={this.hanldeUserinfo} handleLogout = {this.handleLogout} />
+        <Nav accessToken={this.state.accessToken} isLogin={isLogin} userinfo={userinfo} handleLogout = {this.handleLogout} />
       
         {
           path === '/mypage' || path === '/Hello' || path ==='/login' || path ==='/signup' || path ==='/moreinfo' || path ==='/forgotpw' || path ==='/resetpw' || path ==='/terms' || path ==='/terms-local' ?
@@ -139,12 +147,12 @@ class App extends React.Component {
         <Route path="/showdetail" render={() => ( <ClickedDataEntry></ClickedDataEntry> )}  />
           <Route path="/Hello" render={() => ( <Hello /> )}  />
           {/* <Route path="/ad" render={() => <Ad />} /> */}
-          <Route path="/login" render={() => ( <Login handleResponseSuccess={this.handleResponseSuccess} /> )}  />
+          <Route path="/login" render={() => ( <Login firstCheck={userinfo.firstcheck}handleResponseSuccess={this.handleResponseSuccess} handleUserinfo={this.handleUserinfo}/> )}  />
           <Route exact path="/show" render={() => <ShowPage isLogin={this.state.isLogin} accessToken={this.state.accessToken}/>} />
           <Route exact path="/forgotpw" render={() => <ForgotPw />} />
           <Route exact path="/signup" render={() => <Signup />} />
           <Route exact path="/moreinfo" render={() => <Moreinfo accessToken={this.state.accessToken}/>} />
-          <Route exact path="/mypage" render={() => <Mypage isLogin ={isLogin}  WithdrawAccount={this.WithdrawAccount} handleLogout = {this.handleLogout}  />} />
+          <Route exact path="/mypage" render={() => <Mypage userinfo={this.state.userinfo} isLogin ={isLogin}  WithdrawAccount={this.WithdrawAccount} handleLogout = {this.handleLogout}  />} />
           <Route exact path="/resetpw" render={() => <ResetPw /> } />
           <Route exact path="/terms-default" render={() => <Terms /> } />
           <Route exact path="/terms-local" render={() => <Terms_local />} />

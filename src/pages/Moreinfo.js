@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom'
 import axios from 'axios'
 import './css/Moreinfo.css'
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 
 class Moreinfo extends React.Component {
     constructor(props) {
@@ -36,7 +38,6 @@ class Moreinfo extends React.Component {
                 authorization: `Bearer ${this.props.accessToken}`,
             }
         })
-        .then(() =>{ this.props.history.push("/show")})
         .catch(err=>console.log(err))
 
     }
@@ -82,7 +83,7 @@ class Moreinfo extends React.Component {
                             </select>
                     </form>
                     <div className='moreinfo-spacing-PO'>관심지역과 관심장르를 선택해 주세요. 이 옵션은 나중에 마이페이지에서도 변경할 수 있습니다</div>
-                    <div> <Link to="/showpage"> <button className='moreinfo-choicebtn-login' type='submit' onClick={this.handleSubmit}>SUBMIT</button> </Link> </div>
+                    <div> <Link to="/mypage"> <button className='moreinfo-choicebtn-login' type='submit' onClick={this.handleSubmit}>SUBMIT</button> </Link> </div>
                     </div>
                 </div>
             </div>

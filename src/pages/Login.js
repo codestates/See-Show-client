@@ -31,8 +31,15 @@ class Login extends React.Component {
         )
         .then((res) => {
           this.props.handleResponseSuccess(res);
-          this.props.history.push("/moreinfo") 
+          this.props.handleUserinfo()
           //handleResponse에서 리다이렉트
+        })
+        .then(res=>{
+          if(this.props.firstCheck === 1){
+          this.props.history.push("/moreinfo") 
+          }else{
+          this.props.history.push("/show") 
+          }
         })
         .catch((err) => console.log(err));
     }
@@ -43,7 +50,7 @@ class Login extends React.Component {
       <div className='login-container'>
         <div className='login-window'>
          <div className='login-overlay'></div>
-         <div className='login-goback'><img id="btn-goback" src="./resource/back_light_arrow_icon_131562.png"></img></div>
+         <div className='login-goback' onClick={()=> window.location.href = "/"}><img id="btn-goback" src="./resource/back_light_arrow_icon_131562.png"></img></div>
          <div className='login-content'>
             <div className='login-welcome'>Hello There!</div>
             <div className='login-input-fields'>

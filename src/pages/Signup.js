@@ -45,7 +45,7 @@ class Signup extends React.Component {
           <div className='signup-container'>
             <div className='signup-window'>
               <div className='signup-overlay'></div>
-              <div className='signup-goback'><img id="btn-goback" src="../resource/back_light_arrow_icon_131562.png"></img></div>
+              <div className='signup-goback' onClick={()=> window.location.href = "/"}><img id="btn-goback" src="../resource/back_light_arrow_icon_131562.png"></img></div>
               <div className='signup-content'>
                 <div className='signup-welcome'>Sign Up</div>
                 <div className='signup-input-fields'>

@@ -86,7 +86,7 @@ class ClickedDataEntry extends React.Component {
             }
           },
           {
-            label: '아니오',
+            label: '아니요',
           }
         ]
       });
