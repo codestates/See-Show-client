@@ -17,8 +17,7 @@ class AddShow extends React.Component {
       place: "",
       realmName: "",
       area: "",
-      thumbnail:
-        "http://www.culture.go.kr/upload/rdf/21/06/rdf_202106081662354418.jpg",
+      thumbnail: "",
       gpsX: "",
       gpsY: "",
       postCode: false,
