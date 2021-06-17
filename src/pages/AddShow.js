@@ -95,14 +95,13 @@ class AddShow extends React.Component {
         })
         .then((res) => {
           this.props.history.push("/show");
-        }); //등록한 공연의 상세페이지로 연결해야함.
+        }); 
     }
   };
 
   addShowConfirm = () => {
     confirmAlert({
       title: "공연을 등록하시겠습니까?",
-      // message: '정말로, 진짜로, 회원 탈퇴 하시겠습니까?',
       buttons: [
         {
           label: "예",
