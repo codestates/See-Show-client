@@ -1,32 +1,77 @@
-/* 지민이 테스트 위해 일단 대충 만짐... 수정하셔도 됩니다. */
-
-.showBox{
-    margin:40px 40px;
-    padding: 30px;
-    width: 20%;
-    display: inline;
-    flex-direction: row;
-    float: left;
-    border-radius: 5px;
-    box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
-    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
-    justify-content: center;
-    height: 80vh;
-
-    
+.show-body {
+    background-color: #111111;
+    display: grid;
+    height: 100vh;
+    overflow-x: hidden;
 }
 
-.showBox_img{
-    position: relative;
-    float: left;
-    padding: 5px;
-    padding-right: 10px;
-    overflow: inherit;
-    box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
-       0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
-    
-   }
+.mainstream {
+    width: 100vw;
+    animation: scroll 70s linear infinite;
+    background: url("https://images.unsplash.com/photo-1465146633011-14f8e0781093?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80"), #111111;
+    color: #eee;
+    height: 100vh;
+    min-width: 360px;
+    width: 100%;
+    perspective: 1000px;
+    perspective-origin: 50% 50%;
+}
 
-   .right_description {
-       background-color: grey;
+@keyframes scroll {
+    100%{
+     background-position:0px -3000px;
    }
+ }
+ 
+ @media (prefers-reduced-motion) {
+   .mainstream {
+     animation: scroll 200s linear infinite;
+   }
+ }
+
+
+
+
+
+
+
+
+.show-add-btn-area {
+    background-color: #393939;
+    height: 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.show-add-btn {
+    border: none;
+    border-radius: 5px;
+    margin-right: 20px;
+    height: 25px;
+}
+
+.datatitle {
+    margin-top: 5px;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: white;
+    font-family: 'Do Hyeon';
+    font-size: 2rem;
+    background-color: rgba(0, 0, 0, 0.587);
+}
+
+
+
+.data1 {
+    background-color: #3d3d3d78;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.data2 {
+    background-color: #3d3d3d78;
+    padding-left: 30px;
+    padding-right: 30px;
+}

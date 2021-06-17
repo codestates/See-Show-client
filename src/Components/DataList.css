@@ -1,0 +1,24 @@
+.datalistup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.showBox_img {
+    width: 200px;
+    height: 300px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+
+}
+
+.recommendShowBox_img {
+    width: 200px;
+    height: 300px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+
+}
