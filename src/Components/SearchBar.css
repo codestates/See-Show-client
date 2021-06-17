@@ -1,0 +1,41 @@
+.searchbar-body {
+    padding-top: 10px;
+    display: flex;
+    border: none;
+    background-color: #3d3d3d78;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.searchbar-form-search {
+    width: 500px;
+    height: 30px;
+    font-size: 1.5rem;
+    background-color: gray;
+    border-bottom: 2px solid yellow;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.searchbar-form-button {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    margin-bottom: 10px;
+    margin-right: 100px;
+}
+
+.searchbtn {
+    width: 20px;
+}
+
+.select-search-location {
+    height: 30px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid yellow;
+    background-color: gray;
+    color: white;
+    font-size: 1.5rem;
+}
