@@ -51,7 +51,7 @@ class ForgotPw extends React.Component {
             <div className='forgot-container'>
                 <div className='forgot-window'>
                     <div className='forgot-overlay'></div>
-                    <div className='forgot-goback'><img id="btn-goback" src="./resource/back_light_arrow_icon_131562.png"></img></div>
+                    <div className='forgot-goback' onClick={()=>window.history.back()}><img id="btn-goback" src="./resource/back_light_arrow_icon_131562.png"></img></div>
                     <div className='forgot-content'>
                         <div className='forgot-welcome'>Forgot Password</div>
                         <div className='forgot-input-fields'>
