@@ -62,22 +62,11 @@ function Mypage(props) {
         ],
       });
     };
-// userinfo data
-    // area: "서울"
-// createdAt: "2021-06-16T12:14:51.000Z"
-// email: "sjimin684@gmail.com"
-// firstcheck: 0
-// genre: "기타"
-// id: 1
-// updatedAt: "2021-06-17T04:33:11.000Z"
-// userId: "jimin"
-// username: "jimin"
+
 
     return (
       <div className="mypage-body">
           <div className="mypage-title">마이페이지</div>
-
-
         <div className="mypage-container">
           <div className="mypage-contentsWrapper-left">
               <div className="mypage-contents-title">닉네임 </div>
@@ -95,7 +84,6 @@ function Mypage(props) {
             <div className="mypage-contents-info">{userinfo.area}</div>
             <div className="mypage-contents-info">{userinfo.genre}</div>
           </div>
-
           </div>
 
           <div className="mypage-btn-area">
@@ -103,8 +91,6 @@ function Mypage(props) {
             <button className="mypage-btn" onClick={ChangePw}>비밀번호 변경</button>
             <button className="mypage-btn" onClick={withDraw}>회원 탈퇴</button>
           </div>
-          
-          
       </div>
     );
   }

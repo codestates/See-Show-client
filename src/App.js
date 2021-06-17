@@ -34,11 +34,30 @@ class App extends React.Component {
   this.WithdrawAccount = this.WithdrawAccount.bind(this);
   this.handleResponseSuccess = this.handleResponseSuccess.bind(this);
   this.getToken = this.getToken.bind(this);
+  this.setStateAccessToken = this.setStateAccessToken.bind(this);
+  this.setStateUserInfo = this.setStateUserInfo.bind(this);
+}
+
+setStateUserInfo(area, genre){
+  const info = this.state.userinfo
+  this.setState({userinfo : { ...info, area, genre }})
 }
 
 
+async setStateAccessToken(data) {
 
+  await this.setState({accessToken : data})
+await   axios
+  .get("https://localhost:8080/myPage", {headers: {
+    authorization: `Bearer ${this.state.accessToken}`,
+}})
+  .then((res) => {
+    // console.log(res.data.data.userInfo, 'handleUserinfo!!')
+    this.setState({userinfo : res.data.data.userInfo })
+    console.log(this.state.userinfo, 'userinfo - 3.handleUserInfo')
+  })
 
+}
 
   handleLogout() {
     axios.post("https://localhost:8080/logout").then((res) => {
@@ -48,9 +67,9 @@ class App extends React.Component {
     });
   }
 
- async WithdrawAccount(){
+  WithdrawAccount(){
     console.log(this.state.accessToken,'withdraw')
-   await axios.post("https://localhost:8080/myPage", '', {
+    axios.post("https://localhost:8080/myPage", '', {
       headers: {
         authorization: `Bearer ${this.state.accessToken}`,
       }
@@ -73,7 +92,8 @@ class App extends React.Component {
       // console.log(res.data.data.userInfo, 'handleUserinfo!!')
       this.setState({userinfo : res.data.data.userInfo })
       console.log(this.state.userinfo, 'userinfo - 3.handleUserInfo')
-    }).then(()=>{
+    })
+    .then(()=>{
       if(this.state.userinfo.firstcheck === 1){
               this.props.history.push("/moreinfo") 
               }else{
@@ -174,7 +194,7 @@ class App extends React.Component {
           <Route exact path="/show" render={() => <ShowPage isLogin={this.state.isLogin} accessToken={this.state.accessToken}/>} />
           <Route exact path="/forgotpw" render={() => <ForgotPw />} />
           <Route exact path="/signup" render={() => <Signup />} />
-          <Route exact path="/moreinfo" render={() => <Moreinfo accessToken={this.state.accessToken}/>} />
+          <Route exact path="/moreinfo" render={() => <Moreinfo setStateUserInfo={this.setStateUserInfo}handleUserinfo={this.handleUserinfo} setStateAccessToken={this.setStateAccessToken}accessToken={this.state.accessToken}/>} />
           <Route exact path="/mypage" render={() => <Mypage userinfo={this.state.userinfo} isLogin ={isLogin}  WithdrawAccount={this.WithdrawAccount} handleLogout = {this.handleLogout}  />} />
           <Route exact path="/resetpw" render={() => <ResetPw /> } />
           <Route exact path="/terms-default" render={() => <Terms /> } />
