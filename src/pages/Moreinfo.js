@@ -43,6 +43,7 @@ class Moreinfo extends React.Component {
     }
 
     render() {
+        console.log(this.state, '@@@@@@@@@')
     return (
         <div className='moreinfo-body'>
         <div className='moreinfo-container'>

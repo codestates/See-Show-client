@@ -42,13 +42,13 @@ class ClickedDataEntry extends React.Component {
   }
   handleInputValue = (key) => (e) => {
     this.setState({ [key]: e.target.value });
-    console.log(e.target.value);
-    console.log(this.state)
+    // console.log(e.target.value);
+    // console.log(this.state)
   };
 
   conponentWillMount() {
     this.setState({ clickedData: this.props.clickedData });
-    console.log(this.state.clickedData,'componentwillmount-clickeddata');
+    // console.log(this.state.clickedData,'componentwillmount-clickeddata');
   }
   reviewContent = (key) => (e) => {
     this.setState({ [key]: e.target.value });

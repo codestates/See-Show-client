@@ -81,11 +81,10 @@ class ShowPage extends React.Component {
   }
 
   componentWillMount() {
-    console.log("Component WILL MOUNT!");
-    console.log(this.state.apiData);
+    // console.log("Component WILL MOUNT!");
+    // console.log(this.state.apiData);
     this.handleApiData();
-    console.log(this.state.apiData);
-
+    // console.log(this.state.apiData);
     // this.handleRecommendData();
   }
 
@@ -102,7 +101,7 @@ class ShowPage extends React.Component {
         // const newRecommendData = [...recommendData, res.data.list];
         this.setState({ recommendData: res.data.data.list });
       });
-    console.log("getApi");
+    // console.log("getApi");
   }
   //     if(this.props.accessToken === null) {
   //       axios.get("https://localhost:8080/recommend/location")
@@ -137,7 +136,7 @@ class ShowPage extends React.Component {
       .then((res) => {
         // console.log(res)
         this.setState({ clickedShowData: res.data.data });
-        console.log(res.data.data, "clickedShowData");
+        // console.log(res.data.data, "clickedShowData");
       })
       .catch((err) => console.log(err));
   };
@@ -147,13 +146,13 @@ class ShowPage extends React.Component {
     await this.setState({ clickedData: data });
     await this.getClickedApiData(data);
     // await this.getReview();
-    console.log("setClickedData");
+    // console.log("setClickedData");
   }
 
   resetClickedData() {
     //상세보기 에서 뒤로가기 버튼 누를 때, clickedData reset.
     this.setState({ clickedData: null, clickedShowData: "" });
-    console.log(this.state, "resetClickedDaata");
+    // console.log(this.state, "resetClickedDaata");
   }
 
   getReview() {
@@ -179,7 +178,7 @@ class ShowPage extends React.Component {
         searchWord: this.state.clickedArea,
       })
       .then((res) => {
-        console.log(res.data.showList);
+        // console.log(res.data.showList);
         this.setState({ searchData: res.data.showList });
       })
       .then((res) => {
@@ -190,24 +189,24 @@ class ShowPage extends React.Component {
   hanldeAreaState(e) {
     const value = e.target.value;
     this.setState({ clickedArea: value });
-    console.log(value, "handleAreaState");
-    console.log(this.state.clickedArea, "state.area");
+    // console.log(value, "handleAreaState");
+    // console.log(this.state.clickedArea, "state.area");
     // this.areaFiltered(value)
   }
 
   handleInputValue(e) {
     const value = e.target.value;
-    console.log(value);
+    // console.log(value);
     this.setState({ search: e.target.value });
     // this.areaFiltered(value)
   }
   resetCheck() {
     this.setState({ check: 0, clickedShowData: "", clickedData: null });
-    console.log(this.state, "resetCheck");
+    // console.log(this.state, "resetCheck");
   }
 
   render() {
-    console.log(this.state, "render");
+    // console.log(this.state, "render");
     //지역별 검색 했을 경우
     if (this.state.check === 1) {
       return (

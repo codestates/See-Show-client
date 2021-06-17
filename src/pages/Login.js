@@ -22,6 +22,8 @@ class Login extends React.Component {
   handleInputValue = (key) => (e) => {
     this.setState({ [key]: e.target.value });
   };
+
+  //1. login 버튼 누르면 실행
   handleLogin = () => {
     const { userId, password } = this.state;
     if (!userId || !password) {
@@ -30,18 +32,20 @@ class Login extends React.Component {
       axios.post("https://localhost:8080/login",{ userId, password },
         )
         .then((res) => {
+          // console.log(res.data,'성공')
           this.props.handleResponseSuccess(res);
           this.props.handleUserinfo()
           //handleResponse에서 리다이렉트
         })
-        .then(res=>{
-          if(this.props.firstCheck === 1){
-          this.props.history.push("/moreinfo") 
-          }else{
-          this.props.history.push("/show") 
-          }
-        })
-        .catch((err) => console.log(err));
+    //     .then(res=>{
+    //       console.log('handleLOgin 2번쨰 then . firstcheck 확인하는 곳')
+    //       if(this.props.firstCheck === 1){
+    //       this.props.history.push("/moreinfo") 
+    //       }else{
+    //       this.props.history.push("/show") 
+    //       }
+    //     })
+    //     .catch((err) => console.log(err));
     }
   };
   render() {

@@ -36,56 +36,72 @@ class App extends React.Component {
   this.getToken = this.getToken.bind(this);
 }
 
-  handleUserinfo (){
-    console.log('mypage handleUserInfo clicked')
-    axios
-    .get("https://localhost:8080/myPage", {  headers: {
-      authorization: `Bearer ${this.state.accessToken}`,
-  }})
-    .then((res) => {
-      console.log(res.data.data.userInfo)
-      this.setState({userinfo : res.data.data.userInfo })
-      console.log(this.state.userinfo)
-    });
-  }
 
 
 
 
   handleLogout() {
     axios.post("https://localhost:8080/logout").then((res) => {
-      this.setState({ isLogin: false, userinfo: {firstCheck : 1}, accessToken:null });
+      this.setState({ isLogin: false, accessToken:null });
       this.props.history.push("/Hello");
       console.log('hnadle logout')
     });
   }
 
-  WithdrawAccount(){
-    axios.post("https://localhost:8080/myPage", '', {
+ async WithdrawAccount(){
+    console.log(this.state.accessToken,'withdraw')
+   await axios.post("https://localhost:8080/myPage", '', {
       headers: {
-          authorization: `Bearer ${this.props.accessToken}`,
-          "content-type": "application/json",
-          Accept: "application/json"
+        authorization: `Bearer ${this.state.accessToken}`,
       }
-  })
-  .then(() => this.props.history.push("/show"))
+  }).then((res)=> {console.log(res)
+  this.setState({ isLogin: false, accessToken:null })
+})
+  .then(() => this.props.history.push("/Hello"))
   .catch(err=>console.log(err))
 
   }
+
+  //3. 아래 함수에서 실행. Userinfo 받아오는 곳.
+  handleUserinfo (){
+    console.log('mypage handleUserInfo clicked')
+    axios
+    .get("https://localhost:8080/myPage", {headers: {
+      authorization: `Bearer ${this.state.accessToken}`,
+  }})
+    .then((res) => {
+      // console.log(res.data.data.userInfo, 'handleUserinfo!!')
+      this.setState({userinfo : res.data.data.userInfo })
+      console.log(this.state.userinfo, 'userinfo - 3.handleUserInfo')
+    }).then(()=>{
+      if(this.state.userinfo.firstcheck === 1){
+              this.props.history.push("/moreinfo") 
+              }else{
+              this.props.history.push("/show") 
+              }
+    })
+  }
+
   
- 
-  handleResponseSuccess(res) {
+ //2. login-handleLogin 함수에서 실행.
+  async handleResponseSuccess  (res) {
     // 사용자 정보를 호출, login state 변경.
-    const { accessToken, usertype } = res.data.data;
-    this.setState({ accessToken, usertype, isLogin: true });
-    if(res.data.data.firstCheck) {
-      this.setState({firstCheck: res.data.data.firstCheck});
-      //만약  firstCheck가 1이라면 바로 실행하는 함수 만들어서 
-      //moreinfo페이지로 넘어가게 하기.
-      if(this.state.firstCheck === 1){
-        return <Redirect accessToken={this.state.accessToken} to="/moreinfo" />
-      }
-    };
+    const { accessToken, usertype, firstcheck } = res.data.data;
+    this.setState({ accessToken, usertype, firstcheck, isLogin: true });
+
+   await this.handleUserinfo()
+    // if(firstcheck === 1) {
+    // //   // this.setState({firstcheck: res.data.data.firstCheck});
+    // //   //만약  firstCheck가 1이라면 바로 실행하는 함수 만들어서 
+    // //   //moreinfo페이지로 넘어가게 하기.
+    // //   // if(this.state.firstCheck === 1){
+    // //     // return <Redirect accessToken={this.state.accessToken} to="/moreinfo" />
+    // //     // return <Redirect accessToken={this.state.accessToken} to="/moreinfo" />
+    // //     // return <Redirect accessToken={this.state.accessToken} to="/moreinfo" />
+    //     window.location.href = "/moreinfo";
+    //   }
+    // // };
+    console.log('handleREsponseSuccess')
     
     //moreinfo에서는 헤더에 토큰 넣어서 같이 보내고, 장르 로케이션값 바디에 실어 보내기
   }
@@ -113,6 +129,7 @@ class App extends React.Component {
   }
   
   componentDidMount() {
+    console.log('componentDidMount')
     const url = new URL(window.location.href)// https://localhost:3000/show?code=wqkfb1j3bfvo1evo
     const authorizationCode = url.searchParams.get('code')
     if (authorizationCode) {
@@ -126,6 +143,8 @@ class App extends React.Component {
 
   render() {
     const { isLogin, userinfo } = this.state;
+    // console.log(userinfo,'성공')
+
     let url = new URL (window.location.href)
     let path = url.pathname;
 

@@ -33,7 +33,7 @@ function Mypage(props) {
           {
             label: "예",
             onClick: () => {
-              alert("탈퇴 되었습니다.. 다음에 또 만나요");
+              // alert("탈퇴 되었습니다.. 다음에 또 만나요");
               WithdrawAccount();
             },
           },
