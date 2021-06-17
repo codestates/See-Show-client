@@ -17,6 +17,7 @@ import "./App.css";
 import AddShow from "./pages/AddShow";
 import ClickedDataEntry from "./Components/ClickedDataEntry copy";
 import Blank from "./pages/blank"
+import SearchedDataList from "./Components/SearchedDataList";
 
 class App extends React.Component {
   constructor(props) {
@@ -133,15 +134,16 @@ class App extends React.Component {
         <Nav accessToken={this.state.accessToken} isLogin={isLogin} userinfo={userinfo} handleLogout = {this.handleLogout} />
       
         {
-          path === '/mypage' || path === '/Hello' || path ==='/login' || path ==='/signup' || path ==='/moreinfo' || path ==='/forgotpw' || path ==='/resetpw' || path ==='/terms' || path ==='/terms-local' ?
+          path === '/mypage'  || path === '/Hello' || path ==='/login' || path ==='/signup' || path ==='/moreinfo' || path ==='/forgotpw' || path ==='/resetpw' || path ==='/terms' || path ==='/terms-local' ?
           <div className="videoWrapper"> 
             <video id="backgroundVideo" muted autoplay="" loop="loop" src="./resource/backgroundvideo.mp4" />
           </div>
         : <div></div>
         }
-      
         <div className="root-contents">
         <Switch>
+        <Route path="/searched_data" render={() => ( <SearchedDataList></SearchedDataList> )}  />
+
         <Route path="/blank" render={() => ( <Blank></Blank> )}  />
         <Route path="/addshow" render={() => ( <AddShow accessToken={this.state.accessToken}></AddShow> )}  />
         <Route path="/showdetail" render={() => ( <ClickedDataEntry></ClickedDataEntry> )}  />
