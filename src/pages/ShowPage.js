@@ -52,21 +52,7 @@ class ShowPage extends React.Component {
       filteredData: null,
       search: "",
       clickedArea: "",
-      searchData: [
-        {
-          seq: "166695",
-          title: "나의 친구, 그림책",
-          startDate: "20210102",
-          endDate: "20211231",
-          place: "ACC 어린이문화원",
-          realmName: "미술",
-          area: "광주",
-          thumbnail:
-            "http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif",
-          gpsX: "126.919994481568",
-          gpsY: "35.1469155857794",
-        },
-      ],
+      searchData: '',
       check: 0,
     };
     this.handleApiData = this.handleApiData.bind(this);
@@ -191,14 +177,14 @@ class ShowPage extends React.Component {
     this.setState({ clickedArea: value });
     // console.log(value, "handleAreaState");
     // console.log(this.state.clickedArea, "state.area");
-    this.areaFiltered(value)
+    // this.areaFiltered(value)
   }
 
   handleInputValue(e) {
     const value = e.target.value;
     // console.log(value);
     this.setState({ search: e.target.value });
-    this.areaFiltered(value)
+    // this.areaFiltered(value)
   }
   resetCheck() {
     this.setState({ check: 0, clickedShowData: "", clickedData: null });
