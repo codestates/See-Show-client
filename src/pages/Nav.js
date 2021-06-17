@@ -17,7 +17,6 @@ function Nav(props) {
 
         <div className='buttonWrapper'>
             <Link to="/login"><button className="btn-default">LOGIN</button></Link>
-            {/* <Link to="/show"><button className="btn-default" >SHOW</button></Link> */}
         </div>
       </div>
     );

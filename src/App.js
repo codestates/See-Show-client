@@ -134,7 +134,9 @@ class App extends React.Component {
         <Nav accessToken={this.state.accessToken} isLogin={isLogin} userinfo={userinfo} handleLogout = {this.handleLogout} />
       
         {
-          path === '/mypage'  || path === '/Hello' || path ==='/login' || path ==='/signup' || path ==='/moreinfo' || path ==='/forgotpw' || path ==='/resetpw' || path ==='/terms' || path ==='/terms-local' ?
+
+          path === '/Hello' || path ==='/login' || path ==='/signup' || path ==='/moreinfo' || path ==='/forgotpw' || path ==='/resetpw' || path ==='/terms' || path ==='/terms-local' ?
+
           <div className="videoWrapper"> 
             <video id="backgroundVideo" muted autoplay="" loop="loop" src="./resource/backgroundvideo.mp4" />
           </div>
