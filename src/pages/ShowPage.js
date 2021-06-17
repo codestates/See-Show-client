@@ -27,71 +27,7 @@ class ShowPage extends React.Component {
           gpsX: "126.919994481568",
           gpsY: "35.1469155857794",
         },
-        {
-          seq: "166695",
-          title: "나의 친구, 그림책",
-          startDate: "20210102",
-          endDate: "20211231",
-          place: "ACC 어린이문화원",
-          realmName: "미술",
-          area: "광주",
-          thumbnail:
-            "http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif",
-          gpsX: "126.919994481568",
-          gpsY: "35.1469155857794",
-        },
-        {
-          seq: "166695",
-          title: "나의 친구, 그림책",
-          startDate: "20210102",
-          endDate: "20211231",
-          place: "ACC 어린이문화원",
-          realmName: "미술",
-          area: "광주",
-          thumbnail:
-            "http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif",
-          gpsX: "126.919994481568",
-          gpsY: "35.1469155857794",
-        },
-        {
-          seq: "166695",
-          title: "나의 친구, 그림책",
-          startDate: "20210102",
-          endDate: "20211231",
-          place: "ACC 어린이문화원",
-          realmName: "미술",
-          area: "광주",
-          thumbnail:
-            "http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif",
-          gpsX: "126.919994481568",
-          gpsY: "35.1469155857794",
-        },
-        {
-          seq: "166695",
-          title: "나의 친구, 그림책",
-          startDate: "20210102",
-          endDate: "20211231",
-          place: "ACC 어린이문화원",
-          realmName: "미술",
-          area: "광주",
-          thumbnail:
-            "http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif",
-          gpsX: "126.919994481568",
-          gpsY: "35.1469155857794",
-        },
-        {
-          seq: "166695",
-          title: "나의 친구, 그림책",
-          startDate: "20210102",
-          endDate: "20211231",
-          place: "ACC 어린이문화원",
-          realmName: "미술",
-          area: "광주",
-          thumbnail:
-            "http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif",
-          gpsX: "126.919994481568",
-          gpsY: "35.1469155857794",
-        },
+        
       ],
       clickedData: null, //클릭한 데이터의 정보
       clickedShowData: "", //클릭한 공연의 상세 정보
@@ -110,73 +46,9 @@ class ShowPage extends React.Component {
           gpsX: "126.919994481568",
           gpsY: "35.1469155857794",
         },
-        {
-          seq: "166695",
-          title: "나의 친구, 그림책",
-          startDate: "20210102",
-          endDate: "20211231",
-          place: "ACC 어린이문화원",
-          realmName: "미술",
-          area: "광주",
-          thumbnail:
-            "http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif",
-          gpsX: "126.919994481568",
-          gpsY: "35.1469155857794",
-        },
-        {
-          seq: "166695",
-          title: "나의 친구, 그림책",
-          startDate: "20210102",
-          endDate: "20211231",
-          place: "ACC 어린이문화원",
-          realmName: "미술",
-          area: "광주",
-          thumbnail:
-            "http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif",
-          gpsX: "126.919994481568",
-          gpsY: "35.1469155857794",
-        },
-        {
-          seq: "166695",
-          title: "나의 친구, 그림책",
-          startDate: "20210102",
-          endDate: "20211231",
-          place: "ACC 어린이문화원",
-          realmName: "미술",
-          area: "광주",
-          thumbnail:
-            "http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif",
-          gpsX: "126.919994481568",
-          gpsY: "35.1469155857794",
-        },
-        {
-          seq: "166695",
-          title: "나의 친구, 그림책",
-          startDate: "20210102",
-          endDate: "20211231",
-          place: "ACC 어린이문화원",
-          realmName: "미술",
-          area: "광주",
-          thumbnail:
-            "http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif",
-          gpsX: "126.919994481568",
-          gpsY: "35.1469155857794",
-        },
-        {
-          seq: "166695",
-          title: "나의 친구, 그림책",
-          startDate: "20210102",
-          endDate: "20211231",
-          place: "ACC 어린이문화원",
-          realmName: "미술",
-          area: "광주",
-          thumbnail:
-            "http://www.culture.go.kr/upload/rdf/21/04/rdf_2021042214113608337.gif",
-          gpsX: "126.919994481568",
-          gpsY: "35.1469155857794",
-        },
+        
       ],
-      area: "",
+      area: "경기",
       filteredData: null,
       wh : ''
     };
@@ -186,7 +58,7 @@ class ShowPage extends React.Component {
     this.getReview = this.getReview.bind(this);
     this.hanldeAreaState = this.hanldeAreaState.bind(this);
     this.getClickedApiData = this.getClickedApiData.bind(this);
-
+    this.areaFiltered = this.areaFiltered.bind(this);
     // this.setClicked = this.setClicked.bind(this);
   }
 
@@ -282,10 +154,15 @@ class ShowPage extends React.Component {
   // }
   }
 
-  areaFiltered(e) {
-    const value = e.target.value;
-    this.setState({ area: value });
+  async areaFiltered (e) {
+    const {area} = this.state.area
+     const value = e.target.value;
+     this.setState({ area: value });
     console.log(this.state);
+   await  axios.get("https://localhost:8080/recommend/location",{area:"경기"})
+    .then((res) => {
+      this.setState({ apiData: res.data.data.list });
+    })
     const filteredData = this.state.apiData.filter(
       (data) => data.area === this.state.area
     );

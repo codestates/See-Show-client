@@ -107,7 +107,7 @@ function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX, place
             // readOnly
           />
         </div>
-        <Test setPlace={setPlace}></Test>
+        {/* <Test setPlace={setPlace}></Test> */}
       </div>
 
       <div className='add-formWrapper'>
@@ -150,6 +150,7 @@ function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX, place
       
       </select>
       </div>
+      <div className="addshow-alert"> * 공연의 상세 위치를 클릭해 주세요</div>
       <Map handleGpsX={handleGpsX} place={place}></Map>
 
       </div>

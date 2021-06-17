@@ -34,7 +34,7 @@ function Nav(props) {
         <div className='buttonWrapper'>
             <Link to='/addshow'> <button className="btn-default">Add show</button> </Link>
             <Link to="/show"><button className="btn-default">SHOW list</button></Link>
-             <Link to="/mypage"><button className="btn-default">MY PAGE</button></Link>
+             <Link to="/mypage"><button onClick={handleUserinfo} className="btn-default">MY PAGE</button></Link>
         <button className="btn-default" onClick={handleLogout}>LOGOUT</button>
         </div>
       </div>
