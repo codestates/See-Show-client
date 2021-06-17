@@ -158,7 +158,6 @@ class ShowPage extends React.Component {
 
   areaFiltered() {
     this.setState({ clickedData: null });
-    console.log(this.state.clickedArea, "buttonclicked");
     axios
       .post("https://localhost:8080/show", {
         searchWord: this.state.clickedArea,

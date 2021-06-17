@@ -38,18 +38,14 @@ class AddShow extends React.Component {
   startdateFormChange = (key) => (e) => {
     const newdate = e.target.value.replace(/-/gi, "");
     this.setState({ [key]: newdate });
-    console.log(e.target.value);
-    console.log(this.state);
   };
 
   handleInputValue = (key) => (e) => {
     this.setState({ [key]: e.target.value });
-    console.log(e.target.value);
-    console.log(this.state);
   };
   setPlace(data) {
     this.setState({ place: data });
-    console.log(this.state.place);
+
   }
 
   handleGpsX = (key, data) => {

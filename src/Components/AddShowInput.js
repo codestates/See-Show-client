@@ -38,7 +38,7 @@ function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX, place
     };
     if (event.target.files[0]) {
       reader.readAsDataURL(event.target.files[0]); // 1. 파일을 읽어 버퍼에 저장
-      console.log(event.target.files[0]);
+
 
       setImgFile(event.target.files[0]); // 파일 상태 업데이트
     }

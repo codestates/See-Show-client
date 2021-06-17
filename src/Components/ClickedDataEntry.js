@@ -42,13 +42,10 @@ class ClickedDataEntry extends React.Component {
   }
   handleInputValue = (key) => (e) => {
     this.setState({ [key]: e.target.value });
-    // console.log(e.target.value);
-    // console.log(this.state)
   };
 
   conponentWillMount() {
     this.setState({ clickedData: this.props.clickedData });
-    // console.log(this.state.clickedData,'componentwillmount-clickeddata');
   }
   reviewContent = (key) => (e) => {
     this.setState({ [key]: e.target.value });
@@ -57,7 +54,6 @@ class ClickedDataEntry extends React.Component {
   createReview = () => {
      const { seq } =  this.state.clickedData;
      const { content, point } =  this.state;
-    console.log(this.props.accessToken)
 
     axios
       .post(
@@ -68,7 +64,6 @@ class ClickedDataEntry extends React.Component {
           }
       })
       .then((res) => {
-        console.log(res,'getReviewres')
         // this.props.getReview();
       })
       .catch((err) => console.log(err));
