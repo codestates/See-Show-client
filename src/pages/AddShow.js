@@ -133,13 +133,7 @@ class AddShow extends React.Component {
           <form onSubmit={(e) => e.preventDefault()}>
             <div className="addshow-contents-Wrapper">
 
-              <AddShowInput
-                setPlace={this.setPlace}
-                place={this.state.place}
-                handleGpsX={this.handleGpsX}
-                handleInputValue={this.handleInputValue}
-                startdateFormChange={this.startdateFormChange}
-              ></AddShowInput>
+              <AddShowInput setPlace={this.setPlace} place={this.state.place} handleGpsX={this.handleGpsX} handleInputValue={this.handleInputValue} startdateFormChange={this.startdateFormChange}></AddShowInput>
               {/* <Map handleGpsX={this.handleGpsX}></Map> */}
             </div>
           </form>

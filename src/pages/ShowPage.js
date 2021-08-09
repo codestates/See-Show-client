@@ -232,19 +232,22 @@ class ShowPage extends React.Component {
       return (
         <div className="show-body">
           <div className="bodyWrapper">
-            <div className="searchWrapper">
-              <SearchBar
-                areaFiltered={this.areaFiltered}
-                handleInputValue={this.handleInputValue}
-                hanldeAreaState={this.hanldeAreaState}
-              ></SearchBar>
-            </div>
 
             <div className="mainstream">
               {this.state.clickedData === null ? (
                 <div className="apidata">
+                   <div className="searchWrapper">
+                     <SearchBar
+                        areaFiltered={this.areaFiltered}
+                        handleInputValue={this.handleInputValue}
+                        hanldeAreaState={this.hanldeAreaState}
+                     ></SearchBar>
+                   </div>
                   <div className="dataWrapper">
-                    <div className="datatitle">가까운 추천 공연</div>
+                    <div className="dtitleWrapper">
+                      <div className="datatitle">가까운 추천 공연</div>
+                    </div>
+
                     <div className="data1">
                       <DataList
                         datas={this.state.apiData}
@@ -254,7 +257,10 @@ class ShowPage extends React.Component {
                   </div>
 
                   <div className="dataWrapper">
-                    <div className="datatitle">관심사 추천 공연</div>
+                    <div className="dtitleWrapper">
+                      <div className="datatitle">관심사 추천 공연</div>
+                    </div>
+
                     <div className="data2">
                       <RecommendDataList
                         recommendData={this.state.recommendData}

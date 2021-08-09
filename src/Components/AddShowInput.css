@@ -18,6 +18,7 @@
     font-size: 2rem;
     margin-left: 10px;
     margin-right: 10px;
+    min-width: 100px;
 }
 
 .add-subtitle {
@@ -28,6 +29,7 @@
 
 .add-contents {
     display: flex;
+    flex-wrap: wrap;
 }
 
 
@@ -35,12 +37,15 @@
 
 
 .add-left {
-    width: 35%;
+    width: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    min-width: 400px;
+    margin-bottom: 20px;
 }
+
 .add-thumbnail-Wrapper {
     justify-content: center;
     text-align: center;
@@ -79,8 +84,11 @@
 
 .add-right {
     border-left: 1px solid white;
-    width: 70%;
+    width: 65%;
     padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .add-showtitle {
@@ -91,12 +99,18 @@
 .add-formWrapper {
     display: flex;
     margin-bottom: 10px;
+    flex-wrap: wrap;
 }
 
+.adfinput {
+    width: 50%;
+    min-width: 600px;
+}
+
+
 .adr2 {
-    margin-right: 10px;
-    width: 465px;
     height: 30px;
+    min-width: 600px;
 }
 
 .adr-search-btn {

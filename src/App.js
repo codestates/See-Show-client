@@ -170,7 +170,7 @@ await axios
           <div className="videoWrapper"> 
             <video id="backgroundVideo" muted autoplay="" loop="loop" src="./resource/backgroundvideo.mp4" />
           </div>
-        : <div></div>
+        : <div className="nonevideo"></div>
         }
         <div className="root-contents">
         <Switch>

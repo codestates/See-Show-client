@@ -1,18 +1,35 @@
 .show-body {
-    background-color: #111111;
-    display: grid;
-    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
     overflow-x: hidden;
 }
 
+.bodyWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.searchWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: 90%;
+}
+
+
 .mainstream {
-    width: 100vw;
+    width: 100%;
     animation: scroll 70s linear infinite;
     background: url("https://images.unsplash.com/photo-1465146633011-14f8e0781093?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80"), #111111;
-    color: #eee;
     height: 100vh;
     min-width: 360px;
-    width: 100%;
     perspective: 1000px;
     perspective-origin: 50% 50%;
 }
@@ -51,27 +68,48 @@
     height: 25px;
 }
 
+
+.apidata {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.dataWrapper {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    background-color: #a8a8a8be;
+    border-radius: 15px;
+}
+
 .datatitle {
-    margin-top: 5px;
-    padding-top: 10px;
-    padding-left: 30px;
-    padding-right: 30px;
     color: white;
     font-family: 'Do Hyeon';
     font-size: 2rem;
-    background-color: rgba(0, 0, 0, 0.587);
+    padding-left: 15px;
+}
+
+.dtitleWrapper {
+    width: 100%;
+    height: 50px;
+    background-color: rgba(45, 45, 45, 0.587);
+    display: flex;
+    align-items: center;
+    border-radius: 15px 15px 0px 0px;
 }
 
 
 
 .data1 {
-    background-color: #3d3d3d78;
-    padding-left: 30px;
-    padding-right: 30px;
+    width: 100%;
 }
 
 .data2 {
-    background-color: #3d3d3d78;
-    padding-left: 30px;
-    padding-right: 30px;
+    width: 100%;
 }
