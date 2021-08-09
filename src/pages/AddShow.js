@@ -18,7 +18,7 @@ class AddShow extends React.Component {
       realmName: "",
       area: "",
       thumbnail:
-        "http://www.culture.go.kr/upload/rdf/21/06/rdf_202106081662354418.jpg",
+        "",
       gpsX: "",
       gpsY: "",
       postCode: false,
@@ -38,18 +38,14 @@ class AddShow extends React.Component {
   startdateFormChange = (key) => (e) => {
     const newdate = e.target.value.replace(/-/gi, "");
     this.setState({ [key]: newdate });
-    console.log(e.target.value);
-    console.log(this.state);
   };
 
   handleInputValue = (key) => (e) => {
     this.setState({ [key]: e.target.value });
-    console.log(e.target.value);
-    console.log(this.state);
   };
   setPlace(data) {
     this.setState({ place: data });
-    console.log(this.state.place);
+
   }
 
   handleGpsX = (key, data) => {
@@ -82,7 +78,7 @@ class AddShow extends React.Component {
       this.setState({ errorMessage: "모든 항목은 필수입니다" });
     } else {
       axios
-        .post("https://localhost:8080/show/posting", {
+        .post(process.env.domain+"/show/posting", {
           title,
           startDate,
           endDate,
@@ -137,13 +133,7 @@ class AddShow extends React.Component {
           <form onSubmit={(e) => e.preventDefault()}>
             <div className="addshow-contents-Wrapper">
 
-              <AddShowInput
-                setPlace={this.setPlace}
-                place={this.state.place}
-                handleGpsX={this.handleGpsX}
-                handleInputValue={this.handleInputValue}
-                startdateFormChange={this.startdateFormChange}
-              ></AddShowInput>
+              <AddShowInput setPlace={this.setPlace} place={this.state.place} handleGpsX={this.handleGpsX} handleInputValue={this.handleInputValue} startdateFormChange={this.startdateFormChange}></AddShowInput>
               {/* <Map handleGpsX={this.handleGpsX}></Map> */}
             </div>
           </form>

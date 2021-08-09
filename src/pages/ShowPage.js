@@ -77,11 +77,11 @@ class ShowPage extends React.Component {
   handleApiData() {
     // 공연 정보 데이터 불러오기.
     axios
-      .get("https://localhost:8080/recommend/location")
+      .get(process.env.domain+"/recommend/location")
       .then((res) => {
         this.setState({ apiData: res.data.data.list });
       })
-      .then((res) => axios.get("https://localhost:8080/recommend/genre"))
+      .then((res) => axios.get(process.env.domain+"/recommend/genre"))
       .then((res) => {
         // const { recommendData } = this.state.recommendData;
         // const newRecommendData = [...recommendData, res.data.list];
@@ -118,7 +118,7 @@ class ShowPage extends React.Component {
     //클릭한 공연의 상세 정보 데이터 불러오기.
     // console.log(this.state.clickedData, 'clickedData')
     axios
-      .post("https://localhost:8080/show/detail", this.state.clickedData)
+      .post(process.env.domain+"/show/detail", this.state.clickedData)
       .then((res) => {
         // console.log(res)
         this.setState({ clickedShowData: res.data.data });
@@ -158,9 +158,8 @@ class ShowPage extends React.Component {
 
   areaFiltered() {
     this.setState({ clickedData: null });
-    console.log(this.state.clickedArea, "buttonclicked");
     axios
-      .post("https://localhost:8080/show", {
+      .post(process.env.domain+"/show", {
         searchWord: this.state.clickedArea,
       })
       .then((res) => {
@@ -222,6 +221,7 @@ class ShowPage extends React.Component {
                 resetClickedData={this.resetClickedData}
                 review={this.state.review}
                 getReview={this.getReview}
+                clickedShowData={this.state.clickedShowData}
               ></ClickedDataEntry>
             )}
           </div>
@@ -232,19 +232,22 @@ class ShowPage extends React.Component {
       return (
         <div className="show-body">
           <div className="bodyWrapper">
-            <div className="searchWrapper">
-              <SearchBar
-                areaFiltered={this.areaFiltered}
-                handleInputValue={this.handleInputValue}
-                hanldeAreaState={this.hanldeAreaState}
-              ></SearchBar>
-            </div>
 
             <div className="mainstream">
               {this.state.clickedData === null ? (
                 <div className="apidata">
+                   <div className="searchWrapper">
+                     <SearchBar
+                        areaFiltered={this.areaFiltered}
+                        handleInputValue={this.handleInputValue}
+                        hanldeAreaState={this.hanldeAreaState}
+                     ></SearchBar>
+                   </div>
                   <div className="dataWrapper">
-                    <div className="datatitle">가까운 추천 공연</div>
+                    <div className="dtitleWrapper">
+                      <div className="datatitle">가까운 추천 공연</div>
+                    </div>
+
                     <div className="data1">
                       <DataList
                         datas={this.state.apiData}
@@ -254,7 +257,10 @@ class ShowPage extends React.Component {
                   </div>
 
                   <div className="dataWrapper">
-                    <div className="datatitle">관심사 추천 공연</div>
+                    <div className="dtitleWrapper">
+                      <div className="datatitle">관심사 추천 공연</div>
+                    </div>
+
                     <div className="data2">
                       <RecommendDataList
                         recommendData={this.state.recommendData}
@@ -271,6 +277,7 @@ class ShowPage extends React.Component {
                   resetClickedData={this.resetClickedData}
                   review={this.state.review}
                   getReview={this.getReview}
+                  clickedShowData={this.state.clickedShowData}
                 ></ClickedDataEntry>
               )}
             </div>

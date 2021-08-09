@@ -131,3 +131,7 @@ body {
     min-height: 80vh;
     overflow: hidden;
 }
+
+.nonevideo {
+    background-color: black;
+}

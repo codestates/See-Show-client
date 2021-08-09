@@ -32,14 +32,12 @@ class Moreinfo extends React.Component {
 
     handleSubmit = () => {
         const { area, genre } = this.state;
-        console.log(this.props.accessToken,'access')
-        axios.post("https://localhost:8080/firstcheck", {area:area, genre}, {
+        axios.post(process.env.domain+"/firstcheck", {area:area, genre}, {
             headers: {
                 authorization: `Bearer ${this.props.accessToken}`,
             }
         })
         .then(res => {
-            console.log(this.props.accessToken,'else 안')
                  this.props.setStateUserInfo(area, genre)
             // console.log(res.data.data.accessToken,'ddddd')
             if(res.data.data.accessToken){

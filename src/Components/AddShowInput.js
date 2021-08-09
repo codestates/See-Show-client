@@ -16,7 +16,7 @@ function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX, place
       const img = new FormData();
       img.append("file", e.target.files[0]);
       axios
-        .post("http://localhost:8080/upload", img)
+        .post(process.env.domain+"/upload", img)
         .then((res) => {
           setImageUrl(res.data);
         })
@@ -38,7 +38,7 @@ function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX, place
     };
     if (event.target.files[0]) {
       reader.readAsDataURL(event.target.files[0]); // 1. 파일을 읽어 버퍼에 저장
-      console.log(event.target.files[0]);
+
 
       setImgFile(event.target.files[0]); // 파일 상태 업데이트
     }
@@ -69,54 +69,32 @@ function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX, place
       <div className='add-right'>
       <div className='add-formWrapper'>
           <div className='add-title'>공연제목</div>
-          <input className="add-showtitle" type="title" placeholder="title" onChange={handleInputValue("title")} ></input>
+          <input className="add-showtitle adfinput" type="title" placeholder="title" onChange={handleInputValue("title")} ></input>
       </div>
 
       
       <div className='add-formWrapper'>
         <div className='add-title'>시작일자</div>
-      <input //공연 시작일
-        className="add-show-startDate"
-        type="date"
-        placeholder="title"
-        onChange={startdateFormChange("startDate")}
-      ></input> 
+      <input className="add-show-startDate adfinput" type="date" placeholder="title" onChange={startdateFormChange("startDate")} ></input> 
       </div>
 
       <div className='add-formWrapper'>
         <div className='add-title'>종료일자</div>
-      <input // 공연 종료일
-        className="add-show-endDate"
-        type="date"
-        placeholder="title"
-        onChange={startdateFormChange("endDate")}
-      ></input>
+      <input className="add-show-endDate adfinput" type="date" placeholder="title" onChange={startdateFormChange("endDate")}></input>
       </div>
 
       <div className='add-formWrapper'>
         <div className='add-title'>공연주소</div>
 
         <div className="add-adress-field2">
-          <input //공연 주소(상세 주소)
-            type="text"
-            className="adr2"
-            name="detailAddress"
-            placeholder="주소를 검색해주세요."
-            // value={place}
-            onChange={handleInputValue("place")}
-            // readOnly
-          />
+          <input type="title" className="adr2 adfinput" name="detailAddress" placeholder="주소를 검색해주세요." onChange={handleInputValue("place")} />
         </div>
         {/* <Test setPlace={setPlace}></Test> */}
       </div>
 
       <div className='add-formWrapper'>
         <div className='add-title'>노출지역</div>
-      <select
-        className="add-show-location"
-        name="지역"
-        onChange={handleInputValue("area")}
-      >
+      <select className="add-show-location adfinput" name="지역" onChange={handleInputValue("area")} >
         <option value="" disabled selected >공연 정보가 노출될 지역을 선택하세요</option>
         <option value='서울'>서울특별시</option>
         <option value='경기'>경기도</option>
@@ -139,15 +117,10 @@ function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX, place
       
       <div className='add-formWrapper'>
         <div className='add-title'>공연장르</div>
-      <select
-        className="add-show-genre"
-        name="장르"
-        onChange={handleInputValue("realmName")}
-      >
+      <select className="add-show-genre adfinput" name="장르" onChange={handleInputValue("realmName")} >
         <option value="" disabled selected>공연 정보가 노출될 장르(카테고리)를 선택하세요</option>
         <option value="뮤지컬">뮤지컬</option>
         <option value="버스킹">버스킹</option>
-      
       </select>
       </div>
       <div className="addshow-alert"> * 공연의 상세 위치를 클릭해 주세요</div>
