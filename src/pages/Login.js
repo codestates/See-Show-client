@@ -53,7 +53,6 @@ class Login extends React.Component {
       <div className='login-body'>
       <div className='login-container'>
         <div className='login-window'>
-         <div className='login-overlay'></div>
          <div className='login-goback' onClick={()=> window.location.href = "/"}><img id="btn-goback" src="./resource/back_light_arrow_icon_131562.png"></img></div>
          <div className='login-content'>
             <div className='login-welcome'>Hello There!</div>

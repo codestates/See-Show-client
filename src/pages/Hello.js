@@ -6,18 +6,14 @@ function Hello(props) {
     <div className="hello-body">
       <div className="greeting">
         <div className="contentsWrapper">
-          <img
-            id="greeting-logo"
-            src="/resource/seeshow_logo_lite.png"
-            alt="logo"
-          />
+          <img id="greeting-logo" src="/resource/seeshow_logo_lite.png" alt="logo"/>
           <div className="subtitle">공연 전시 정보 안내 서비스</div>
           <div className="title">See SHOW</div>
         </div>
       </div>
 
       <div className="ad">
-        <div className="adWrapper">
+        {/* <div className="adWrapper">
           <div className="ad-left-text">
             <div className="ad-text-title">어디서나 공연과 전시를 즐기세요</div>
             <div className="ad-text-subtitle">
@@ -66,9 +62,9 @@ function Hello(props) {
               그렇다면 공연을 등록하여 많은 사람들에게 공연을 알리세요
             </div>
           </div>
-        </div>
+        </div> */}
 
-        <div className="footer">
+        {/* <div className="footer">
           <div className="uppart">
             <div className="logoarea">
               <img
@@ -102,7 +98,7 @@ function Hello(props) {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
