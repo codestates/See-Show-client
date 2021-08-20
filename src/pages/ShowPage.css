@@ -4,7 +4,7 @@
     align-items: center;
     flex-direction: column;
     width: 100%;
-    overflow-x: hidden;
+    height: 100%;
 }
 
 .bodyWrapper {
@@ -26,30 +26,8 @@
 
 .mainstream {
     width: 100%;
-    /* animation: scroll 70s linear infinite;
-    background: url("https://images.unsplash.com/photo-1465146633011-14f8e0781093?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80"), #111111; */
-    height: 100vh;
-    min-width: 360px;
-    perspective: 1000px;
-    perspective-origin: 50% 50%;
+    margin-bottom: 50px;
 }
-
-/* @keyframes scroll {
-    100%{
-     background-position:0px -3000px;
-   }
- }
- 
- @media (prefers-reduced-motion) {
-   .mainstream {
-     animation: scroll 200s linear infinite;
-   }
- } */
-
-
-
-
-
 
 
 
@@ -86,14 +64,7 @@
     margin: 10px;
     background-color: #eeeeee;
     border-radius: 15px;
-    box-shadow: 4px 4px 12px rgb(0, 0, 0, 10%);
-}
-
-.datatitle {
-    color: white;
-    font-family: 'Do Hyeon';
-    font-size: 2rem;
-    padding-left: 15px;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.301);
 }
 
 .dtitleWrapper {
@@ -105,12 +76,56 @@
     border-radius: 15px 15px 0px 0px;
 }
 
+.datatitle {
+    color: white;
+    font-family: 'Do Hyeon';
+    font-size: 2rem;
+    padding-left: 15px;
+}
+
+
+.longpadding {
+    width: 95%;
+    padding: 15px;
+    overflow-y: scroll;
+}
 
 
 .data1 {
     width: 100%;
+    margin-left: 15px;
 }
 
 .data2 {
     width: 100%;
+}
+
+
+
+.thumbnailcontainer {
+    width: 100%;
+}
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+ 
+    
+    .datatitle {
+        color: white;
+        font-family: 'Do Hyeon';
+        font-size: 1.5rem;
+        padding-left: 15px;
+    }
+
+
+    .longpadding {
+        width: 93%;
+        padding: 15px;
+        overflow-y: scroll;
+    }
+
 }
