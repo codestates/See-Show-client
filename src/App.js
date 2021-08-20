@@ -23,7 +23,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
   this.state = {
-    isLogin: false,
+    isLogin: true,
     userinfo: {firstCheck : 1},
     accessToken: null,
     firstCheck: null,
@@ -166,7 +166,7 @@ await axios
       
         {
 
-          path === '/Hello' || path ==='/login' || path ==='/signup' || path ==='/moreinfo' || path ==='/forgotpw' || path ==='/resetpw' || path ==='/terms' || path ==='/terms-local' ?
+          path === '/Hello' || path ==='/login' || path ==='/signup' || path ==='/moreinfo' || path ==='/forgotpw' || path ==='/resetpw' ?
 
           <div className="videoWrapper"> 
             <video id="backgroundVideo" muted autoplay="" loop="loop" src="./resource/backgroundvideo.mp4" />
