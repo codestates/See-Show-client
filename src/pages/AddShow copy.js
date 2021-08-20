@@ -44,7 +44,7 @@ class AddShow extends React.Component {
       if( !title || !startDate || !endDate || !realmName || !place || !area || !thumbnail || !gpsX || !gpsY){
         this.setState({ errorMessage: "모든 항목은 필수입니다" });
       } else{
-        axios.post(process.env.domain+"/addshow", {title, startDate, endDate, realmName, place, area, thumbnail, gpsX, gpsY},
+        axios.post(process.env.REACT_APP_DOMAIN+"/addshow", {title, startDate, endDate, realmName, place, area, thumbnail, gpsX, gpsY},
         {headers : { 
           authorization: `Bearer ${this.props.accessToken}`,
           "Content-type": "application/json",

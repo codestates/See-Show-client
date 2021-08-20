@@ -29,9 +29,11 @@ class Login extends React.Component {
     if (!userId || !password) {
       this.setState({ errorMessage: "아이디와 비밀번호를 입력하세요" });
     } else {
-      axios.post(process.env.domain+"/login",{ userId, password },
+      console.log(`thisisREACT_APP_DOMAIN`, process.env.REACT_APP_DOMAIN)
+      axios.post(process.env.REACT_APP_DOMAIN+"/login",{ userId, password },
         )
         .then((res) => {
+          // console.log(`thisisREACT_APP_DOMAIN`, process.env.REACT_APP_DOMAIN)
           // console.log(res.data,'성공')
           this.props.handleResponseSuccess(res);
           this.props.handleUserinfo()

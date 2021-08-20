@@ -32,7 +32,7 @@ class Moreinfo extends React.Component {
 
     handleSubmit = () => {
         const { area, genre } = this.state;
-        axios.post(process.env.domain+"/firstcheck", {area:area, genre}, {
+        axios.post(process.env.REACT_APP_DOMAIN+"/firstcheck", {area:area, genre}, {
             headers: {
                 authorization: `Bearer ${this.props.accessToken}`,
             }

@@ -1,3 +1,4 @@
+import dotenv from "dotenv";
 import React from "react";
 import { Switch, Route, Redirect, withRouter,  } from "react-router-dom";
 import Nav from "./pages/Nav";
@@ -19,6 +20,7 @@ import Blank from "./pages/blank"
 import SearchedDataList from "./Components/SearchedDataList";
 import Footer from "./Components/Footer";
 
+dotenv.config();
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -48,7 +50,7 @@ async setStateAccessToken(data) {
 
   await this.setState({accessToken : data})
 await axios
-  .get(process.env.domain+"/myPage", {headers: {
+  .get(process.env.REACT_APP_DOMAIN+"/myPage", {headers: {
     authorization: `Bearer ${this.state.accessToken}`,
 }})
   .then((res) => {
@@ -58,14 +60,14 @@ await axios
 }
 
   handleLogout() {
-    axios.post(process.env.domain+"/logout").then((res) => {
+    axios.post(process.env.REACT_APP_DOMAIN+"/logout").then((res) => {
       this.setState({ isLogin: false, accessToken:null });
       this.props.history.push("/Hello");
     });
   }
 
   WithdrawAccount(){
-    axios.post(process.env.domain+"/myPage", '', {
+    axios.post(process.env.REACT_APP_DOMAIN+"/myPage", '', {
       headers: {
         authorization: `Bearer ${this.state.accessToken}`,
       }
@@ -81,7 +83,7 @@ await axios
   handleUserinfo (){
 
     axios
-    .get(process.env.domain+"/myPage", {headers: {
+    .get(process.env.REACT_APP_DOMAIN+"/myPage", {headers: {
       authorization: `Bearer ${this.state.accessToken}`,
   }})
     .then((res) => {
@@ -119,7 +121,7 @@ await axios
     //moreinfo에서는 헤더에 토큰 넣어서 같이 보내고, 장르 로케이션값 바디에 실어 보내기
   }
   async getToken(authorizationCode){
-    await axios.post(process.env.domain+'/oauth', { authorizationCode: authorizationCode })
+    await axios.post(process.env.REACT_APP_DOMAIN+'/oauth', { authorizationCode: authorizationCode })
     .then(res => {
       const {accessToken, usertype} = res.data.data;
       if(!!res.data.data.firstcheck){

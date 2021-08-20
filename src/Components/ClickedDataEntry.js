@@ -57,7 +57,7 @@ class ClickedDataEntry extends React.Component {
 
     axios
       .post(
-        process.env.domain+"/review/create",
+        process.env.REACT_APP_DOMAIN+"/review/create",
         { seq, content, point },{
           headers: {
               authorization: `Bearer ${this.props.accessToken}`,

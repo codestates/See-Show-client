@@ -32,7 +32,7 @@ class ResetPw extends React.Component {
         } else if(newpw !== pwCheck) {
             this.setState({ errorMessage: "비밀번호가 일치하지 않습니다"});
         } else {
-            axios.post(process.env.domain+"/changepw", {userId, password: newpw}
+            axios.post(process.env.REACT_APP_DOMAIN+"/changepw", {userId, password: newpw}
             )
             .then(()=> this.props.history.push("/"))
             .catch(err=>console.log(err))
