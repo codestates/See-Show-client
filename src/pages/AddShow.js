@@ -78,7 +78,7 @@ class AddShow extends React.Component {
       this.setState({ errorMessage: "모든 항목은 필수입니다" });
     } else {
       axios
-        .post(process.env.domain+"/show/posting", {
+        .post(process.env.REACT_APP_DOMAIN+"/show/posting", {
           title,
           startDate,
           endDate,
