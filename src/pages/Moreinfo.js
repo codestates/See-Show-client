@@ -51,12 +51,11 @@ class Moreinfo extends React.Component {
         // const {userinfo} =this.props.userinfo
         // console.log(userinfo, '@@@@@@@@@')
     return (
-        <div className='moreinfo-body'>
-        <div className='moreinfo-container'>
-            <div className='moreinfo-window-select'>
-                <div className='moreinfo-overlay'></div>
-                <div className='moreinfo-content'>
-                    <div className='moreinfo-welcome'>Personal Options</div>
+        <div className='login-body'>
+        <div className='login-container'>
+            <div className='login-window'>
+                <div className='login-content'>
+                    <div className='login-welcome'>Personal Options</div>
                     <div className='moreinfo-infoTable'>
                     <form onSubmit={(e)=> e.preventDefault()}>
                         <div className='moreinfo-local'>관심지역 선택</div>
@@ -89,7 +88,8 @@ class Moreinfo extends React.Component {
                             <option value='기타'>기타</option>
                             </select>
                     </form>
-                    <div className='moreinfo-spacing-PO'>관심지역과 관심장르를 선택해 주세요. 이 옵션은 나중에 마이페이지에서도 변경할 수 있습니다</div>
+                    <div className='moreinfo-spacing-PO'>관심지역과 관심장르를 선택해 주세요.</div>
+                    <div className='moreinfo-spacing-P1'>이 옵션은 나중에 마이페이지에서도 변경할 수 있습니다</div>
                     <div> <Link to="/mypage"> <button className='moreinfo-choicebtn-login' type='submit' onClick={this.handleSubmit}>SUBMIT</button> </Link> </div>
                     </div>
                 </div>

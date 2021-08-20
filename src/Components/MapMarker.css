@@ -1,0 +1,11 @@
+#map {
+    width: 55vw;
+    height: 30vh;
+}
+
+@media screen and (max-width: 1440px) {
+    #map {
+        width: 88vw;
+        height: 30vh;
+    }
+}
