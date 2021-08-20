@@ -248,11 +248,15 @@ class ShowPage extends React.Component {
                       <div className="datatitle">가까운 추천 공연</div>
                     </div>
 
-                    <div className="data1">
-                      <DataList
-                        datas={this.state.apiData}
-                        handleClickedData={this.setClickedData}
-                      ></DataList>
+                    <div className="longpadding">
+                      <div className="data1">
+                        <div className="thumbnailcontainer">
+                          <DataList
+                            datas={this.state.apiData}
+                            handleClickedData={this.setClickedData}
+                          ></DataList>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
@@ -261,11 +265,15 @@ class ShowPage extends React.Component {
                       <div className="datatitle">관심사 추천 공연</div>
                     </div>
 
-                    <div className="data2">
-                      <RecommendDataList
-                        recommendData={this.state.recommendData}
-                        handleClickedData={this.setClickedData}
-                      ></RecommendDataList>
+                    <div className="longpadding">
+                      <div className="data2">
+                        <div className="thumbnailcontainer">
+                          <RecommendDataList
+                            recommendData={this.state.recommendData}
+                            handleClickedData={this.setClickedData}
+                          ></RecommendDataList>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

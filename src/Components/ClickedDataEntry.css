@@ -589,6 +589,9 @@
         font-family: 'Do Hyeon';
         font-size: 2rem;
         margin-bottom: 15px;
+        width: 90%;
+        word-break: keep-all;
+
     }
     
     .cd-show-parts {
