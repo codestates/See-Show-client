@@ -5,15 +5,15 @@
 .add-bigtitle {
     text-align: center;
     font-size: 3rem;
-    color: white;
+    color: black;
     font-family: "Song Myung";
     padding-bottom: 10px;
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid black;
     margin-bottom: 20px;
 }
 
 .add-title {
-    color: white;
+    color: rgb(61, 61, 61);
     font-family: "Do Hyeon";
     font-size: 2rem;
     margin-left: 10px;
@@ -22,7 +22,7 @@
 }
 
 .add-subtitle {
-    color: white;
+    color: black;
     font-family: "Jua";
     margin-top: 20px;
 }
@@ -69,7 +69,6 @@
 }
 
 .add-thumbnail-upload {
-    border: none;
     border-radius: 5px;
     padding-left: 7px;
     background-color: whitesmoke;
@@ -83,7 +82,7 @@
 
 
 .add-right {
-    border-left: 1px solid white;
+    border-left: 1px solid black;
     width: 65%;
     padding-left: 20px;
     display: flex;
@@ -94,6 +93,7 @@
 .add-showtitle {
     width: 50%;
     font-size: 1.3rem;
+    color: black;
 }
 
 .add-formWrapper {
@@ -105,16 +105,18 @@
 .adfinput {
     width: 50%;
     min-width: 600px;
+    color: black;
+    border-bottom: 1.5px solid royalblue;
 }
 
 
 .adr2 {
     height: 30px;
     min-width: 600px;
+    color: black;
 }
 
 .adr-search-btn {
-    border: none;
     width: 80px;
     height: 30px;
 }
@@ -122,15 +124,19 @@
 .add-show-location {
     width: 50%;
     height: 30px;
-    border: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
 }
 
 .add-show-genre {
     width: 50%;
     height: 30px;
-    border: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
 }
 
 .addshow-alert {
-    color: white;
+    color: black;
 }
