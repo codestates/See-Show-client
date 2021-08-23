@@ -71,4 +71,18 @@
     box-shadow: 0px 15px 20px rgba(246, 116, 51, 0.4);
     color: #fff;
     transform: translateY(-2px);
-  }
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .mypage-title {
+        font-size: 2rem;
+    }
+    
+    .mypage-container {
+        height: 40vh;
+        font-size: 1.5rem;
+    }
+
+}

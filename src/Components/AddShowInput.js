@@ -68,60 +68,56 @@ function AddShowInput({ handleInputValue, startdateFormChange, handleGpsX, place
 
       <div className='add-right'>
       <div className='add-formWrapper'>
-          <div className='add-title'>공연제목</div>
-          <input className="add-showtitle adfinput" type="title" placeholder="title" onChange={handleInputValue("title")} ></input>
+          <div className='add-title2'>공연제목</div>
+          <input className="adfinput" type="title" placeholder="공연제목" onChange={handleInputValue("title")} ></input>
       </div>
 
       
       <div className='add-formWrapper'>
-        <div className='add-title'>시작일자</div>
-      <input className="add-show-startDate adfinput" type="date" placeholder="title" onChange={startdateFormChange("startDate")} ></input> 
+        <div className='add-title2'>시작일자</div>
+        <input className="adfinput" type="date" onChange={startdateFormChange("startDate")} ></input> 
       </div>
 
       <div className='add-formWrapper'>
-        <div className='add-title'>종료일자</div>
-      <input className="add-show-endDate adfinput" type="date" placeholder="title" onChange={startdateFormChange("endDate")}></input>
+        <div className='add-title2'>종료일자</div>
+        <input className="adfinput" type="date" onChange={startdateFormChange("endDate")}></input>
       </div>
 
       <div className='add-formWrapper'>
-        <div className='add-title'>공연주소</div>
-
-        <div className="add-adress-field2">
-          <input type="title" className="adr2 adfinput" name="detailAddress" placeholder="주소를 검색해주세요." onChange={handleInputValue("place")} />
-        </div>
-        {/* <Test setPlace={setPlace}></Test> */}
+        <div className='add-title2'>공연주소</div>
+        <input type="text" className="adfinput" name="detailAddress" placeholder="주소를 입력해주세요." onChange={handleInputValue("place")} />
       </div>
 
       <div className='add-formWrapper'>
-        <div className='add-title'>노출지역</div>
-      <select className="add-show-location adfinput" name="지역" onChange={handleInputValue("area")} >
-        <option value="" disabled selected >공연 정보가 노출될 지역을 선택하세요</option>
-        <option value='서울'>서울특별시</option>
-        <option value='경기'>경기도</option>
-        <option value='강원'>강원도</option>
-        <option value='대전'>대전광역시</option>
-        <option value='세종'>세종특별자치시</option>
-        <option value='충북'>충청북도</option>
-        <option value='충남'>충청남도</option>
-        <option value='광주'>광주광역시</option>
-        <option value='전북'>전라북도</option>
-        <option value='전남'>전라남도</option>
-        <option value='대구'>대구광역시</option>
-        <option value='경북'>경상북도</option>
-        <option value='경남'>경상남도</option>
-        <option value='울산'>울산광역시</option>
-        <option value='부산'>부산광역시</option>
-        <option value='제주'>제주특별자치도</option>
-      </select>
+        <div className='add-title2'>노출지역</div>
+          <select className="adfinput" name="지역" onChange={handleInputValue("area")} >
+            <option value="" disabled selected >공연 정보가 노출될 지역을 선택하세요</option>
+            <option value='서울'>서울특별시</option>
+            <option value='경기'>경기도</option>
+            <option value='강원'>강원도</option>
+            <option value='대전'>대전광역시</option>
+            <option value='세종'>세종특별자치시</option>
+            <option value='충북'>충청북도</option>
+            <option value='충남'>충청남도</option>
+            <option value='광주'>광주광역시</option>
+            <option value='전북'>전라북도</option>
+            <option value='전남'>전라남도</option>
+            <option value='대구'>대구광역시</option>
+            <option value='경북'>경상북도</option>
+            <option value='경남'>경상남도</option>
+            <option value='울산'>울산광역시</option>
+            <option value='부산'>부산광역시</option>
+            <option value='제주'>제주특별자치도</option>
+          </select>
       </div>
       
       <div className='add-formWrapper'>
-        <div className='add-title'>공연장르</div>
-      <select className="add-show-genre adfinput" name="장르" onChange={handleInputValue("realmName")} >
-        <option value="" disabled selected>공연 정보가 노출될 장르(카테고리)를 선택하세요</option>
-        <option value="뮤지컬">뮤지컬</option>
-        <option value="버스킹">버스킹</option>
-      </select>
+        <div className='add-title2'>공연장르</div>
+          <select className="adfinput" name="장르" onChange={handleInputValue("realmName")} >
+            <option value="" disabled selected>공연 정보가 노출될 장르(카테고리)를 선택하세요</option>
+            <option value="뮤지컬">뮤지컬</option>
+            <option value="버스킹">버스킹</option>
+          </select>
       </div>
       <div className="addshow-alert"> * 공연의 상세 위치를 클릭해 주세요</div>
       <Map handleGpsX={handleGpsX} place={place}></Map>

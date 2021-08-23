@@ -15,10 +15,9 @@
 .add-title {
     color: rgb(61, 61, 61);
     font-family: "Do Hyeon";
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-left: 10px;
     margin-right: 10px;
-    min-width: 100px;
 }
 
 .add-subtitle {
@@ -42,7 +41,6 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    min-width: 400px;
     margin-bottom: 20px;
 }
 
@@ -90,29 +88,41 @@
     flex-wrap: wrap;
 }
 
-.add-showtitle {
-    width: 50%;
-    font-size: 1.3rem;
-    color: black;
+.add-title2 {
+    color: rgb(61, 61, 61);
+    font-family: "Do Hyeon";
+    font-size: 1.8rem;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 10%;
+    word-break: keep-all;
 }
 
 .add-formWrapper {
     display: flex;
+    flex-wrap: nowrap;
     margin-bottom: 10px;
-    flex-wrap: wrap;
+    width: 100%;
 }
 
 .adfinput {
-    width: 50%;
-    min-width: 600px;
+    width: 100%;
+    height: 30px;
     color: black;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: rgb(211, 211, 211);
     border-bottom: 1.5px solid royalblue;
+}
+
+.adfinput::placeholder {
+    color: black;
 }
 
 
 .adr2 {
     height: 30px;
-    min-width: 600px;
     color: black;
 }
 
@@ -139,4 +149,178 @@
 
 .addshow-alert {
     color: black;
+}
+
+
+
+
+
+
+
+@media screen and (max-width: 1440px) {
+
+
+    .add-body {
+        padding: 30px;
+        width: 90%;
+        height: auto;
+    }
+    
+    .add-bigtitle {
+        text-align: center;
+        font-size: 2rem;
+        color: black;
+        font-family: "Song Myung";
+        padding-bottom: 10px;
+        border-bottom: 2px solid black;
+        margin-bottom: 20px;
+    }
+    
+    .add-title {
+        color: rgb(61, 61, 61);
+        font-family: "Do Hyeon";
+        font-size: 1.3rem;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    
+    .add-subtitle {
+        color: black;
+        font-family: "Jua";
+        margin-top: 20px;
+    }
+    
+    .add-contents {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    
+    
+    
+    
+    .add-left {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 20px;
+
+    }
+    
+    .add-thumbnail-Wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+    }
+    
+    .add-thumbnail {
+        width: 200px;
+        height: 300px;
+    }
+    
+    .add-thumbnail-holder {
+        width: 200px;
+        height: 300px;
+        background-color: black;
+        color: white;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+    }
+    
+    .add-thumbnail-upload {
+        border-radius: 5px;
+        padding-left: 7px;
+        background-color: whitesmoke;
+        color: black;
+        width: 100%;
+        margin-top: 5px;
+        height: 23px;
+    }
+    
+    
+    
+    
+    .add-right {
+        border: none;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding-left: unset;
+    }
+    
+    .add-showtitle {
+        width: 50%;
+        font-size: 1.3rem;
+        color: black;
+    }
+    
+    .add-formWrapper {
+        display: flex;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+    }
+
+    .add-title2 {
+        color: rgb(61, 61, 61);
+        font-family: "Do Hyeon";
+        font-size: 1.8rem;
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 10%;
+        word-break: keep-all;
+    }
+    
+    .adfinput {
+        width: 100%;
+        height: 30px;
+        color: black;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        background-color: rgb(211, 211, 211);
+        border-bottom: 1.5px solid royalblue;
+    }
+
+    .adfinput::placeholder {
+        color: black;
+    }
+    
+    
+    
+    .adr-search-btn {
+        width: 80px;
+        height: 30px;
+    }
+    
+    .add-show-location {
+        width: 50%;
+        height: 30px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+    
+    .add-show-genre {
+        width: 50%;
+        height: 30px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+    
+    .addshow-alert {
+        color: black;
+    }
+
+
+
+
+
 }
