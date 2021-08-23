@@ -127,12 +127,13 @@
 
 .kakaomap {
     margin-top: 10px;
+    width: 90%;
 }
 
 .cd-show-writeReview {
     background-color: white;
     border-radius: 0px 20px 0px 20px;
-    width: 83.2%;
+    width: 88%;
     margin-top: 20px;
     padding: 10px;
     display: flex;
@@ -616,7 +617,7 @@
     .cd-show-writeReview {
         background-color: white;
         border-radius: 0px 20px 0px 20px;
-        width: 83.2%;
+        width: 86%;
         margin-top: 20px;
         padding: 10px;
         display: flex;
