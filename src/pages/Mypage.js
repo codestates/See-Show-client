@@ -7,7 +7,7 @@ import "./css/Mypage.css";
 
 function Mypage(props) {
   const { isLogin, WithdrawAccount, handleLogout, userinfo } = props;
-
+console.log(userinfo,'userinfo')
   //Userinfo의 정보가 없을 시, 로그인 페이지로 리다이렉트.
   //기능테스트를 위해 일시적으로 주석처리함.
   // handleUserinfo()
@@ -79,7 +79,7 @@ function Mypage(props) {
   
           <div className="mypage-contentsWrapper-right">
             <div className="mypage-contents-info">{userinfo.username}</div>
-            <div className="mypage-contents-info">{userinfo.userId}</div>
+            <div className="mypage-contents-info">{userinfo.nickname}</div>
             <div className="mypage-contents-info">{userinfo.email}</div>
             <div className="mypage-contents-info">{userinfo.area}</div>
             <div className="mypage-contents-info">{userinfo.genre}</div>

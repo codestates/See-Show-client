@@ -53,7 +53,7 @@ class ClickedDataEntry extends React.Component {
           headers: {
             "Content-type": "application/json",
             Accept: "application/json",
-          },
+          },withCredentials: true
         }
       )
       .then((res) => {
