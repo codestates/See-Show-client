@@ -35,14 +35,14 @@ class Moreinfo extends React.Component {
         axios.post(process.env.REACT_APP_DOMAIN+"/firstcheck", {area:area, genre}, {
             headers: {
                 authorization: `Bearer ${this.props.accessToken}`,
-            }
+            },withCredentials: true
         })
         .then(res => {
                  this.props.setStateUserInfo(area, genre)
-            // console.log(res.data.data.accessToken,'ddddd')
-            if(res.data.data.accessToken){
-                return this.props.setStateAccessToken(res.data.data.accessToken)
-            }
+            console.log(res.data,'ddddd')
+            // if(res.data.data.accessToken){
+            //     return this.props.setStateAccessToken(res.data.data.accessToken)
+            // }
         })
         .catch(err=>console.log(err))
     }
@@ -90,7 +90,7 @@ class Moreinfo extends React.Component {
                     </form>
                     <div className='moreinfo-spacing-PO'>관심지역과 관심장르를 선택해 주세요.</div>
                     <div className='moreinfo-spacing-P1'>이 옵션은 나중에 마이페이지에서도 변경할 수 있습니다</div>
-                    <div> <Link to="/mypage"> <button className='moreinfo-choicebtn-login' type='submit' onClick={this.handleSubmit}>SUBMIT</button> </Link> </div>
+                    <div> <Link to='/mypage'> <button className='moreinfo-choicebtn-login' type='submit' onClick={this.handleSubmit}>SUBMIT</button></Link></div>
                     </div>
                 </div>
             </div>

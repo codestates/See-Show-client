@@ -61,7 +61,7 @@ class ClickedDataEntry extends React.Component {
         { seq, content, point },{
           headers: {
               authorization: `Bearer ${this.props.accessToken}`,
-          }
+          },withCredentials: true
       })
       .then((res) => {
         // this.props.getReview();
