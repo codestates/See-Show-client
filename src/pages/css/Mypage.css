@@ -1,6 +1,5 @@
 .mypage-body {
-    background-color: #111111;
-    color: white;
+    color: black;
     height: 90vh;
     padding: 30px;
 }
@@ -10,7 +9,7 @@
     font-family: 'Song Myung';
     font-size: 3rem;
     padding-bottom: 15px;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid black;
 }
 
 .mypage-container {
@@ -24,7 +23,7 @@
 
 .mypage-contentsWrapper-left {
     text-align: right;
-    border-right: 1px solid white;
+    border-right: 1px solid black;
     font-family: "Do Hyeon";
 }
 
@@ -68,8 +67,22 @@
 }
 
 .mypage-btn:hover {
-    background-color: #e56b2e;
-    box-shadow: 0px 15px 20px rgba(229, 107, 46, 0.4);
+    background-color: #ff7f3f;
+    box-shadow: 0px 15px 20px rgba(246, 116, 51, 0.4);
     color: #fff;
-    transform: translateY(-7px);
-  }
+    transform: translateY(-2px);
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .mypage-title {
+        font-size: 2rem;
+    }
+    
+    .mypage-container {
+        height: 40vh;
+        font-size: 1.5rem;
+    }
+
+}

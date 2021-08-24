@@ -1,5 +1,6 @@
 /*global kakao */
 import React, { useEffect } from "react";
+import './MapMarker.css'
 
 export default function MapMarker({data}) {
    
@@ -35,5 +36,7 @@ export default function MapMarker({data}) {
     marker.setMap(map);
   };
 
-  return <div id="map" style={{ width: "55vw", height: "30vh" }}></div>;
+  // style={{ width: "55vw", height: "30vh" }}
+
+  return <div id="map" ></div>;
 }

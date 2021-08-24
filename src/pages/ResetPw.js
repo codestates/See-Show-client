@@ -32,7 +32,7 @@ class ResetPw extends React.Component {
         } else if(newpw !== pwCheck) {
             this.setState({ errorMessage: "비밀번호가 일치하지 않습니다"});
         } else {
-            axios.post(process.env.domain+"/changepw", {userId, password: newpw}
+            axios.post(process.env.REACT_APP_DOMAIN+"/changepw", {userId, password: newpw}
             )
             .then(()=> this.props.history.push("/"))
             .catch(err=>console.log(err))
@@ -41,22 +41,21 @@ class ResetPw extends React.Component {
 
     render() {
         return(
-            <div className="reset-body">
-            <div className='reset-container'>
-                <div className='reset-window'>
-                    <div className='reset-overlay'></div>
-                    <div className='reset-content'>
-                        <div className='reset-welcome'>Reset Password</div>
-                        <div className='reset-input-fields'>
+            <div className="login-body">
+            <div className='login-container'>
+                <div className='login-window'>
+                    <div className='login-content'>
+                        <div className='login-welcome'>Reset Password</div>
+                        <div className='login-input-fields'>
                             <form onSubmit={(e)=> e.preventDefault()}>
-                            <input className='reset-input-line full-width' type='userId' placeholder='ID' onChange={this.handleInputValue('userId')}></input>
-                            <input className='reset-input-line full-width' type='password' placeholder='PASSWORD' onChange={this.handleInputValue('newpw')}></input>
-                            <input className='reset-input-line full-width' type='password' placeholder='CONFIRM PASSWORD' onChange={this.handleInputValue('pwCheck')}></input>
-                            <div className='reset-alert-box'>{this.state.errorMessage}</div>
+                            <input className='login-input-line full-width' type='userId' placeholder='ID' onChange={this.handleInputValue('userId')}></input>
+                            <input className='login-input-line full-width' type='password' placeholder='PASSWORD' onChange={this.handleInputValue('newpw')}></input>
+                            <input className='login-input-line full-width' type='password' placeholder='CONFIRM PASSWORD' onChange={this.handleInputValue('pwCheck')}></input>
+                            <div className='login-alert-box'>{this.state.errorMessage}</div>
                             </form>
                         </div>
                         <div className='reset-spacing-res'></div>
-                        <div><button className='reset-choicebtn-login' type='submit' onClick={this.handleSubmit}>SUBMIT</button></div>
+                        <div><button className='login-choicebtn-login' type='submit' onClick={this.handleSubmit}>SUBMIT</button></div>
                     </div>
                 </div>
             </div>

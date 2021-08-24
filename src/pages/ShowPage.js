@@ -1,12 +1,10 @@
 import React from "react";
 import axios from "axios";
 import { withRouter, Redirect, Link } from "react-router-dom";
-
 import SearchBar from "../Components/SearchBar";
 import DataList from "../Components/DataList";
 import ClickedDataEntry from "../Components/ClickedDataEntry";
 import RecommendDataList from "../Components/RecommendDataList";
-
 import "./ShowPage.css";
 import SearchedDataList from "../Components/SearchedDataList";
 
@@ -67,21 +65,17 @@ class ShowPage extends React.Component {
   }
 
   componentWillMount() {
-    // console.log("Component WILL MOUNT!");
-    // console.log(this.state.apiData);
     this.handleApiData();
-    // console.log(this.state.apiData);
-    // this.handleRecommendData();
   }
 
   handleApiData() {
     // 공연 정보 데이터 불러오기.
     axios
-      .get(process.env.domain+"/recommend/location")
+      .get(process.env.REACT_APP_DOMAIN+"/recommend/location")
       .then((res) => {
         this.setState({ apiData: res.data.data.list });
       })
-      .then((res) => axios.get(process.env.domain+"/recommend/genre"))
+      .then((res) => axios.get(process.env.REACT_APP_DOMAIN+"/recommend/genre"))
       .then((res) => {
         // const { recommendData } = this.state.recommendData;
         // const newRecommendData = [...recommendData, res.data.list];
@@ -116,13 +110,10 @@ class ShowPage extends React.Component {
 
   getClickedApiData = () => {
     //클릭한 공연의 상세 정보 데이터 불러오기.
-    // console.log(this.state.clickedData, 'clickedData')
     axios
-      .post(process.env.domain+"/show/detail", this.state.clickedData)
+      .post(process.env.REACT_APP_DOMAIN+"/show/detail", this.state.clickedData)
       .then((res) => {
-        // console.log(res)
         this.setState({ clickedShowData: res.data.data });
-        // console.log(res.data.data, "clickedShowData");
       })
       .catch((err) => console.log(err));
   };
@@ -131,14 +122,11 @@ class ShowPage extends React.Component {
     //공연 상세정보 뿌려주기 위해 ClickedData setState.
     await this.setState({ clickedData: data });
     await this.getClickedApiData(data);
-    // await this.getReview();
-    // console.log("setClickedData");
   }
 
   resetClickedData() {
     //상세보기 에서 뒤로가기 버튼 누를 때, clickedData reset.
     this.setState({ clickedData: null, clickedShowData: "" });
-    // console.log(this.state, "resetClickedDaata");
   }
 
   getReview() {
@@ -159,7 +147,7 @@ class ShowPage extends React.Component {
   areaFiltered() {
     this.setState({ clickedData: null });
     axios
-      .post(process.env.domain+"/show", {
+      .post(process.env.REACT_APP_DOMAIN+"/show", {
         searchWord: this.state.clickedArea,
       })
       .then((res) => {
@@ -174,24 +162,17 @@ class ShowPage extends React.Component {
   hanldeAreaState(e) {
     const value = e.target.value;
     this.setState({ clickedArea: value });
-    // console.log(value, "handleAreaState");
-    // console.log(this.state.clickedArea, "state.area");
     // this.areaFiltered(value)
   }
 
   handleInputValue(e) {
-    const value = e.target.value;
-    // console.log(value);
     this.setState({ search: e.target.value });
-    // this.areaFiltered(value)
   }
   resetCheck() {
     this.setState({ check: 0, clickedShowData: "", clickedData: null });
-    // console.log(this.state, "resetCheck");
   }
 
   render() {
-    // console.log(this.state, "render");
     //지역별 검색 했을 경우
     if (this.state.check === 1) {
       return (
@@ -232,34 +213,47 @@ class ShowPage extends React.Component {
       return (
         <div className="show-body">
           <div className="bodyWrapper">
-            <div className="searchWrapper">
-              <SearchBar
-                areaFiltered={this.areaFiltered}
-                handleInputValue={this.handleInputValue}
-                hanldeAreaState={this.hanldeAreaState}
-              ></SearchBar>
-            </div>
-
             <div className="mainstream">
               {this.state.clickedData === null ? (
                 <div className="apidata">
+                   <div className="searchWrapper">
+                     <SearchBar
+                        areaFiltered={this.areaFiltered}
+                        handleInputValue={this.handleInputValue}
+                        hanldeAreaState={this.hanldeAreaState}
+                     ></SearchBar>
+                   </div>
                   <div className="dataWrapper">
-                    <div className="datatitle">가까운 추천 공연</div>
-                    <div className="data1">
-                      <DataList
-                        datas={this.state.apiData}
-                        handleClickedData={this.setClickedData}
-                      ></DataList>
+                    <div className="dtitleWrapper">
+                      <div className="datatitle">가까운 추천 공연</div>
+                    </div>
+
+                    <div className="longpadding">
+                      <div className="data1">
+                        <div className="thumbnailcontainer">
+                          <DataList
+                            datas={this.state.apiData}
+                            handleClickedData={this.setClickedData}
+                          ></DataList>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
                   <div className="dataWrapper">
-                    <div className="datatitle">관심사 추천 공연</div>
-                    <div className="data2">
-                      <RecommendDataList
-                        recommendData={this.state.recommendData}
-                        handleClickedData={this.setClickedData}
-                      ></RecommendDataList>
+                    <div className="dtitleWrapper">
+                      <div className="datatitle">관심사 추천 공연</div>
+                    </div>
+
+                    <div className="longpadding">
+                      <div className="data2">
+                        <div className="thumbnailcontainer">
+                          <RecommendDataList
+                            recommendData={this.state.recommendData}
+                            handleClickedData={this.setClickedData}
+                          ></RecommendDataList>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

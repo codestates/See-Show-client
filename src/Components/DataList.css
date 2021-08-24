@@ -1,24 +1,25 @@
 .datalistup {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    /* overflow-y: scroll; */
+    width: 100%;
 }
 
 .showBox_img {
     width: 200px;
     height: 300px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.301);
 
 }
 
 .recommendShowBox_img {
     width: 200px;
     height: 300px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.301);
 
 }

@@ -15,7 +15,9 @@ function Terms(props) {
 
         <div className="docu">
             <h2 className="header">제 1 조 (목적)</h2>
+            <div className="olbody">
             이 약관은 Team DDH (이하 "회사")가 제공하는 See-show 및 See-show 관련 제반 서비스의 이용과 관련하여 회사와 회원과의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.
+            </div>
         </div>
 
         <div className="docu">
@@ -83,7 +85,9 @@ function Terms(props) {
 
         <div className="docu">
             <h2 className="header">제 7 조 (개인정보보호 의무)</h2>
+            <div className="olbody">
             "회사"는 "정보통신망법" 등 관계 법령이 정하는 바에 따라 "회원"의 개인정보를 보호하기 위해 노력합니다. 개인정보의 보호 및 사용에 대해서는 관련법 및 "회사"의 개인정보처리방침이 적용됩니다. 다만, "회사"의 공식 사이트 이외의 링크된 사이트에서는 "회사"의 개인정보처리방침이 적용되지 않습니다.
+            </div>
         </div>
 
         <div className="docu">
@@ -195,7 +199,9 @@ function Terms(props) {
 
         <div className="docu">
             <h2 className="header">제 18 조 (포인트)</h2>
+            <div className="olbody">
             "회사"는 서비스의 효율적 이용 및 운영을 위해 사전 공지 후 "포인트"의 일부 또는 전부를 조정할 수 있으며, "포인트"는 회사가 정한 기간에 따라 주기적으로 소멸할 수 있습니다.
+            </div>
         </div>
 
         <div className="docu">

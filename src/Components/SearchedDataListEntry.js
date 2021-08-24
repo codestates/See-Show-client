@@ -7,15 +7,15 @@ import './SearchedDataList.css'
 const SearchedDataListEntry = ({ data, handleClickedData }) => (
   <div className="result-body">
 
-  <div className="result-showBox" onClick={() => handleClickedData(data)}>
-    <img className="result-showBox_img" src={data.thumbnail} alt={data.title} />
+    <div className="result-showBox" onClick={() => handleClickedData(data)}>
+      <img className="result-showBox_img" src={data.thumbnail} alt={data.title} />
 
 
-    <div className="result-infoBox">
-      <div className="result-title">{data.title}</div>
-      <div className="result-rundate">{data.startDate}~{data.endDate}</div>
-      <div className="result-place">{data.place}</div>
-    </div>
+        <div className="result-infoBox">
+          <div className="result-title">{data.title}</div>
+          <div className="result-rundate">{data.startDate}~{data.endDate}</div>
+          <div className="result-place">{data.place}</div>
+        </div>
     </div>
   </div>
 );
