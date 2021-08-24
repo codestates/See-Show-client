@@ -210,7 +210,7 @@ class App extends React.Component {
               )}
             />
             <Route
-              path="/showdetail"
+              path="/show/:id"
               render={() => <ClickedDataEntry></ClickedDataEntry>}
             />
             <Route path="/Hello" render={() => <Hello />} />
