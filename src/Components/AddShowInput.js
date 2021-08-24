@@ -118,7 +118,13 @@ function AddShowInput({handleInputValue, startdateFormChange, handleGpsX, state}
             </div>
           </div>
         </div>
+  
 
+
+
+   
+      
+ 
         <div className="add-right">
           <div className="add-formWrapper">
             <div className="add-title">공연제목</div>
