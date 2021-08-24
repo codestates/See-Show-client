@@ -125,7 +125,7 @@ function AddShowInput({handleInputValue, startdateFormChange, handleGpsX, state}
             <input
               className="adfinput"
               type="title"
-              placeholder="title"
+              placeholder="공연제목"
               onChange={handleInputValue("title")}
             ></input>
           </div>
@@ -135,7 +135,6 @@ function AddShowInput({handleInputValue, startdateFormChange, handleGpsX, state}
             <input
               className="adfinput"
               type="date"
-              placeholder="title"
               onChange={startdateFormChange("startDate")}
             ></input>
           </div>
@@ -145,7 +144,6 @@ function AddShowInput({handleInputValue, startdateFormChange, handleGpsX, state}
             <input
               className="adfinput"
               type="date"
-              placeholder="title"
               onChange={startdateFormChange("endDate")}
             ></input>
           </div>
@@ -154,14 +152,14 @@ function AddShowInput({handleInputValue, startdateFormChange, handleGpsX, state}
             <div className="add-title">공연주소</div>
             <div className="add-adress-field2">
               <input
-                type="title"
+                type="text"
                 className="adfinput"
                 name="detailAddress"
                 readOnly
                 value ={addressInput.fullAddress || ""}
               />
               <input
-                type="title"
+                type="text"
                 className="adfinput"
                 name="detailAddress"
                 placeholder="주소를 검색해주세요."
