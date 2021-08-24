@@ -35,20 +35,7 @@ class AddShow extends React.Component {
 
 
   render() {
-console.log(this.state,'addshow state')
 
-    const {
-      title,
-      startDate,
-      endDate,
-      realmName,
-      place,
-      area,
-      thumbnail,
-      gpsX,
-      gpsY,
-    } = this.state;
-    // if( !title || !startDate || !endDate || !realmName || !place || !area || !thumbnail || !gpsX || !gpsY){
     return (
       <div className="addshow-container">
         <div className="addshow-input-fields">

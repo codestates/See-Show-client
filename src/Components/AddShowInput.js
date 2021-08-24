@@ -5,7 +5,7 @@ import Map from "../Components/AddShowMap";
 import PopupDom from "../Components/PopupDom";
 import PopupPostCode from "../Components/PopupPostCode";
 import { confirmAlert } from "react-confirm-alert"; // Import
-
+import {Redirect, Link}from 'react-router-dom'
 
 
 function AddShowInput({handleInputValue, startdateFormChange, handleGpsX, state}) {
@@ -61,7 +61,7 @@ function AddShowInput({handleInputValue, startdateFormChange, handleGpsX, state}
           withCredentials: true,
         })
         .then((res) => {
-          this.props.history.push("/show");
+          document.location.href = "/show"
         }); 
     }
   };
