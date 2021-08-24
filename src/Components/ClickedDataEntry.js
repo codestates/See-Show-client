@@ -166,21 +166,23 @@ class ClickedDataEntry extends React.Component {
               <div className="cd-show-writeReview">
                 <div className="cd-show-reviewtitle">리뷰 등록</div>
                 <input className="cd-show-review" placeholder="리뷰를 작성해주세요" type="text" onChange={this.handleInputValue("reivewContent")}></input>
-                <select className="cd-show-rating" onChange={this.handleInputValue("reviewPoint")}>
-                  <option value="" disabled selected>별점 선택</option>
-                  <option value="5">★★★★★</option>
-                  <option value="4">★★★★</option>
-                  <option value="3">★★★</option>
-                  <option value="2">★★</option>
-                  <option value="1">★</option>
-                </select>
+                <div className="ratediv">
+                  <select className="cd-show-rating" onChange={this.handleInputValue("reviewPoint")}>
+                    <option value="" disabled selected>별점 선택</option>
+                    <option value="5">★★★★★</option>
+                    <option value="4">★★★★</option>
+                    <option value="3">★★★</option>
+                    <option value="2">★★</option>
+                    <option value="1">★</option>
+                  </select>
 
-                {!this.props.isLogin ? (
-                  <button className="cd-show-reviewSubmit" onClick={this.reviewConfirmHandler}>등록</button>
-                  ) : (
-                   <button className="cd-show-reviewSubmit" onClick={this.createReview}>등록</button>
-                )
-                }
+                  {!this.props.isLogin ? (
+                    <button className="cd-show-reviewSubmit" onClick={this.reviewConfirmHandler}>등록</button>
+                    ) : (
+                    <button className="cd-show-reviewSubmit" onClick={this.createReview}>등록</button>
+                  )
+                  }
+                </div>
               
               </div>
             </form>

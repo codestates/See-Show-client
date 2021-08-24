@@ -19,6 +19,7 @@ import ClickedDataEntry from "./Components/ClickedDataEntry copy";
 import Blank from "./pages/blank";
 import SearchedDataList from "./Components/SearchedDataList";
 import Footer from "./Components/Footer";
+import Weareddh from "./pages/weareddh"
 
 dotenv.config();
 class App extends React.Component {
@@ -201,7 +202,6 @@ class App extends React.Component {
               path="/searched_data"
               render={() => <SearchedDataList></SearchedDataList>}
             />
-
             <Route path="/blank" render={() => <Blank></Blank>} />
             <Route
               path="/addshow"
@@ -263,13 +263,13 @@ class App extends React.Component {
             <Route exact path="/resetpw" render={() => <ResetPw />} />
             <Route exact path="/terms-default" render={() => <Terms />} />
             <Route exact path="/terms-local" render={() => <Terms_local />} />
+            <Route exact path="/weareddh" render={() => <Weareddh />} />
             <Route
               path="/"
               render={() => {
                 if (isLogin) {
                   return <Redirect to="/Hello" />;
                 }
-                return <Redirect to="/Hello" />;
               }}
             />
             {/* <Route exact path="/show" render={() => {

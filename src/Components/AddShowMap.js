@@ -2,7 +2,7 @@
 
 
 import React, { useEffect } from "react";
-import "./AddShowInput.css"
+import "./AddShowMap.css"
 
 
 export default function MapMarker({addressInput, setAddress, handleInputValue}) {
@@ -48,6 +48,7 @@ export default function MapMarker({addressInput, setAddress, handleInputValue}) 
   })
   };
 
+  // style={{ width: "65vw", height: "30vh"}}
 
-  return <div id="map" style={{ width: "65vw", height: "30vh"}}></div>;
+  return <div id="map" ></div>;
 }

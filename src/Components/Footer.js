@@ -18,7 +18,7 @@ function Footer() {
                 </div>
 
                 <div className="footer-infoarea-buttonsarea">
-                    <Link to="/" className="footer-infoarea-buttonsarea-buttons" >회사소개</Link>
+                    <Link to="/weareddh" className="footer-infoarea-buttonsarea-buttons" >회사소개</Link>
                     <a className="footer-infoarea-buttonsarea-buttons" href="mailto:help@teamddh.com">제휴문의</a>
                     <Link to="/terms-default" className="footer-infoarea-buttonsarea-buttons" >이용약관</Link>
                     <Link to="/terms-local" className="footer-infoarea-buttonsarea-buttons" >개인정보처리방침</Link>
@@ -34,7 +34,7 @@ function Footer() {
 
                     <div className="footer-infoarea-infobody-line1">
                         <div className="line1-items">사업자등록번호 : 294-50-00750 | </div>
-                        <div className="line1-items">대표자 : 성준락</div>
+                        <div className="line1-items">대표자 : 성시윤</div>
                     </div>
                 </div>
             </div>

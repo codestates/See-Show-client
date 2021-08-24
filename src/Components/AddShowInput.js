@@ -123,7 +123,7 @@ function AddShowInput({handleInputValue, startdateFormChange, handleGpsX, state}
           <div className="add-formWrapper">
             <div className="add-title">공연제목</div>
             <input
-              className="add-showtitle adfinput"
+              className="adfinput"
               type="title"
               placeholder="title"
               onChange={handleInputValue("title")}
@@ -133,7 +133,7 @@ function AddShowInput({handleInputValue, startdateFormChange, handleGpsX, state}
           <div className="add-formWrapper">
             <div className="add-title">시작일자</div>
             <input
-              className="add-show-startDate adfinput"
+              className="adfinput"
               type="date"
               placeholder="title"
               onChange={startdateFormChange("startDate")}
@@ -143,7 +143,7 @@ function AddShowInput({handleInputValue, startdateFormChange, handleGpsX, state}
           <div className="add-formWrapper">
             <div className="add-title">종료일자</div>
             <input
-              className="add-show-endDate adfinput"
+              className="adfinput"
               type="date"
               placeholder="title"
               onChange={startdateFormChange("endDate")}
@@ -155,14 +155,14 @@ function AddShowInput({handleInputValue, startdateFormChange, handleGpsX, state}
             <div className="add-adress-field2">
               <input
                 type="title"
-                className="adr2 adfinput"
+                className="adfinput"
                 name="detailAddress"
                 readOnly
                 value ={addressInput.fullAddress || ""}
               />
               <input
                 type="title"
-                className="adr2 adfinput"
+                className="adfinput"
                 name="detailAddress"
                 placeholder="주소를 검색해주세요."
                 onChange={handleInputValue("addressETC")}
@@ -190,9 +190,9 @@ function AddShowInput({handleInputValue, startdateFormChange, handleGpsX, state}
           </div>
 
           <div className="add-formWrapper">
-            <div className="add-title">노출지역</div>
+            <div className="add-title2">노출지역</div>
             <select
-              className="add-show-location adfinput"
+              className="adfinput"
               name="지역"
               onChange={handleInputValue("area")}
             >
@@ -219,9 +219,9 @@ function AddShowInput({handleInputValue, startdateFormChange, handleGpsX, state}
           </div>
 
           <div className="add-formWrapper">
-            <div className="add-title">공연장르</div>
+            <div className="add-title2">공연장르</div>
             <select
-              className="add-show-genre adfinput"
+              className="adfinput"
               name="장르"
               onChange={handleInputValue("realmName")}
             >
@@ -233,7 +233,6 @@ function AddShowInput({handleInputValue, startdateFormChange, handleGpsX, state}
             </select>
           </div>
           <div className="addshow-alert">
-            {" "}
             * 공연의 상세 위치를 클릭해 주세요
           </div>
           <Map  handleInputValue={handleInputValue} setAddress={setAddress} addressInput={addressInput}></Map>

@@ -12,7 +12,7 @@ if(datas.length === 0){
     <div className="sc-body">
       <img id="btn-goback" src="./resource/back_light_arrow_icon_131562.png" onClick={resetCheck} />
       <div className="searchedlistup-cancel">
-      <div className="sc-notice">해당 지역 내에 등록된 공연을 찾을 수 없습니다</div>
+      <div className="sc-notice">해당 지역 내 등록된 공연이 없습니다</div>
       </div>
     </div>
 
