@@ -1,0 +1,124 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.671);
+    padding: 10px;
+}
+
+.footer-logoarea {
+    width: 20%;
+    padding: 5px;
+}
+
+#footer-logo {
+    width: 100%;
+}
+
+.footer-infoarea {
+    width: 78%;
+    color: gray;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-infoarea-infolabel {
+    margin-bottom: 5px;
+}
+
+.footer-infoarea-buttonsarea {
+    display: flex;
+    margin-bottom: 5px;
+    flex-wrap: nowrap;
+    word-break: keep-all;
+}
+
+.footer-infoarea-buttonsarea-buttons {
+    margin-right: 5px;
+    word-break: keep-all;
+}
+
+.footer-infoarea-infobody {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-infoarea-infobody-line1 {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.line1-items {
+    margin-right: 5px;
+}
+
+
+
+
+
+
+
+
+
+/* 여기서부터 모바일 해상도를 위한 반응형 코드 */
+
+@media screen and (max-width: 768px) {
+
+    .footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.671);
+    }
+    
+    .footer-logoarea {
+        width: 30%;
+        padding: 5px;
+    }
+    
+    .footer-infoarea {
+        width: 78%;
+        color: gray;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+    
+    .footer-infoarea-infolabel {
+        margin-bottom: 5px;
+        text-align: center;
+    }
+    
+    .footer-infoarea-buttonsarea {
+        display: flex;
+        margin-bottom: 5px;
+        flex-wrap: nowrap;
+        word-break: keep-all;
+        justify-content: center;
+    }
+    
+    .footer-infoarea-buttonsarea-buttons {
+        word-break: keep-all;
+    }
+    
+    .footer-infoarea-infobody {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .footer-infoarea-infobody-line1 {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5px;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .line1-items {
+        margin-bottom: 5px;
+        word-break: keep-all;
+    }
+
+
+}

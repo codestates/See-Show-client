@@ -1,0 +1,27 @@
+.termsWrapper {
+    background-color: white;
+    color: black;
+    overflow: auto;
+    padding: 50px;
+}
+
+.termsheader {
+    margin-bottom: 50px;
+}
+
+.docu {
+    margin-bottom: 30px;
+}
+
+.header {
+    margin-bottom: 10px;
+}
+
+
+.olbody {
+    margin: 20px;
+    box-shadow: 4px 4px 12px rgb(0, 0, 0, 10%);
+    padding: 30px;
+    line-height: 1.5;
+    border-radius: 15px;
+}

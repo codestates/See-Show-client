@@ -1,0 +1,715 @@
+.clicked_showBox {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* 왼쪽 제어 (썸네일, 리뷰 등) */
+
+.cd-show-left_thumbnail {
+    width: 30%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.cd-show-thumbnail {
+    width: 300px;
+    height: 400px;
+}
+
+.cd-show-reviewWrapper{
+    margin-top: 20px;
+    width: 90%;
+    box-shadow: 4px 4px 12px rgb(0, 0, 0, 10%);
+    padding: 10px;
+}
+
+.cd-show-review-title {
+    font-family: 'Do Hyeon';
+    font-size: 1.3rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    color: black;
+    text-align: left;
+    border-left: 3px solid royalblue;
+}
+
+.cd-show-review-tableIndex {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    color: black;
+    border-bottom: 1px solid gray;
+    margin-left: 10px;
+    margin-top: 7px;
+}
+
+.cd-review-tablelabel-info{
+    text-align: center;
+    width: 100px;
+}
+.cd-review-tablelabel-contents{
+    text-align: center;
+    width: 370px;
+}
+.cd-review-tablelabel-rate{
+    text-align: center;
+    width: 50px;
+}
+
+.cd-show-reviewBox {
+    display: flex;
+    justify-content: space-between;
+    color: gray;
+    margin-left: 10px;
+}
+
+.cd-review-info {
+    width: 100px;
+    height: 1rem;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.cd-review-contents {
+    width: 370px;
+    height: 1rem;
+    overflow: scroll;
+    margin-bottom: 10px;
+}
+
+.cd-review-rate {
+    width: 50px;
+    height: 1rem;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+/* 오른쪽 제어 (공연 정보, 지도 등) */
+
+.cd-show-right_description {
+    width: 65%;
+    margin-top: 50px;
+    border-left: 1px solid black;
+    padding-left: 30px;
+}
+
+.cd-show-title {
+    color: black;
+    font-family: 'Do Hyeon';
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.cd-show-parts {
+    color: black;
+    display: flex;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-family: 'Noto Sans KR';
+}
+
+.cd-show-label {
+    color: black;
+    font-family: "Do Hyeon";
+    margin-right: 10px;
+    font-size: 1.3rem;
+}
+
+.kakaomap {
+    margin-top: 10px;
+    width: 90%;
+}
+
+.cd-show-writeReview {
+    background-color: white;
+    border-radius: 0px 20px 0px 20px;
+    width: 88%;
+    margin-top: 20px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 4px 4px 12px rgb(0, 0, 0, 10%);
+}
+
+.cd-show-reviewtitle {
+    color: black;
+    font-size: 1.3rem;
+    font-family: 'Do Hyeon';
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.cd-show-review {
+    color: black;
+    width: 500px;
+    height: 30px;
+    font-size: 1.1rem;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: 'Noto Sans KR';
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid royalblue;
+}
+
+.cd-show-rating {
+    color: black;
+    height: 30px;
+    font-size: 1.1rem;
+    margin-right: 10px;
+    font-family: 'Jua';
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid royalblue;
+}
+
+.cd-show-reviewSubmit {
+    border: none;
+    background-color: rgb(234, 234, 234);
+    width: 50px;
+    height: 30px;
+    font-size: 1.1rem;
+    font-family: 'Jua';
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.cd-show-reviewSubmit:hover {
+    transform: translateY(-2px);
+}
+
+/* 하단부 제어 (버튼) */
+
+.cd-show-btn-area {
+    width: 100vw;
+    text-align:end;
+}
+
+.cd-show-btn {
+    width: 100px;
+    height: 45px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-right: 20px;
+}
+
+.cd-show-btn:hover {
+    background-color: #e56b2e;
+    box-shadow: 0px 15px 20px rgba(229, 107, 46, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+
+/* 반응형 제어(축소) */
+
+@media screen and (max-width: 1440px) {
+
+    .cd-body {
+        margin-bottom: 50px;
+        padding-bottom: 50px;
+    }
+
+    /* 왼쪽에 있던 파트가 상단으로 올라오고 가운데 정렬하도록 */
+
+    .clicked_showBox {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+
+    .cd-show-left_thumbnail {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .cd-show-thumbnail {
+        width: 300px;
+        height: 400px;
+    }
+    
+    .cd-show-reviewWrapper{
+        margin-top: 20px;
+        width: 90%;
+        box-shadow: 4px 4px 12px rgb(0, 0, 0, 10%);
+        padding: 10px;
+    }
+    
+    .cd-show-review-title {
+        font-family: 'Do Hyeon';
+        font-size: 1.3rem;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        color: black;
+        text-align: left;
+        border-left: 3px solid royalblue;
+    }
+    
+    .cd-show-review-tableIndex {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+        color: black;
+        border-bottom: 1px solid gray;
+        margin-left: 10px;
+        margin-top: 7px;
+    }
+    
+    .cd-review-tablelabel-info{
+        text-align: center;
+        width: 100px;
+    }
+    .cd-review-tablelabel-contents{
+        text-align: center;
+        width: 370px;
+    }
+    .cd-review-tablelabel-rate{
+        text-align: center;
+        width: 50px;
+    }
+    
+    .cd-show-reviewBox {
+        display: flex;
+        justify-content: space-between;
+        color: gray;
+        margin-left: 10px;
+    }
+    
+    .cd-review-info {
+        width: 100px;
+        height: 1rem;
+        overflow: hidden;
+        margin-bottom: 10px;
+    }
+    
+    .cd-review-contents {
+        width: 370px;
+        height: 1rem;
+        overflow: scroll;
+        margin-bottom: 10px;
+    }
+    
+    .cd-review-rate {
+        width: 50px;
+        height: 1rem;
+        overflow: hidden;
+        margin-bottom: 10px;
+    }
+    
+
+    /* 오른쪽에 있던 파트가 아래로 내려가고 가운데 정렬되도록 */
+
+    .cd-show-right_description {
+        width: 100%;
+        margin-top: 50px;
+        padding-left: 30px;
+        border-left: none;
+    }
+    
+    .cd-show-title {
+        color: black;
+        font-family: 'Do Hyeon';
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+    
+    .cd-show-parts {
+        color: black;
+        display: flex;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        font-family: 'Noto Sans KR';
+    }
+    
+    .cd-show-label {
+        color: black;
+        font-family: "Do Hyeon";
+        margin-right: 10px;
+        font-size: 1.3rem;
+    }
+    
+    .kakaomap {
+        margin-top: 10px;
+    }
+    
+    .cd-show-writeReview {
+        background-color: white;
+        border-radius: 0px 20px 0px 20px;
+        width: 87%;
+        margin-top: 20px;
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 4px 4px 12px rgb(0, 0, 0, 10%);
+    }
+    
+    .cd-show-reviewtitle {
+        color: black;
+        font-size: 1.3rem;
+        font-family: 'Do Hyeon';
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .cd-show-review {
+        color: black;
+        width: 500px;
+        height: 30px;
+        font-size: 1.1rem;
+        margin-left: 10px;
+        margin-right: 10px;
+        font-family: 'Noto Sans KR';
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid royalblue;
+    }
+    
+    .cd-show-rating {
+        color: black;
+        height: 30px;
+        font-size: 1.1rem;
+        margin-right: 10px;
+        font-family: 'Jua';
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid royalblue;
+    }
+    
+    .cd-show-reviewSubmit {
+        border: none;
+        background-color: rgb(234, 234, 234);
+        width: 50px;
+        height: 30px;
+        font-size: 1.1rem;
+        font-family: 'Jua';
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .cd-show-reviewSubmit:hover {
+        transform: translateY(-2px);
+    }
+
+
+    /* 모바일 하단부 제어 */
+
+    .cd-show-btn-area {
+        width: 100vw;
+        text-align:end;
+    }
+    
+    .cd-show-btn {
+        width: 100px;
+        height: 45px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        font-weight: 500;
+        color: #000;
+        background-color: #fff;
+        border: none;
+        border-radius: 45px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        margin-top: 15px;
+        margin-right: 20px;
+    }
+    
+    .cd-show-btn:hover {
+        background-color: #e56b2e;
+        box-shadow: 0px 15px 20px rgba(229, 107, 46, 0.4);
+        color: #fff;
+        transform: translateY(-7px);
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+  /* 반응형 제어(모바일) */
+
+
+@media screen and (max-width: 768px) {
+
+    .cd-body {
+        margin-bottom: 50px;
+        padding-bottom: 50px;
+    }
+
+    /* 왼쪽에 있던 파트가 상단으로 올라오고 가운데 정렬하도록 */
+
+    .clicked_showBox {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+
+    .cd-show-left_thumbnail {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .cd-show-thumbnail {
+        width: 300px;
+        height: 400px;
+    }
+    
+    .cd-show-reviewWrapper{
+        margin-top: 20px;
+        width: 90%;
+        box-shadow: 4px 4px 12px rgb(0, 0, 0, 10%);
+        padding: 10px;
+    }
+    
+    .cd-show-review-title {
+        font-family: 'Do Hyeon';
+        font-size: 1.3rem;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        color: black;
+        text-align: left;
+        border-left: 3px solid royalblue;
+    }
+    
+    .cd-show-review-tableIndex {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+        color: black;
+        border-bottom: 1px solid gray;
+        margin-left: 10px;
+        margin-top: 7px;
+    }
+    
+    .cd-review-tablelabel-info{
+        text-align: center;
+        width: 100px;
+    }
+    .cd-review-tablelabel-contents{
+        text-align: center;
+        width: 370px;
+    }
+    .cd-review-tablelabel-rate{
+        text-align: center;
+        width: 50px;
+    }
+    
+    .cd-show-reviewBox {
+        display: flex;
+        justify-content: space-between;
+        color: gray;
+        margin-left: 10px;
+    }
+    
+    .cd-review-info {
+        width: 100px;
+        height: 1rem;
+        overflow: hidden;
+        margin-bottom: 10px;
+    }
+    
+    .cd-review-contents {
+        width: 370px;
+        height: 1rem;
+        overflow: scroll;
+        margin-bottom: 10px;
+    }
+    
+    .cd-review-rate {
+        width: 50px;
+        height: 1rem;
+        overflow: hidden;
+        margin-bottom: 10px;
+    }
+    
+
+    /* 오른쪽에 있던 파트가 아래로 내려가고 가운데 정렬되도록 */
+
+    .cd-show-right_description {
+        width: 100%;
+        margin-top: 50px;
+        padding-left: 30px;
+        border-left: none;
+    }
+    
+    .cd-show-title {
+        color: black;
+        font-family: 'Do Hyeon';
+        font-size: 2rem;
+        margin-bottom: 15px;
+        width: 90%;
+        word-break: keep-all;
+
+    }
+    
+    .cd-show-parts {
+        color: black;
+        display: flex;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        font-family: 'Noto Sans KR';
+    }
+    
+    .cd-show-label {
+        color: black;
+        font-family: "Do Hyeon";
+        margin-right: 10px;
+        font-size: 1.3rem;
+    }
+    
+    .kakaomap {
+        margin-top: 10px;
+    }
+    
+    .cd-show-writeReview {
+        background-color: white;
+        border-radius: 0px 20px 0px 20px;
+        width: 86%;
+        margin-top: 20px;
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 4px 4px 12px rgb(0, 0, 0, 10%);
+    }
+    
+    .cd-show-reviewtitle {
+        color: black;
+        font-size: 1.3rem;
+        font-family: 'Do Hyeon';
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .cd-show-review {
+        color: black;
+        width: 500px;
+        height: 30px;
+        font-size: 1.1rem;
+        margin-left: 10px;
+        margin-right: 10px;
+        font-family: 'Noto Sans KR';
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid royalblue;
+    }
+    
+    .cd-show-rating {
+        color: black;
+        height: 30px;
+        font-size: 1.1rem;
+        margin-right: 10px;
+        font-family: 'Jua';
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid royalblue;
+    }
+    
+    .cd-show-reviewSubmit {
+        border: none;
+        background-color: rgb(234, 234, 234);
+        width: 50px;
+        height: 30px;
+        font-size: 1.1rem;
+        font-family: 'Jua';
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .cd-show-reviewSubmit:hover {
+        transform: translateY(-2px);
+    }
+
+
+    /* 모바일 하단부 제어 */
+
+    .cd-show-btn-area {
+        width: 100vw;
+        text-align:end;
+    }
+    
+    .cd-show-btn {
+        width: 100px;
+        height: 45px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        font-weight: 500;
+        color: #000;
+        background-color: #fff;
+        border: none;
+        border-radius: 45px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        margin-top: 15px;
+        margin-right: 20px;
+    }
+    
+    .cd-show-btn:hover {
+        background-color: #e56b2e;
+        box-shadow: 0px 15px 20px rgba(229, 107, 46, 0.4);
+        color: #fff;
+        transform: translateY(-7px);
+    }
+
+
+}
