@@ -127,7 +127,7 @@ function AddShowInput({handleInputValue, startdateFormChange, handleGpsX, state}
  
         <div className="add-right">
           <div className="add-formWrapper">
-            <div className="add-title">공연제목</div>
+            <div className="add-title2">공연제목</div>
             <input
               className="adfinput"
               type="title"
@@ -137,7 +137,7 @@ function AddShowInput({handleInputValue, startdateFormChange, handleGpsX, state}
           </div>
 
           <div className="add-formWrapper">
-            <div className="add-title">시작일자</div>
+            <div className="add-title2">시작일자</div>
             <input
               className="adfinput"
               type="date"
@@ -146,7 +146,7 @@ function AddShowInput({handleInputValue, startdateFormChange, handleGpsX, state}
           </div>
 
           <div className="add-formWrapper">
-            <div className="add-title">종료일자</div>
+            <div className="add-title2">종료일자</div>
             <input
               className="adfinput"
               type="date"
@@ -155,30 +155,12 @@ function AddShowInput({handleInputValue, startdateFormChange, handleGpsX, state}
           </div>
 
           <div className="add-formWrapper">
-            <div className="add-title">공연주소</div>
+            <div className="add-title2">공연주소</div>
             <div className="add-adress-field2">
-              <input
-                type="text"
-                className="adfinput"
-                name="detailAddress"
-                readOnly
-                value ={addressInput.fullAddress || ""}
-              />
-              <input
-                type="text"
-                className="adfinput"
-                name="detailAddress"
-                placeholder="주소를 검색해주세요."
-                onChange={handleInputValue("addressETC")}
-              />
-              <button
-                className="locationbtn"
-                type="button"
-                onClick={openPostCode}
-              >
-                우편번호 검색
-              </button>
+              <input type="text" className="adfinput" name="detailAddress" readOnly value ={addressInput.fullAddress || ""} />
+              <input type="text" className="adfinput adfspacer" name="detailAddress" placeholder="주소를 검색해주세요." onChange={handleInputValue("addressETC")} />
             </div>
+            <button className="locationbtn" type="button" onClick={openPostCode}>우편번호 검색</button>
           
           </div>
 
@@ -243,12 +225,12 @@ function AddShowInput({handleInputValue, startdateFormChange, handleGpsX, state}
         </div>
         {!title || !startDate || !endDate || !realmName ||  !area  ? 
         (
-          <div className="addshow-submit-btn-area">
+          <div className="addshow-submit-btn-areas">
             <div className="addshow-alert-box">{state.errorMessage}</div>
             <button className="addshow-submit-btn" onClick={handleSubmit}> SUBMIT </button>
           </div>
         ) : (
-          <div className="addshow-submit-btn-area">
+          <div className="addshow-submit-btn-areas">
             <div className="addshow-alert-box">{state.errorMessage}</div>
             <button className="addshow-submit-btn" onClick={addShowConfirm}> SUBMIT </button>
           </div>
