@@ -1,6 +1,7 @@
 import React from 'react';
 import DaumPostcode from "react-daum-postcode";
- 
+const { kakao } = window;
+
 const PopupPostCode = (props) => {
 	// 우편번호 검색 후 주소 클릭 시 실행될 함수, data callback 용
     const handlePostCode = (data) => {
@@ -16,8 +17,14 @@ const PopupPostCode = (props) => {
           }
           fullAddress += (extraAddress !== '' ? ` (${extraAddress})` : '');
         }
-        props.setPlace(fullAddress)
-        props.onClose()
+
+        var geocoder = new kakao.maps.services.Geocoder();
+        geocoder.addressSearch(fullAddress, function(result, status) {
+             if (status === kakao.maps.services.Status.OK) {
+        props.setAddress({fullAddress, gpsY : result[0].y, gpsX : result[0].x })
+            } 
+        });
+        props.onClose();
     }
  
     const postCodeStyle = {

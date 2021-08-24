@@ -1,12 +1,10 @@
 import React from "react";
 import axios from "axios";
 import { withRouter, Redirect, Link } from "react-router-dom";
-
 import SearchBar from "../Components/SearchBar";
 import DataList from "../Components/DataList";
 import ClickedDataEntry from "../Components/ClickedDataEntry";
 import RecommendDataList from "../Components/RecommendDataList";
-
 import "./ShowPage.css";
 import SearchedDataList from "../Components/SearchedDataList";
 
@@ -67,11 +65,7 @@ class ShowPage extends React.Component {
   }
 
   componentWillMount() {
-    // console.log("Component WILL MOUNT!");
-    // console.log(this.state.apiData);
     this.handleApiData();
-    // console.log(this.state.apiData);
-    // this.handleRecommendData();
   }
 
   handleApiData() {
@@ -116,13 +110,10 @@ class ShowPage extends React.Component {
 
   getClickedApiData = () => {
     //클릭한 공연의 상세 정보 데이터 불러오기.
-    // console.log(this.state.clickedData, 'clickedData')
     axios
       .post(process.env.REACT_APP_DOMAIN+"/show/detail", this.state.clickedData)
       .then((res) => {
-        // console.log(res)
         this.setState({ clickedShowData: res.data.data });
-        // console.log(res.data.data, "clickedShowData");
       })
       .catch((err) => console.log(err));
   };
@@ -131,14 +122,11 @@ class ShowPage extends React.Component {
     //공연 상세정보 뿌려주기 위해 ClickedData setState.
     await this.setState({ clickedData: data });
     await this.getClickedApiData(data);
-    // await this.getReview();
-    // console.log("setClickedData");
   }
 
   resetClickedData() {
     //상세보기 에서 뒤로가기 버튼 누를 때, clickedData reset.
     this.setState({ clickedData: null, clickedShowData: "" });
-    // console.log(this.state, "resetClickedDaata");
   }
 
   getReview() {
@@ -174,24 +162,17 @@ class ShowPage extends React.Component {
   hanldeAreaState(e) {
     const value = e.target.value;
     this.setState({ clickedArea: value });
-    // console.log(value, "handleAreaState");
-    // console.log(this.state.clickedArea, "state.area");
     // this.areaFiltered(value)
   }
 
   handleInputValue(e) {
-    const value = e.target.value;
-    // console.log(value);
     this.setState({ search: e.target.value });
-    // this.areaFiltered(value)
   }
   resetCheck() {
     this.setState({ check: 0, clickedShowData: "", clickedData: null });
-    // console.log(this.state, "resetCheck");
   }
 
   render() {
-    // console.log(this.state, "render");
     //지역별 검색 했을 경우
     if (this.state.check === 1) {
       return (
@@ -232,7 +213,6 @@ class ShowPage extends React.Component {
       return (
         <div className="show-body">
           <div className="bodyWrapper">
-
             <div className="mainstream">
               {this.state.clickedData === null ? (
                 <div className="apidata">
