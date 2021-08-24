@@ -209,10 +209,10 @@ class App extends React.Component {
                 <AddShow accessToken={this.state.accessToken}></AddShow>
               )}
             />
-            <Route
+            {/* <Route
               path="/show/:id"
               render={() => <ClickedDataEntry></ClickedDataEntry>}
-            />
+            /> */}
             <Route path="/Hello" render={() => <Hello />} />
             <Route
               path="/login"

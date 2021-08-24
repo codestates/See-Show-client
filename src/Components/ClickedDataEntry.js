@@ -1,9 +1,6 @@
 import React from "react";
 import "./ClickedDataEntry.css";
-import { Link, Redirect } from "react-router-dom";
-
 import axios from "axios";
-import Review from "../Components/Review";
 import MapMarker from "../Components/MapMarker";
 
 import { confirmAlert } from "react-confirm-alert"; // Import
@@ -44,8 +41,21 @@ class ClickedDataEntry extends React.Component {
     this.setState({ [key]: e.target.value });
   };
 
-  conponentWillMount() {
-    this.setState({ clickedData: this.props.clickedData });
+  componentDidUpdate() {
+    // this.setState({ clickedData: this.props.clickedData });
+      console.log("getReview");
+      console.log(typeof this.props.clickedData.seq);
+        // axios
+        //   .get(
+        //     process.env.REACT_APP_DOMAIN+"/review/read",
+        //     Number(this.props.clickedData.seq),  {withCredentials: true}
+        //   )
+        //   .then((res) => {
+        //     console.log(res.data)
+        //     // this.setState({ review: res.body.data });
+        //   })
+        //   .catch((err) => console.log(err, "getReview err"));
+     
   }
   reviewContent = (key) => (e) => {
     this.setState({ [key]: e.target.value });
@@ -113,14 +123,10 @@ class ClickedDataEntry extends React.Component {
               </div>
                   <div className="cd-show-reviewBox">
                     <div className="cd-review-info">{this.state.reviewId}</div>
-                    <div className="cd-review-contents">{this.state.reivewContent}</div>
-                    <div className="cd-review-rate">{this.state.reviewPoint}</div>
+                    <div className="cd-review-contents">{this.state.content}</div>
+                    <div className="cd-review-rate">{this.state.point}</div>
                   </div>
-                  <div className="cd-show-reviewBox">
-                    <div className="cd-review-info">{this.state.reviewId}</div>
-                    <div className="cd-review-contents">{this.state.reivewContent}</div>
-                    <div className="cd-review-rate">{this.state.reviewPoint}</div>
-                  </div>
+                 
                 </div>
           </div>
 
