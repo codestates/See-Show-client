@@ -26,7 +26,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLogin: false,
+      isLogin: true,
       userinfo: { firstCheck: 1 },
       accessToken: null,
       firstCheck: null,

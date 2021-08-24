@@ -105,6 +105,21 @@
     width: 100%;
 }
 
+.add-adress-field2 {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-right: 10px;
+}
+
+.locationbtn {
+    width: 10%;
+}
+
+.adfspacer {
+    margin-top: 5px;
+}
+
 .adfinput {
     width: 100%;
     height: 30px;
@@ -112,7 +127,7 @@
     border-top: none;
     border-left: none;
     border-right: none;
-    background-color: rgb(211, 211, 211);
+    background-color: rgb(226, 226, 226);
     border-bottom: 1.5px solid royalblue;
 }
 
@@ -151,6 +166,19 @@
     color: black;
 }
 
+.addshow-submit-btn-areas {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 40px;
+    width: 100%;
+}
+
+.addshow-alert-box {
+    margin-right: 10px;
+    width: 30%;
+    font-size: 1rem;
+    text-align: end;
+}
 
 
 
@@ -182,6 +210,7 @@
         font-size: 1.3rem;
         margin-left: 10px;
         margin-right: 10px;
+        word-break: keep-all;
     }
     
     .add-subtitle {
@@ -277,6 +306,7 @@
         word-break: keep-all;
     }
     
+
     .adfinput {
         width: 100%;
         height: 30px;
@@ -284,7 +314,7 @@
         border-top: none;
         border-left: none;
         border-right: none;
-        background-color: rgb(211, 211, 211);
+        background-color: rgb(226, 226, 226);
         border-bottom: 1.5px solid royalblue;
     }
 
@@ -319,6 +349,34 @@
         color: black;
     }
 
+
+    .add-adress-field2 {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-right: 5px;
+    }
+    
+    .locationbtn {
+        margin-top: 5px;
+        width: 100%;
+        height: 30px;
+    }
+    
+
+    .addshow-submit-btn-areas{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-end;
+    }
+    
+    .addshow-alert-box {
+        margin-right: 10px;
+        width: 70%;
+        font-size: 1rem;
+        text-align: end;
+    }
 
 
 
