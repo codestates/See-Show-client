@@ -28,7 +28,7 @@ class Login extends React.Component {
     if (!nickname || !password) {
       this.setState({ errorMessage: "아이디와 비밀번호를 입력하세요" });
     } else {
-      axios.post(process.env.REACT_APP_DOMAIN+"/login",{ nickname, password },
+      axios.post(process.env.REACT_APP_DOMAIN+"/login",{ nickname, password },{withCredentials : true}
     )
         .then((res) => {
           // console.log(`thisisREACT_APP_DOMAIN`, process.env.REACT_APP_DOMAIN)
