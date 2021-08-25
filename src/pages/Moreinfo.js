@@ -37,7 +37,7 @@ class Moreinfo extends React.Component {
             },withCredentials: true
         })
         .then(res => {
-                 this.props.setStateUserInfo(area, genre)
+            this.props.setStateUserInfo(res.data.data.userinfo)
             console.log(res.data,'ddddd')
             // if(res.data.data.accessToken){
             //     return this.props.setStateAccessToken(res.data.data.accessToken)
