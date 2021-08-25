@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { withRouter, Redirect, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import SearchBar from "../Components/SearchBar";
 import DataList from "../Components/DataList";
 import ClickedDataEntry from "../Components/ClickedDataEntry";
@@ -131,17 +131,18 @@ class ShowPage extends React.Component {
 
   getReview() {
     console.log("getReview");
-    //   axios
-    //     .post(
-    //       "https://localhost:8080/review/get",
-    //       this.state.clickedData
-    //     )
-    //     .then((res) => {
-    //       console.log(res)
-    //       this.setState({ review: res.body.data });
-    //     })
-    //     .catch((err) => console.log(err, "getReview err"));
-    // }
+    console.log(this.state.clickedData);
+      axios
+        .post(
+          "https://localhost:4000/review",
+          this.state.clickedData
+        )
+        .then((res) => {
+          console.log(res)
+          this.setState({ review: res.body.data });
+        })
+        .catch((err) => console.log(err, "getReview err"));
+   
   }
 
   areaFiltered() {
@@ -173,6 +174,7 @@ class ShowPage extends React.Component {
   }
 
   render() {
+    // console.log(this.state, "render");
     //지역별 검색 했을 경우
     if (this.state.check === 1) {
       return (

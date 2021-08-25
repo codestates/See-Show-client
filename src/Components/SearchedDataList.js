@@ -1,6 +1,4 @@
 import React from "react";
-import {Link } from "react-router-dom";
-
 import SearchedDataListEntry from "./SearchedDataListEntry";
 import './SearchedDataList.css'
 // import {useLocation} from "react-router";

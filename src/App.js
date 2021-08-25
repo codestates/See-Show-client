@@ -26,7 +26,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLogin: false,
+      isLogin: true,
       userinfo: { firstCheck: 1 },
       accessToken: null,
       firstCheck: null,
@@ -209,10 +209,10 @@ class App extends React.Component {
                 <AddShow accessToken={this.state.accessToken}></AddShow>
               )}
             />
-            <Route
+            {/* <Route
               path="/show/:id"
               render={() => <ClickedDataEntry></ClickedDataEntry>}
-            />
+            /> */}
             <Route path="/Hello" render={() => <Hello />} />
             <Route
               path="/login"
