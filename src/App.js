@@ -41,9 +41,10 @@ class App extends React.Component {
     this.setStateUserInfo = this.setStateUserInfo.bind(this);
   }
 
-  setStateUserInfo(area, genre) {
-    const info = this.state.userinfo;
-    this.setState({ userinfo: { ...info, area, genre } });
+  setStateUserInfo(userinfo) {
+    this.setState({...this.state, userinfo})
+    // const info = this.state.userinfo;
+    // this.setState({ userinfo: { ...info, area, genre } });
   }
 
   async setStateAccessToken(data) {
@@ -89,7 +90,7 @@ class App extends React.Component {
 
   //3. 아래 함수에서 실행. Userinfo 받아오는 곳.
   handleUserinfo() {
-    console.log('handleuserinfo')
+    // console.log('handleuserinfo')
     axios
       .get(process.env.REACT_APP_DOMAIN + "/myPage", {
         headers: {
@@ -112,10 +113,11 @@ class App extends React.Component {
   //2. login-handleLogin 함수에서 실행.
   async handleResponseSuccess(res) {
     // 사용자 정보를 호출, login state 변경.
-    const { accessToken, usertype, firstcheck } = res.data;
+    // console.log(`thisisres.data`, res.data)
+    const { accessToken, usertype, firstcheck } = res.data.data;
     this.setState({ accessToken, usertype, firstcheck, isLogin: true });
 
-    await this.handleUserinfo();
+    // await this.handleUserinfo();
     // if(firstcheck === 1) {
     // //   // this.setState({firstcheck: res.data.data.firstCheck});
     // //   //만약  firstCheck가 1이라면 바로 실행하는 함수 만들어서

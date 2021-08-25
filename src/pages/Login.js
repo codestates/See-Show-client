@@ -33,11 +33,11 @@ class Login extends React.Component {
         .then((res) => {
           // console.log(`thisisREACT_APP_DOMAIN`, process.env.REACT_APP_DOMAIN)
           console.log(res.data,'성공')
-          this.props.handleResponseSuccess(res.data);
-          this.props.handleUserinfo()
+          this.props.handleResponseSuccess(res);
           if(res.data.data.firstcheck ===1){
             this.props.history.push('/moreinfo')
           }else{
+          this.props.handleUserinfo()
           this.props.history.push("/show") 
           }
           //handleResponse에서 리다이렉트
