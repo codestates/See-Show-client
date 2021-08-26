@@ -1,6 +1,4 @@
-/*global kakao*/
 import React from "react";
-import { Route } from "react-router-dom";
 
 function blank({ match, location, history }){
 return(
