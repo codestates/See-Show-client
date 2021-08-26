@@ -8,7 +8,7 @@ function Nav(props) {
     return (
       <div className="headerWrapper">
         <div className="logoWrapper">
-            <Link to="/"><img id="head-logo" src="/resource/seeshow_logo_full_prototype.png" alt="See SHOW" /></Link>
+            <Link to="/hello"><img id="head-logo" src="/resource/seeshow_logo_full_prototype.png" alt="See SHOW" /></Link>
         </div>
 
         <div className='buttonWrapper'>
@@ -21,7 +21,7 @@ function Nav(props) {
     return (
       <div className="headerWrapper-logged">
         <div className="logoWrapper">
-           <Link to="/show"> <img id="head-logo" src="/resource/seeshow_logo_full_prototype.png" alt="See SHOW" /> </Link>
+           <Link to="/hello"> <img id="head-logo" src="/resource/seeshow_logo_full_prototype.png" alt="See SHOW" /> </Link>
         </div>
 
         <div className="buttonWrapper">
